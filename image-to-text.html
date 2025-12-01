@@ -1,1 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Text (OCR) - Nagar Tools</title>
+    <!-- Tesseract.js for OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@v2.1.5/dist/tesseract.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-white: #ffffff;
+            --bg-gray: #f9fafb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tool-container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            background: var(--bg-gray);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px dashed var(--primary-blue);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .upload-section.drag-over {
+            background: var(--light-blue);
+            border-color: var(--dark-blue);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .upload-text h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .upload-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            display: none;
+        }
+        
+        .file-info.active {
+            display: block;
+        }
+        
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .file-size {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Image Preview */
+        .image-preview {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .image-preview.active {
+            display: block;
+        }
+        
+        .preview-img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+        }
+        
+        /* Language Selection */
+        .language-section {
+            margin-top: 25px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .language-section h4 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background: var(--bg-gray);
+            border-radius: 6px;
+        }
+        
+        .language-option {
+            padding: 10px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            background: white;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .language-option:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .language-option.selected {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        /* Controls Section */
+        .controls-section {
+            background: var(--bg-gray);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .ocr-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        /* Text Output */
+        .output-section {
+            grid-column: 1 / -1;
+            background: var(--bg-gray);
+            padding: 25px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .output-section.active {
+            display: block;
+        }
+        
+        .text-output-container {
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        .text-output {
+            width: 100%;
+            min-height: 200px;
+            max-height: 400px;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            background: white;
+            font-family: 'Courier New', monospace;
+            overflow-y: auto;
+        }
+        
+        .output-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Buttons */
+        .btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover:not(:disabled) {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background: var(--light-blue);
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover:not(:disabled) {
+            background: #059669;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .progress-container.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue));
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: var(--error);
+        }
+        
+        .notification.warning {
+            background: var(--warning);
+        }
+        
+        .notification.success {
+            background: var(--success);
+        }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .loading-overlay.active {
+            display: flex;
+        }
+        
+        .loading-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 300px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(37, 99, 235, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Confidence Display */
+        .confidence-display {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            display: none;
+        }
+        
+        .confidence-display.active {
+            display: block;
+        }
+        
+        .confidence-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #059669);
+            width: 0%;
+            border-radius: 5px;
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--bg-gray);
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        
+        .copy-btn.copied {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔤 Image to Text (OCR)</h1>
+            <p>Extract text from images using Optical Character Recognition technology</p>
+        </div>
+        
+        <div class="tool-container">
+            <!-- Left Side: Upload & Image Preview -->
+            <div class="upload-section" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">
+                    <h3>Upload Your Image</h3>
+                    <p>Supported formats: JPG, PNG, BMP, GIF, TIFF</p>
+                </div>
+                
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <button class="btn" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i> Choose Image
+                </button>
+                
+                <div class="file-info" id="fileInfo">
+                    <div class="file-name" id="fileName"></div>
+                    <div class="file-size" id="fileSize"></div>
+                </div>
+                
+                <div class="image-preview" id="imagePreview">
+                    <img id="previewImage" class="preview-img" alt="Selected Image">
+                </div>
+                
+                <div class="language-section">
+                    <h4>Select Language</h4>
+                    <div class="language-grid" id="languageGrid">
+                        <!-- Languages will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Controls -->
+            <div class="controls-section">
+                <h3 class="section-title">OCR Settings</h3>
+                
+                <div class="control-group">
+                    <label for="ocrEngine">OCR Engine</label>
+                    <select id="ocrEngine">
+                        <option value="tesseract">Tesseract.js (Recommended)</option>
+                        <option value="fast">Fast Mode</option>
+                        <option value="accurate">Accurate Mode</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Processing Options</label>
+                    <div class="ocr-options">
+                        <div class="option-group">
+                            <label for="dpi">DPI Setting</label>
+                            <select id="dpi">
+                                <option value="72">72 DPI (Web)</option>
+                                <option value="150" selected>150 DPI (Good)</option>
+                                <option value="300">300 DPI (High Quality)</option>
+                                <option value="600">600 DPI (Ultra)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="imageProcessing">Image Pre-processing</label>
+                            <select id="imageProcessing">
+                                <option value="none">None</option>
+                                <option value="grayscale" selected>Grayscale</option>
+                                <option value="threshold">Threshold</option>
+                                <option value="deskew">Deskew + Grayscale</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="outputFormat">Output Format</label>
+                    <select id="outputFormat">
+                        <option value="plain" selected>Plain Text</option>
+                        <option value="preserve">Preserve Formatting</option>
+                        <option value="markdown">Markdown</option>
+                        <option value="html">HTML</option>
+                    </select>
+                </div>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="progressStatus">Initializing...</span>
+                        <span id="progressPercentage">0%</span>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn" id="extractBtn" disabled>
+                        <i class="fas fa-bolt"></i> Extract Text
+                    </button>
+                    <button class="btn btn-secondary" id="clearBtn" disabled>
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                    <button class="btn btn-secondary" id="sampleBtn">
+                        <i class="fas fa-image"></i> Try Sample
+                    </button>
+                </div>
+                
+                <div class="confidence-display" id="confidenceDisplay">
+                    <h4>Confidence Level</h4>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Accuracy:</span>
+                        <span id="confidenceValue">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Output Section -->
+            <div class="output-section" id="outputSection">
+                <h3 class="section-title">Extracted Text</h3>
+                
+                <div class="text-output-container">
+                    <button class="copy-btn" id="copyBtn" onclick="copyToClipboard()">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <textarea class="text-output" id="textOutput" placeholder="Extracted text will appear here..." readonly></textarea>
+                </div>
+                
+                <div class="output-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="charCount">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="wordCount">0</div>
+                        <div class="stat-label">Words</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="lineCount">0</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="timeTaken">0s</div>
+                        <div class="stat-label">Processing Time</div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="downloadBtn" disabled>
+                        <i class="fas fa-download"></i> Download as TXT
+                    </button>
+                    <button class="btn btn-secondary" id="translateBtn" disabled>
+                        <i class="fas fa-language"></i> Translate
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearOutput()">
+                        <i class="fas fa-times"></i> Clear Output
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="padding: 20px; text-align: center;">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to All Tools
+            </a>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3 id="loadingTitle">Processing Image...</h3>
+            <p id="loadingMessage">Please wait while we extract text from your image</p>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-info-circle"></i>
+        <span>Welcome to Image to Text tool!</span>
+    </div>
 
+    <script>
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = document.getElementById('previewImage');
+        const languageGrid = document.getElementById('languageGrid');
+        const extractBtn = document.getElementById('extractBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const sampleBtn = document.getElementById('sampleBtn');
+        const outputSection = document.getElementById('outputSection');
+        const textOutput = document.getElementById('textOutput');
+        const copyBtn = document.getElementById('copyBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const translateBtn = document.getElementById('translateBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressStatus = document.getElementById('progressStatus');
+        const progressPercentage = document.getElementById('progressPercentage');
+        const confidenceDisplay = document.getElementById('confidenceDisplay');
+        const confidenceFill = document.getElementById('confidenceFill');
+        const confidenceValue = document.getElementById('confidenceValue');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const loadingTitle = document.getElementById('loadingTitle');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const notification = document.getElementById('notification');
+        
+        // Stats elements
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const lineCount = document.getElementById('lineCount');
+        const timeTaken = document.getElementById('timeTaken');
+        
+        // Control elements
+        const ocrEngine = document.getElementById('ocrEngine');
+        const dpi = document.getElementById('dpi');
+        const imageProcessing = document.getElementById('imageProcessing');
+        const outputFormat = document.getElementById('outputFormat');
+        
+        // Global variables
+        let selectedImage = null;
+        let selectedLanguage = 'eng';
+        let extractedText = '';
+        let processingStartTime = 0;
+        let worker = null;
+        
+        // Supported languages for OCR
+        const languages = [
+            { code: 'eng', name: 'English', native: 'English' },
+            { code: 'spa', name: 'Spanish', native: 'Español' },
+            { code: 'fra', name: 'French', native: 'Français' },
+            { code: 'deu', name: 'German', native: 'Deutsch' },
+            { code: 'ita', name: 'Italian', native: 'Italiano' },
+            { code: 'por', name: 'Portuguese', native: 'Português' },
+            { code: 'rus', name: 'Russian', native: 'Русский' },
+            { code: 'chi_sim', name: 'Chinese (Simplified)', native: '简体中文' },
+            { code: 'chi_tra', name: 'Chinese (Traditional)', native: '繁體中文' },
+            { code: 'jpn', name: 'Japanese', native: '日本語' },
+            { code: 'kor', name: 'Korean', native: '한국어' },
+            { code: 'ara', name: 'Arabic', native: 'العربية' },
+            { code: 'hin', name: 'Hindi', native: 'हिन्दी' },
+            { code: 'ben', name: 'Bengali', native: 'বাংলা' },
+            { code: 'tur', name: 'Turkish', native: 'Türkçe' },
+            { code: 'nld', name: 'Dutch', native: 'Nederlands' },
+            { code: 'ell', name: 'Greek', native: 'Ελληνικά' },
+            { code: 'heb', name: 'Hebrew', native: 'עברית' },
+            { code: 'tha', name: 'Thai', native: 'ไทย' },
+            { code: 'vie', name: 'Vietnamese', native: 'Tiếng Việt' }
+        ];
+        
+        // Initialize
+        init();
+        
+        function init() {
+            // Initialize language grid
+            populateLanguageGrid();
+            
+            // Event Listeners
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // Drag and drop
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('dragleave', handleDragLeave);
+            uploadArea.addEventListener('drop', handleDrop);
+            
+            // Button events
+            extractBtn.addEventListener('click', extractText);
+            clearBtn.addEventListener('click', clearAll);
+            sampleBtn.addEventListener('click', loadSampleImage);
+            downloadBtn.addEventListener('click', downloadText);
+            translateBtn.addEventListener('click', translateText);
+            
+            // Text output event
+            textOutput.addEventListener('input', updateStats);
+            
+            // Show welcome notification
+            showNotification('Upload an image or try the sample image to get started!', 'info');
+            
+            // Initialize Tesseract worker
+            initializeTesseract();
+        }
+        
+        function populateLanguageGrid() {
+            languageGrid.innerHTML = '';
+            
+            languages.forEach(lang => {
+                const langDiv = document.createElement('div');
+                langDiv.className = 'language-option';
+                if (lang.code === selectedLanguage) {
+                    langDiv.classList.add('selected');
+                }
+                langDiv.innerHTML = `
+                    <div style="font-weight: 600;">${lang.name}</div>
+                    <div style="font-size: 0.8rem; color: ${lang.code === selectedLanguage ? 'white' : 'var(--text-light)'}">${lang.native}</div>
+                `;
+                langDiv.dataset.code = lang.code;
+                
+                langDiv.addEventListener('click', () => {
+                    document.querySelectorAll('.language-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    langDiv.classList.add('selected');
+                    selectedLanguage = lang.code;
+                    showNotification(`Language changed to ${lang.name}`, 'success');
+                });
+                
+                languageGrid.appendChild(langDiv);
+            });
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        }
+        
+        function handleDragLeave(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+        }
+        
+        function handleDrop(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.match('image.*')) {
+                    fileInput.files = files;
+                    handleFileSelect();
+                } else {
+                    showNotification('Please select an image file', 'error');
+                }
+            }
+        }
+        
+        function handleFileSelect() {
+            const file = fileInput.files[0];
+            if (!file || !file.type.match('image.*')) {
+                showNotification('Please select a valid image file', 'error');
+                return;
+            }
+            
+            // Update file info
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.classList.add('active');
+            
+            // Read and display image
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                selectedImage = e.target.result;
+                previewImage.src = selectedImage;
+                imagePreview.classList.add('active');
+                
+                // Enable buttons
+                extractBtn.disabled = false;
+                clearBtn.disabled = false;
+                
+                showNotification('Image loaded successfully!', 'success');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        function initializeTesseract() {
+            // Create a new Tesseract worker
+            worker = Tesseract.createWorker({
+                logger: updateProgress,
+                errorHandler: handleOCRerror
+            });
+        }
+        
+        async function extractText() {
+            if (!selectedImage) {
+                showNotification('Please select an image first', 'error');
+                return;
+            }
+            
+            showLoading('Processing Image', 'Analyzing image content...');
+            processingStartTime = Date.now();
+            
+            try {
+                // Initialize worker
+                await worker.load();
+                await worker.loadLanguage(selectedLanguage);
+                await worker.initialize(selectedLanguage);
+                
+                // Set worker parameters based on selected options
+                await worker.setParameters({
+                    tessedit_pageseg_mode: '3', // Fully automatic page segmentation
+                    tessedit_char_whitelist: '', // No character restrictions
+                    preserve_interword_spaces: '1', // Preserve spaces
+                });
+                
+                // Perform OCR
+                const result = await worker.recognize(selectedImage);
+                
+                // Process result based on output format
+                extractedText = processTextResult(result.data.text, outputFormat.value);
+                
+                // Update UI
+                textOutput.value = extractedText;
+                outputSection.classList.add('active');
+                updateStats();
+                
+                // Update confidence
+                const avgConfidence = calculateAverageConfidence(result.data);
+                updateConfidence(avgConfidence);
+                
+                // Enable download and translate buttons
+                downloadBtn.disabled = false;
+                translateBtn.disabled = false;
+                
+                // Show success notification
+                const processingTime = ((Date.now() - processingStartTime) / 1000).toFixed(2);
+                timeTaken.textContent = `${processingTime}s`;
+                showNotification(`Text extracted successfully! (${processingTime}s)`, 'success');
+                
+            } catch (error) {
+                console.error('OCR Error:', error);
+                showNotification('Error extracting text: ' + error.message, 'error');
+            } finally {
+                hideLoading();
+                progressContainer.classList.remove('active');
+                
+                // Terminate worker to free resources
+                if (worker) {
+                    await worker.terminate();
+                    initializeTesseract(); // Reinitialize for next use
+                }
+            }
+        }
+        
+        function processTextResult(text, format) {
+            let processedText = text.trim();
+            
+            switch(format) {
+                case 'preserve':
+                    // Keep original formatting
+                    break;
+                    
+                case 'markdown':
+                    // Convert to markdown-like format
+                    processedText = processedText
+                        .replace(/\n\s*\n\s*\n/g, '\n\n') // Remove excessive newlines
+                        .replace(/^#\s*(.+)$/gm, '# $1') // Add markdown headers
+                        .replace(/\*\*(.+?)\*\*/g, '**$1**') // Bold
+                        .replace(/\*(.+?)\*/g, '*$1*'); // Italic
+                    break;
+                    
+                case 'html':
+                    // Convert to HTML
+                    processedText = processedText
+                        .replace(/\n\s*\n\s*\n/g, '</p><p>')
+                        .replace(/\n/g, '<br>')
+                        .replace(/^#\s*(.+)$/gm, '<h1>$1</h1>')
+                        .replace(/^##\s*(.+)$/gm, '<h2>$1</h2>');
+                    processedText = `<p>${processedText}</p>`;
+                    break;
+                    
+                case 'plain':
+                default:
+                    // Clean up text
+                    processedText = processedText
+                        .replace(/\n\s*\n\s*\n/g, '\n\n') // Remove excessive newlines
+                        .replace(/\s+/g, ' ') // Remove extra spaces
+                        .replace(/[^\S\n]+/g, ' ') // Normalize spaces
+                        .trim();
+                    break;
+            }
+            
+            return processedText;
+        }
+        
+        function calculateAverageConfidence(data) {
+            if (!data.words || data.words.length === 0) return 0;
+            
+            const totalConfidence = data.words.reduce((sum, word) => sum + word.confidence, 0);
+            return Math.round(totalConfidence / data.words.length);
+        }
+        
+        function updateProgress(message) {
+            if (message.status) {
+                progressContainer.classList.add('active');
+                
+                switch(message.status) {
+                    case 'initializing tesseract':
+                        progressStatus.textContent = 'Initializing OCR engine...';
+                        break;
+                    case 'initialized':
+                        progressStatus.textContent = 'OCR engine ready';
+                        break;
+                    case 'loading language traineddata':
+                        progressStatus.textContent = 'Loading language data...';
+                        break;
+                    case 'loaded language traineddata':
+                        progressStatus.textContent = 'Language data loaded';
+                        break;
+                    case 'initializing api':
+                        progressStatus.textContent = 'Initializing API...';
+                        break;
+                    case 'recognizing text':
+                        progressStatus.textContent = 'Recognizing text...';
+                        break;
+                    default:
+                        progressStatus.textContent = message.status;
+                }
+                
+                if (message.progress) {
+                    const progress = Math.round(message.progress * 100);
+                    progressFill.style.width = `${progress}%`;
+                    progressPercentage.textContent = `${progress}%`;
+                }
+            }
+        }
+        
+        function updateConfidence(confidence) {
+            confidenceDisplay.classList.add('active');
+            confidenceFill.style.width = `${confidence}%`;
+            confidenceValue.textContent = `${confidence}%`;
+            
+            // Color code based on confidence
+            if (confidence >= 80) {
+                confidenceFill.style.background = 'linear-gradient(90deg, var(--success), #059669)';
+            } else if (confidence >= 60) {
+                confidenceFill.style.background = 'linear-gradient(90deg, var(--warning), #d97706)';
+            } else {
+                confidenceFill.style.background = 'linear-gradient(90deg, var(--error), #dc2626)';
+            }
+        }
+        
+        function updateStats() {
+            const text = textOutput.value;
+            charCount.textContent = text.length;
+            wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            lineCount.textContent = text ? text.split('\n').length : 0;
+        }
+        
+        function copyToClipboard() {
+            if (!extractedText) {
+                showNotification('No text to copy', 'warning');
+                return;
+            }
+            
+            navigator.clipboard.writeText(extractedText)
+                .then(() => {
+                    copyBtn.classList.add('copied');
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    showNotification('Text copied to clipboard', 'success');
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.remove('copied');
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Copy error:', err);
+                    showNotification('Failed to copy text', 'error');
+                });
+        }
+        
+        function downloadText() {
+            if (!extractedText) {
+                showNotification('No text to download', 'warning');
+                return;
+            }
+            
+            const blob = new Blob([extractedText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'extracted-text.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Text downloaded successfully', 'success');
+        }
+        
+        function translateText() {
+            if (!extractedText) {
+                showNotification('No text to translate', 'warning');
+                return;
+            }
+            
+            showNotification('Translation feature coming soon!', 'info');
+            // In a real implementation, you would integrate with a translation API here
+        }
+        
+        async function loadSampleImage() {
+            showLoading('Loading Sample', 'Preparing sample image...');
+            
+            // Create a sample image with text
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw background
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw sample text
+            ctx.fillStyle = '#1f2937';
+            ctx.font = 'bold 32px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sample Image for OCR Testing', canvas.width / 2, 80);
+            
+            ctx.font = '24px Arial';
+            ctx.fillText('This text will be extracted using OCR', canvas.width / 2, 140);
+            
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'left';
+            const lines = [
+                'Address: 123 Main Street, City, Country',
+                'Email: contact@example.com',
+                'Phone: +1 (555) 123-4567',
+                'Website: www.example.com',
+                '',
+                'This is a sample image created to test',
+                'the Image to Text OCR functionality.',
+                '',
+                'The quick brown fox jumps over the lazy dog.',
+                '1234567890',
+                '!@#$%^&*()_+-=[]{}|;:,.<>?'
+            ];
+            
+            lines.forEach((line, index) => {
+                ctx.fillText(line, 100, 200 + (index * 30));
+            });
+            
+            // Convert to data URL
+            selectedImage = canvas.toDataURL('image/png');
+            
+            // Update UI
+            previewImage.src = selectedImage;
+            imagePreview.classList.add('active');
+            fileInfo.classList.remove('active');
+            
+            // Enable buttons
+            extractBtn.disabled = false;
+            clearBtn.disabled = false;
+            
+            hideLoading();
+            showNotification('Sample image loaded. Click "Extract Text" to test OCR.', 'success');
+        }
+        
+        function clearAll() {
+            fileInput.value = '';
+            selectedImage = null;
+            previewImage.src = '';
+            imagePreview.classList.remove('active');
+            fileInfo.classList.remove('active');
+            outputSection.classList.remove('active');
+            confidenceDisplay.classList.remove('active');
+            progressContainer.classList.remove('active');
+            textOutput.value = '';
+            
+            extractBtn.disabled = true;
+            clearBtn.disabled = true;
+            downloadBtn.disabled = true;
+            translateBtn.disabled = true;
+            
+            updateStats();
+            showNotification('Cleared all content', 'info');
+        }
+        
+        function clearOutput() {
+            textOutput.value = '';
+            outputSection.classList.remove('active');
+            confidenceDisplay.classList.remove('active');
+            updateStats();
+            showNotification('Output cleared', 'info');
+        }
+        
+        function showLoading(title, message) {
+            loadingTitle.textContent = title;
+            loadingMessage.textContent = message;
+            loadingOverlay.classList.add('active');
+        }
+        
+        function hideLoading() {
+            loadingOverlay.classList.remove('active');
+        }
+        
+        function showNotification(message, type = 'info') {
+            notification.querySelector('span').textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            // Update icon
+            const icon = notification.querySelector('i');
+            switch(type) {
+                case 'error':
+                    icon.className = 'fas fa-exclamation-circle';
+                    break;
+                case 'warning':
+                    icon.className = 'fas fa-exclamation-triangle';
+                    break;
+                case 'success':
+                    icon.className = 'fas fa-check-circle';
+                    break;
+                default:
+                    icon.className = 'fas fa-info-circle';
+            }
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        function handleOCRerror(error) {
+            console.error('OCR Worker Error:', error);
+            showNotification('OCR Error: ' + error.message, 'error');
+            hideLoading();
+        }
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', async () => {
+            if (worker) {
+                await worker.terminate();
+            }
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl + E to extract text
+            if (e.ctrlKey && e.key === 'e') {
+                e.preventDefault();
+                if (!extractBtn.disabled) {
+                    extractText();
+                }
+            }
+            
+            // Ctrl + C to copy text
+            if (e.ctrlKey && e.key === 'c' && document.activeElement !== textOutput) {
+                e.preventDefault();
+                if (extractedText) {
+                    copyToClipboard();
+                }
+            }
+            
+            // Ctrl + D to download
+            if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                if (!downloadBtn.disabled) {
+                    downloadText();
+                }
+            }
+            
+            // Ctrl + R to clear all
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                clearAll();
+            }
+        });
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
