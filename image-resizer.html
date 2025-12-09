@@ -1,813 +1,120 @@
-<!DOCTYPE html>
+  
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Resizer - Nagar Tools</title>
-    <style>
-        :root {
-            --primary-blue: #2563eb;
-            --dark-blue: #1e40af;
-            --light-blue: #dbeafe;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-white: #ffffff;
-            --bg-gray: #f9fafb;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--bg-gray);
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--bg-white);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .tool-container {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .tool-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .upload-section {
-            background: var(--bg-gray);
-            padding: 25px;
-            border-radius: 10px;
-            border: 2px dashed var(--primary-blue);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .upload-section.drag-over {
-            background: var(--light-blue);
-            border-color: var(--dark-blue);
-        }
-        
-        .upload-icon {
-            font-size: 3rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
-        
-        .upload-text {
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-        
-        .btn {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .btn:hover {
-            background: var(--dark-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn:disabled {
-            background: var(--text-light);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--light-blue);
-        }
-        
-        .controls-section {
-            background: var(--bg-gray);
-            padding: 25px;
-            border-radius: 10px;
-        }
-        
-        .control-group {
-            margin-bottom: 20px;
-        }
-        
-        .control-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-        
-        .dimension-controls {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
-        .dimension-input {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        input[type="number"], 
-        input[type="range"],
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        input[type="number"]:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-        
-        .size-display {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        .ratio-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--primary-blue);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
-        .preview-section {
-            grid-column: 1 / -1;
-            background: var(--bg-gray);
-            padding: 25px;
-            border-radius: 10px;
-            display: none;
-        }
-        
-        .preview-section.active {
-            display: block;
-        }
-        
-        .preview-title {
-            margin-bottom: 20px;
-            text-align: center;
-            color: var(--text-dark);
-        }
-        
-        .preview-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .preview-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .preview-box {
-            text-align: center;
-        }
-        
-        .preview-label {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-        
-        .preview-img {
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        .image-info {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .file-input {
-            display: none;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .back-link:hover {
-            color: var(--dark-blue);
-            text-decoration: underline;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .aspect-ratio-preset {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .ratio-btn {
-            padding: 8px 12px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-        }
-        
-        .ratio-btn:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-        }
-        
-        .ratio-btn.active {
-            background: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Resizer Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f0ff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    input[type="file"], input[type="number"] {
+      display: block;
+      width: 100%;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    canvas {
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🖼 Image Resizer</h1>
-            <p>Resize your images to any dimension while maintaining aspect ratio</p>
-        </div>
-        
-        <div class="tool-container">
-            <div class="upload-section" id="uploadArea">
-                <div class="upload-icon">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <p class="upload-text">Drag & drop your image here or click to browse</p>
-                <input type="file" id="fileInput" class="file-input" accept="image/*">
-                <button class="btn" onclick="document.getElementById('fileInput').click()">Select Image</button>
-            </div>
-            
-            <div class="controls-section">
-                <div class="control-group">
-                    <label for="resizeMethod">Resize Method</label>
-                    <select id="resizeMethod">
-                        <option value="percentage">By Percentage</option>
-                        <option value="dimensions" selected>By Dimensions</option>
-                        <option value="preset">By Preset</option>
-                    </select>
-                </div>
-                
-                <div id="percentageControl" class="control-group" style="display: none;">
-                    <label for="percentage">Scale Percentage</label>
-                    <input type="range" id="percentage" min="1" max="200" value="100">
-                    <div class="size-display">
-                        <span>1%</span>
-                        <span id="percentageValue">100%</span>
-                        <span>200%</span>
-                    </div>
-                </div>
-                
-                <div id="dimensionsControl" class="control-group">
-                    <label>Dimensions (px)</label>
-                    <div class="dimension-controls">
-                        <div class="dimension-input">
-                            <input type="number" id="width" placeholder="Width" min="1">
-                        </div>
-                        <div class="dimension-input">
-                            <input type="number" id="height" placeholder="Height" min="1">
-                        </div>
-                    </div>
-                    
-                    <div class="ratio-toggle">
-                        <span>Maintain Aspect Ratio</span>
-                        <label class="switch">
-                            <input type="checkbox" id="maintainRatio" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="aspect-ratio-preset">
-                        <div class="ratio-btn" data-ratio="1:1">1:1 (Square)</div>
-                        <div class="ratio-btn" data-ratio="4:3">4:3 (Standard)</div>
-                        <div class="ratio-btn" data-ratio="16:9">16:9 (Widescreen)</div>
-                    </div>
-                </div>
-                
-                <div id="presetControl" class="control-group" style="display: none;">
-                    <label for="presetSize">Preset Sizes</label>
-                    <select id="presetSize">
-                        <option value="instagram">Instagram Post (1080x1080)</option>
-                        <option value="instagram-story">Instagram Story (1080x1920)</option>
-                        <option value="facebook">Facebook Post (1200x630)</option>
-                        <option value="twitter">Twitter Post (1024x512)</option>
-                        <option value="linkedin">LinkedIn Post (1200x627)</option>
-                        <option value="youtube">YouTube Thumbnail (1280x720)</option>
-                        <option value="pinterest">Pinterest Pin (1000x1500)</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="quality">Output Quality</label>
-                    <input type="range" id="quality" min="50" max="100" value="90">
-                    <div class="size-display">
-                        <span>50%</span>
-                        <span id="qualityValue">90%</span>
-                        <span>100%</span>
-                    </div>
-                </div>
-                
-                <button class="btn" id="resizeBtn" disabled>Resize Image</button>
-            </div>
-            
-            <div class="preview-section" id="previewSection">
-                <h3 class="preview-title">Preview</h3>
-                <div class="preview-container">
-                    <div class="preview-box">
-                        <div class="preview-label">Original Image</div>
-                        <img id="originalPreview" class="preview-img">
-                        <div class="image-info" id="originalInfo"></div>
-                    </div>
-                    <div class="preview-box">
-                        <div class="preview-label">Resized Image</div>
-                        <img id="resizedPreview" class="preview-img">
-                        <div class="image-info" id="resizedInfo"></div>
-                    </div>
-                </div>
-                
-                <div class="action-buttons">
-                    <button class="btn" id="downloadBtn">Download Resized Image</button>
-                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
-                </div>
-            </div>
-        </div>
-        
-        <div style="padding: 20px; text-align: center;">
-            <a href="index.html" class="back-link">← Back to All Tools</a>
-        </div>
-    </div>
-    
-    <div class="notification" id="notification">Image resized successfully!</div>
+  <div class="container">
+    <h1>Image Resizer</h1>
+    <input type="file" id="upload" accept="image/*" />
+    <input type="number" id="width" placeholder="Width (px)" />
+    <input type="number" id="height" placeholder="Height (px)" />
+    <button onclick="resizeImage()">Resize Image</button>
+    <canvas id="canvas"></canvas>
+    <a id="downloadLink" style="display:none;" download="resized-image.png">Download Resized Image</a>
+  </div>
 
-    <script>
-        // DOM Elements
-        const fileInput = document.getElementById('fileInput');
-        const uploadArea = document.getElementById('uploadArea');
-        const resizeBtn = document.getElementById('resizeBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const previewSection = document.getElementById('previewSection');
-        const notification = document.getElementById('notification');
-        
-        // Control elements
-        const resizeMethod = document.getElementById('resizeMethod');
-        const percentageControl = document.getElementById('percentageControl');
-        const dimensionsControl = document.getElementById('dimensionsControl');
-        const presetControl = document.getElementById('presetControl');
-        const percentage = document.getElementById('percentage');
-        const percentageValue = document.getElementById('percentageValue');
-        const widthInput = document.getElementById('width');
-        const heightInput = document.getElementById('height');
-        const maintainRatio = document.getElementById('maintainRatio');
-        const presetSize = document.getElementById('presetSize');
-        const quality = document.getElementById('quality');
-        const qualityValue = document.getElementById('qualityValue');
-        const ratioButtons = document.querySelectorAll('.ratio-btn');
-        
-        // Preview elements
-        const originalPreview = document.getElementById('originalPreview');
-        const resizedPreview = document.getElementById('resizedPreview');
-        const originalInfo = document.getElementById('originalInfo');
-        const resizedInfo = document.getElementById('resizedInfo');
-        
-        // Global variables
-        let originalImage = null;
-        let resizedImage = null;
-        let originalWidth = 0;
-        let originalHeight = 0;
-        let aspectRatio = 1;
-        
-        // Event Listeners
-        fileInput.addEventListener('change', handleFileSelect);
-        resizeMethod.addEventListener('change', toggleResizeMethod);
-        percentage.addEventListener('input', updatePercentageValue);
-        widthInput.addEventListener('input', handleWidthChange);
-        heightInput.addEventListener('input', handleHeightChange);
-        maintainRatio.addEventListener('change', updateAspectRatio);
-        presetSize.addEventListener('change', applyPresetSize);
-        quality.addEventListener('input', updateQualityValue);
-        resizeBtn.addEventListener('click', resizeImage);
-        downloadBtn.addEventListener('click', downloadImage);
-        resetBtn.addEventListener('click', resetTool);
-        
-        // Add event listeners to ratio buttons
-        ratioButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                ratioButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                applyAspectRatio(this.dataset.ratio);
-            });
-        });
-        
-        // Drag and drop functionality
-        uploadArea.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            uploadArea.classList.add('drag-over');
-        });
-        
-        uploadArea.addEventListener('dragleave', function() {
-            uploadArea.classList.remove('drag-over');
-        });
-        
-        uploadArea.addEventListener('drop', function(e) {
-            e.preventDefault();
-            uploadArea.classList.remove('drag-over');
-            
-            if (e.dataTransfer.files.length) {
-                fileInput.files = e.dataTransfer.files;
-                handleFileSelect();
-            }
-        });
-        
-        // Functions
-        function handleFileSelect() {
-            const file = fileInput.files[0];
-            if (!file || !file.type.match('image.*')) {
-                showNotification('Please select a valid image file', true);
-                return;
-            }
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                originalImage = new Image();
-                originalImage.onload = function() {
-                    originalWidth = originalImage.width;
-                    originalHeight = originalImage.height;
-                    aspectRatio = originalWidth / originalHeight;
-                    
-                    // Update preview
-                    originalPreview.src = e.target.result;
-                    originalInfo.textContent = `${originalWidth} × ${originalHeight} px`;
-                    
-                    // Set initial dimensions
-                    widthInput.value = originalWidth;
-                    heightInput.value = originalHeight;
-                    
-                    // Enable resize button and show preview
-                    resizeBtn.disabled = false;
-                    previewSection.classList.add('active');
-                    
-                    showNotification('Image loaded successfully!');
-                };
-                originalImage.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-        
-        function toggleResizeMethod() {
-            const method = resizeMethod.value;
-            
-            // Hide all controls
-            percentageControl.style.display = 'none';
-            dimensionsControl.style.display = 'none';
-            presetControl.style.display = 'none';
-            
-            // Show selected control
-            if (method === 'percentage') {
-                percentageControl.style.display = 'block';
-            } else if (method === 'dimensions') {
-                dimensionsControl.style.display = 'block';
-            } else if (method === 'preset') {
-                presetControl.style.display = 'block';
-                applyPresetSize();
-            }
-        }
-        
-        function updatePercentageValue() {
-            percentageValue.textContent = `${percentage.value}%`;
-        }
-        
-        function updateQualityValue() {
-            qualityValue.textContent = `${quality.value}%`;
-        }
-        
-        function handleWidthChange() {
-            if (maintainRatio.checked && widthInput.value && originalWidth && originalHeight) {
-                heightInput.value = Math.round(widthInput.value / aspectRatio);
-            }
-        }
-        
-        function handleHeightChange() {
-            if (maintainRatio.checked && heightInput.value && originalWidth && originalHeight) {
-                widthInput.value = Math.round(heightInput.value * aspectRatio);
-            }
-        }
-        
-        function updateAspectRatio() {
-            if (maintainRatio.checked && widthInput.value && originalWidth && originalHeight) {
-                aspectRatio = originalWidth / originalHeight;
-                heightInput.value = Math.round(widthInput.value / aspectRatio);
-            }
-        }
-        
-        function applyAspectRatio(ratio) {
-            if (!ratio || !originalWidth || !originalHeight) return;
-            
-            const [widthRatio, heightRatio] = ratio.split(':').map(Number);
-            const newAspectRatio = widthRatio / heightRatio;
-            
-            if (originalWidth / originalHeight > newAspectRatio) {
-                // Image is wider than target ratio
-                heightInput.value = Math.round(originalHeight);
-                widthInput.value = Math.round(originalHeight * newAspectRatio);
-            } else {
-                // Image is taller than target ratio
-                widthInput.value = Math.round(originalWidth);
-                heightInput.value = Math.round(originalWidth / newAspectRatio);
-            }
-        }
-        
-        function applyPresetSize() {
-            if (!originalWidth || !originalHeight) return;
-            
-            const preset = presetSize.value;
-            let newWidth, newHeight;
-            
-            switch(preset) {
-                case 'instagram':
-                    newWidth = 1080;
-                    newHeight = 1080;
-                    break;
-                case 'instagram-story':
-                    newWidth = 1080;
-                    newHeight = 1920;
-                    break;
-                case 'facebook':
-                    newWidth = 1200;
-                    newHeight = 630;
-                    break;
-                case 'twitter':
-                    newWidth = 1024;
-                    newHeight = 512;
-                    break;
-                case 'linkedin':
-                    newWidth = 1200;
-                    newHeight = 627;
-                    break;
-                case 'youtube':
-                    newWidth = 1280;
-                    newHeight = 720;
-                    break;
-                case 'pinterest':
-                    newWidth = 1000;
-                    newHeight = 1500;
-                    break;
-                default:
-                    return;
-            }
-            
-            // Calculate dimensions that fit the preset while maintaining aspect ratio
-            const presetAspectRatio = newWidth / newHeight;
-            const originalAspectRatio = originalWidth / originalHeight;
-            
-            if (originalAspectRatio > presetAspectRatio) {
-                // Original is wider than preset
-                widthInput.value = newWidth;
-                heightInput.value = Math.round(newWidth / originalAspectRatio);
-            } else {
-                // Original is taller than preset
-                heightInput.value = newHeight;
-                widthInput.value = Math.round(newHeight * originalAspectRatio);
-            }
-        }
-        
-        function resizeImage() {
-            if (!originalImage) return;
-            
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            let newWidth, newHeight;
-            
-            // Calculate new dimensions based on selected method
-            const method = resizeMethod.value;
-            if (method === 'percentage') {
-                const scale = percentage.value / 100;
-                newWidth = Math.round(originalWidth * scale);
-                newHeight = Math.round(originalHeight * scale);
-            } else {
-                newWidth = parseInt(widthInput.value) || originalWidth;
-                newHeight = parseInt(heightInput.value) || originalHeight;
-            }
-            
-            // Validate dimensions
-            if (newWidth < 1 || newHeight < 1) {
-                showNotification('Please enter valid dimensions', true);
-                return;
-            }
-            
-            if (newWidth > 10000 || newHeight > 10000) {
-                showNotification('Dimensions too large. Maximum is 10000px.', true);
-                return;
-            }
-            
-            // Set canvas dimensions
-            canvas.width = newWidth;
-            canvas.height = newHeight;
-            
-            // Draw resized image
-            ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
-            
-            // Get resized image data
-            const qualityValue = quality.value / 100;
-            resizedImage = canvas.toDataURL('image/jpeg', qualityValue);
-            
-            // Update preview
-            resizedPreview.src = resizedImage;
-            resizedInfo.textContent = `${newWidth} × ${newHeight} px`;
-            
-            showNotification('Image resized successfully!');
-        }
-        
-        function downloadImage() {
-            if (!resizedImage) {
-                showNotification('Please resize an image first', true);
-                return;
-            }
-            
-            const link = document.createElement('a');
-            link.download = 'resized-image.jpg';
-            link.href = resizedImage;
-            link.click();
-        }
-        
-        function resetTool() {
-            fileInput.value = '';
-            originalImage = null;
-            resizedImage = null;
-            originalPreview.src = '';
-            resizedPreview.src = '';
-            originalInfo.textContent = '';
-            resizedInfo.textContent = '';
-            widthInput.value = '';
-            heightInput.value = '';
-            percentage.value = 100;
-            percentageValue.textContent = '100%';
-            quality.value = 90;
-            qualityValue.textContent = '90%';
-            resizeBtn.disabled = true;
-            previewSection.classList.remove('active');
-            ratioButtons.forEach(btn => btn.classList.remove('active'));
-        }
-        
-        function showNotification(message, isError = false) {
-            notification.textContent = message;
-            notification.style.background = isError ? '#ef4444' : '#2563eb';
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Initialize
-        toggleResizeMethod();
-        updatePercentageValue();
-        updateQualityValue();
-    </script>
-    
-    <!-- Font Awesome for icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script>
+    let originalImage = new Image();
+
+    document.getElementById('upload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        originalImage.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function resizeImage() {
+      const width = parseInt(document.getElementById('width').value);
+      const height = parseInt(document.getElementById('height').value);
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      if (!width || !height || isNaN(width) || isNaN(height)) {
+        alert("Please enter valid width and height.");
+        return;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(originalImage, 0, 0, width, height);
+
+      const downloadLink = document.getElementById('downloadLink');
+      downloadLink.href = canvas.toDataURL();
+      downloadLink.style.display = 'block';
+      downloadLink.textContent = 'Download Resized Image';
+    }
+  </script>
 </body>
 </html>
+
+  
+  
