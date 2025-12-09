@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Document Converter — Single File</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;color:#111;padding:18px;max-width:980px;margin:0 auto}
+    .card{border:1px solid #e6e6e6;border-radius:10px;padding:16px;margin:12px 0;box-shadow:0 6px 18px rgba(12,12,12,0.04)}
+    h1{font-size:20px;margin:0 0 8px}
+    label{display:block;margin:8px 0 6px;font-weight:600}
+    select,input[type=file],button,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #ddd}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .small{font-size:13px;color:#555}
+    pre{white-space:pre-wrap;background:#fafafa;padding:12px;border-radius:8px;border:1px dashed #eee}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Document Converter</h1>
+    <div class="small">Convert between DOCX / HTML / MD / TXT / PDF (client-side). Works fully in your browser.</div>
+  </div>
+
+  <div class="card">
+    <label for="file">Choose file</label>
+    <input id="file" type="file" accept=".docx,.html,.htm,.md,.markdown,.txt,.pdf" />
+
+    <label for="target">Convert to</label>
+    <select id="target">
+      <option value="html">HTML</option>
+      <option value="docx">DOCX</option>
+      <option value="md">Markdown</option>
+      <option value="txt">Plain text (.txt)</option>
+      <option value="pdf">PDF</option>
+    </select>
+
+    <div class="actions">
+      <button id="convert">Convert</button>
+      <a id="downloadLink" style="display:none" download>Download</a>
+      <button id="previewBtn" style="display:none">Preview</button>
+    </div>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none">
+    <label>Result / Preview</label>
+    <div id="previewArea"></div>
+    <label>Raw output</label>
+    <pre id="raw"></pre>
+  </div>
+
+  <div class="small card">
+    <strong>Supported conversions (client-side):</strong>
+    <ul>
+      <li>DOCX → HTML / MD / TXT / PDF</li>
+      <li>HTML → DOCX / MD / TXT / PDF</li>
+      <li>Markdown (MD) → HTML / DOCX / PDF / TXT</li>
+      <li>TXT → HTML / DOCX / PDF</li>
+      <li>PDF input → extract text to TXT / HTML (basic)</li>
+    </ul>
+    <div class="small">Note: Large or complex PDFs/Word files (embedded images, complex layout) may not convert perfectly. All work happens in the browser; no upload to servers.</div>
+  </div>
+
+  <!-- Libraries (CDN) -->
+  <script src="https://unpkg.com/mammoth@1.4.19/mammoth.browser.min.js"></script>
+  <script src="https://unpkg.com/showdown@2.1.0/dist/showdown.min.js"></script>
+  <script src="https://unpkg.com/turndown@7.1.1/dist/turndown.js"></script>
+  <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+  <script src="https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+  <script>
+    // Helper: read file as ArrayBuffer or text
+    function readFileAsArrayBuffer(file){
+      return new Promise((res,rej)=>{
+        const fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=rej;fr.readAsArrayBuffer(file);
+      });
+    }
+    function readFileAsText(file){
+      return new Promise((res,rej)=>{
+        const fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=rej;fr.readAsText(file);
+      });
+    }
+
+    const fileInput = document.getElementById('file');
+    const targetSelect = document.getElementById('target');
+    const convertBtn = document.getElementById('convert');
+    const downloadLink = document.getElementById('downloadLink');
+    const previewBtn = document.getElementById('previewBtn');
+    const previewArea = document.getElementById('previewArea');
+    const raw = document.getElementById('raw');
+    const resultCard = document.getElementById('resultCard');
+
+    convertBtn.addEventListener('click', async ()=>{
+      const file = fileInput.files && fileInput.files[0];
+      if(!file){alert('Please choose a file first.');return}
+      const target = targetSelect.value;
+      resultCard.style.display='none';raw.textContent='';previewArea.innerHTML='';downloadLink.style.display='none';previewBtn.style.display='none';
+      try{
+        const inputExt = (file.name.split('.').pop()||'').toLowerCase();
+        let htmlContent = '';
+        let plainText = '';
+
+        // 1) extract to HTML/plain text from input
+        if(inputExt==='docx'){
+          const arrayBuffer = await readFileAsArrayBuffer(file);
+          const result = await mammoth.convertToHtml({arrayBuffer:arrayBuffer});
+          htmlContent = result.value;
+          plainText = (result.messages && result.messages.join('\n')) || (htmlContent.replace(/<[^>]+>/g,'') || '');
+        } else if(inputExt==='html' || inputExt==='htm'){
+          htmlContent = await readFileAsText(file);
+          plainText = (new DOMParser()).parseFromString(htmlContent,'text/html').body.innerText;
+        } else if(inputExt==='md' || inputExt==='markdown'){
+          const md = await readFileAsText(file);
+          const conv = new showdown.Converter();
+          htmlContent = conv.makeHtml(md);
+          plainText = md;
+        } else if(inputExt==='txt'){
+          plainText = await readFileAsText(file);
+          htmlContent = '<pre>'+escapeHtml(plainText)+'</pre>';
+        } else if(inputExt==='pdf'){
+          // Use pdf.js to extract basic text from all pages (best-effort)
+          const ab = await readFileAsArrayBuffer(file);
+          const pdf = await pdfjsLib.getDocument({data:ab}).promise;
+          let fullText='';
+          for(let p=1;p<=pdf.numPages;p++){
+            const page = await pdf.getPage(p);
+            const txtContent = await page.getTextContent();
+            const pageText = txtContent.items.map(i=>i.str).join(' ');
+            fullText += '\n\n' + pageText;
+          }
+          plainText = fullText.trim();
+          htmlContent = '<pre>'+escapeHtml(plainText)+'</pre>';
+        } else {
+          alert('Unsupported input file type: '+inputExt);
+          return;
+        }
+
+        // 2) produce target format
+        if(target==='html'){
+          showResult(htmlContent,'text/html','converted.html');
+        } else if(target==='txt'){
+          const blob = new Blob([plainText||stripTags(htmlContent)],{type:'text/plain;charset=utf-8'});
+          saveBlob(blob, changeExt(file.name,'txt'));
+        } else if(target==='md'){
+          // Convert HTML->MD if we have html content, else plain text -> md is plain text
+          let md='';
+          if(htmlContent){
+            const turndownService = new TurndownService();
+            md = turndownService.turndown(htmlContent);
+          } else md = plainText;
+          const blob = new Blob([md],{type:'text/markdown;charset=utf-8'});
+          saveBlob(blob, changeExt(file.name,'md'));
+        } else if(target==='docx'){
+          // Use html-docx-js to create a .docx from html
+          const contentHtml = '<!doctype html><html><head><meta charset="utf-8"></head><body>' + (htmlContent || ('<pre>'+escapeHtml(plainText)+'</pre>')) + '</body></html>';
+          const converted = window.htmlDocx.asBlob(contentHtml);
+          saveBlob(converted, changeExt(file.name,'docx'));
+        } else if(target==='pdf'){
+          // Convert by rendering HTML to PDF using html2pdf
+          // Put content into a hidden container for consistent rendering
+          const wrapper = document.createElement('div');
+          wrapper.style.position='fixed';wrapper.style.left='0';wrapper.style.top='0';wrapper.style.width='800px';wrapper.style.padding='12px';wrapper.style.background='#fff';
+          wrapper.innerHTML = htmlContent || ('<pre>'+escapeHtml(plainText)+'</pre>');
+          document.body.appendChild(wrapper);
+          await html2pdf().from(wrapper).set({margin:10,filename:changeExt(file.name,'pdf'),enableLinks:true}).save();
+          document.body.removeChild(wrapper);
+        }
+
+      }catch(err){
+        console.error(err);alert('Conversion failed: '+err.message);
+      }
+    });
+
+    previewBtn.addEventListener('click', ()=>{
+      resultCard.style.display='block';
+    });
+
+    function showResult(html, mime, suggestedName){
+      resultCard.style.display='block';
+      previewArea.innerHTML = html;
+      raw.textContent = html;
+      // create blob and link
+      const blob = new Blob([html],{type:mime+';charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      downloadLink.href = url; downloadLink.download = suggestedName; downloadLink.style.display='inline-block'; downloadLink.textContent='Download ('+suggestedName+')';
+      previewBtn.style.display='inline-block';
+    }
+
+    function saveBlob(blob, filename){
+      saveAs(blob, filename);
+      // show a simple preview if it's HTML
+      if(blob.type && blob.type.startsWith('text/html')){
+        const reader = new FileReader();reader.onload = ()=>{showResult(reader.result, blob.type, filename)};reader.readAsText(blob);
+      } else {
+        resultCard.style.display='block';previewArea.innerHTML = '<div class="small">Converted and downloaded: <strong>'+filename+'</strong></div>';raw.textContent = 'Saved file: '+filename;
+      }
+    }
+
+    function changeExt(name,newExt){
+      return name.replace(/\.[^/.]+$/, '') + '.' + newExt;
+    }
+    function stripTags(html){return html.replace(/<[^>]*>/g,'');}
+    function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  </script>
+</body>
+</html>
