@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF ↔ Word Converter</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .converter { background: #f5f5f5; padding: 20px; border-radius: 10px; }
+        .tabs { display: flex; margin-bottom: 20px; }
+        .tab { flex: 1; padding: 10px; border: none; background: #ddd; cursor: pointer; }
+        .tab.active { background: #4a6fa5; color: white; }
+        .file-area { border: 2px dashed #ccc; padding: 40px; text-align: center; margin: 20px 0; }
+        .convert-btn { background: #4a6fa5; color: white; padding: 12px 24px; border: none; cursor: pointer; width: 100%; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h2>PDF ↔ Word Converter</h2>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="setMode('pdf2word')">PDF to Word</button>
+            <button class="tab" onclick="setMode('word2pdf')">Word to PDF</button>
+        </div>
+        
+        <div id="pdf2word" class="mode">
+            <h3>Convert PDF to Word</h3>
+            <div class="file-area" onclick="document.getElementById('pdfInput').click()">
+                <p>Click to upload PDF file</p>
+                <input type="file" id="pdfInput" accept=".pdf" hidden>
+            </div>
+            <button class="convert-btn" onclick="convertPDFtoWord()">Convert to Word</button>
+        </div>
+        
+        <div id="word2pdf" class="mode hidden">
+            <h3>Convert Word to PDF</h3>
+            <div class="file-area" onclick="document.getElementById('wordInput').click()">
+                <p>Click to upload Word file</p>
+                <input type="file" id="wordInput" accept=".doc,.docx" hidden>
+            </div>
+            <button class="convert-btn" onclick="convertWordtoPDF()">Convert to PDF</button>
+        </div>
+        
+        <div id="result" class="hidden">
+            <h3>Download your file:</h3>
+            <button onclick="downloadFile()">Download</button>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'pdf2word';
+        let convertedFile = null;
+        let fileName = '';
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(mode).classList.remove('hidden');
+            document.querySelector(`[onclick="setMode('${mode}')"]`).classList.add('active');
+        }
+
+        function convertPDFtoWord() {
+            const fileInput = document.getElementById('pdfInput');
+            if (!fileInput.files[0]) {
+                alert('Please select a PDF file first');
+                return;
+            }
+            
+            alert('Note: In browser-only mode, actual PDF conversion requires backend services.\nUse Python version for real conversion.');
+            
+            // Simulate conversion
+            fileName = fileInput.files[0].name.replace('.pdf', '_converted.docx');
+            convertedFile = new Blob(['Mock Word content'], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+            
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        function convertWordtoPDF() {
+            const fileInput = document.getElementById('wordInput');
+            if (!fileInput.files[0]) {
+                alert('Please select a Word file first');
+                return;
+            }
+            
+            alert('Note: In browser-only mode, actual Word conversion requires backend services.\nUse Python version for real conversion.');
+            
+            // Simulate conversion
+            fileName = fileInput.files[0].name.replace('.docx', '_converted.pdf').replace('.doc', '_converted.pdf');
+            convertedFile = new Blob(['%PDF-1.4\nMock PDF content'], {type: 'application/pdf'});
+            
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        function downloadFile() {
+            if (!convertedFile) return;
+            
+            const url = URL.createObjectURL(convertedFile);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
