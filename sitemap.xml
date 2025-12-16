@@ -1,32 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Main Pages -->
   <url>
     <loc>https://www.nagartools.in/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.nagartools.in/image-converter.html</loc>
+    <loc>https://www.nagartools.in/about-us</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://www.nagartools.in/Image-Compressor.html</loc>
+    <loc>https://www.nagartools.in/contact-us</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.nagartools.in/image-cropper.html</loc>
+    <loc>https://www.nagartools.in/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://www.nagartools.in/image-resizer.html</loc>
+    <loc>https://www.nagartools.in/terms-and-conditions</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://www.nagartools.in/image-rotator.html</loc>
+    <loc>https://www.nagartools.in/disclaimer</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
-  <url>
-    <loc>https://www.nagartools.in/image-to-text.html</loc>
-  </url>
+  <!-- PDF Tools -->
+  <url><loc>https://www.nagartools.in/pdf-compressor</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-merger</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-splitter</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-to-word</loc></url>
+  <url><loc>https://www.nagartools.in/word-to-pdf</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-to-jpg</loc></url>
+  <url><loc>https://www.nagartools.in/jpg-to-pdf</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-lock</loc></url>
+  <url><loc>https://www.nagartools.in/pdf-unlock</loc></url>
+
+  <!-- Image Tools -->
+  <url><loc>https://www.nagartools.in/image-compressor</loc></url>
+  <url><loc>https://www.nagartools.in/image-resizer</loc></url>
+  <url><loc>https://www.nagartools.in/image-converter</loc></url>
+  <url><loc>https://www.nagartools.in/jpg-to-png</loc></url>
+  <url><loc>https://www.nagartools.in/png-to-jpg</loc></url>
+
+  <!-- Converter Tools -->
+  <url><loc>https://www.nagartools.in/document-converter</loc></url>
+  <url><loc>https://www.nagartools.in/text-to-pdf</loc></url>
+  <url><loc>https://www.nagartools.in/html-to-pdf</loc></url>
+  <url><loc>https://www.nagartools.in/excel-to-pdf</loc></url>
+
+  <!-- QR Tools -->
+  <url><loc>https://www.nagartools.in/qr-code-generator</loc></url>
+  <url><loc>https://www.nagartools.in/qr-code-scanner</loc></url>
+
+  <!-- Text & Utility Tools -->
+  <url><loc>https://www.nagartools.in/word-counter</loc></url>
+  <url><loc>https://www.nagartools.in/character-counter</loc></url>
+  <url><loc>https://www.nagartools.in/case-converter</loc></url>
+  <url><loc>https://www.nagartools.in/json-formatter</loc></url>
+  <url><loc>https://www.nagartools.in/base64-encoder-decoder</loc></url>
+
+  <!-- Developer Tools -->
+  <url><loc>https://www.nagartools.in/html-minifier</loc></url>
+  <url><loc>https://www.nagartools.in/css-minifier</loc></url>
+  <url><loc>https://www.nagartools.in/js-minifier</loc></url>
+  <url><loc>https://www.nagartools.in/url-encoder-decoder</loc></url>
+  <url><loc>https://www.nagartools.in/meta-tag-generator</loc></url>
+  <url><loc>https://www.nagartools.in/robots-txt-generator</loc></url>
+
+  <!-- SEO Tools -->
+  <url><loc>https://www.nagartools.in/seo-analyzer</loc></url>
+  <url><loc>https://www.nagartools.in/keyword-density-checker</loc></url>
+  <url><loc>https://www.nagartools.in/page-speed-test</loc></url>
+
+  <!-- Calculator Tools -->
+  <url><loc>https://www.nagartools.in/percentage-calculator</loc></url>
+  <url><loc>https://www.nagartools.in/age-calculator</loc></url>
+  <url><loc>https://www.nagartools.in/emi-calculator</loc></url>
+  <url><loc>https://www.nagartools.in/gst-calculator</loc></url>
 
 </urlset>
