@@ -1,133 +1,65 @@
-  
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Converter Tool</title>
-  <style>
-    body {
-      background-color: #ffffff;
-      color: #2563eb;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-    .container {
-      padding: 2rem;
-      border-radius: 16px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      background-color: #ffffff;
-    }
-    input, select, button {
-      width: 100%;
-      margin-top: 1rem;
-      padding: 0.5rem;
-      border: 2px solid #2563eb;
-      border-radius: 8px;
-      font-size: 1rem;
-      color: #2563eb;
-      background-color: #ffffff;
-    }
-    button {
-      background-color: #2563eb;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1e40af;
-    }
-    img {
-      max-width: 100%;
-      margin-top: 1rem;
-      border-radius: 8px;
-    }
-    .download-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #2563eb;
-      color: white;
-      text-align: center;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .download-btn:hover {
-      background-color: #1e40af;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Image Converter Online Free – Nagar Tools</title>
+<meta name="description" content="Convert images online free with Nagar Tools. Supports JPG, PNG, GIF, and more. Fast, easy, and secure image converter.">
+<meta name="keywords" content="image converter online free, convert image, jpg to png, nagar tools image converter">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nagartools.in/image-converter.html">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;background:#f5f7fb;color:#1f2937}
+header,footer{background:#fff;padding:15px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+header .logo,footer .logo{color:#2563eb;font-weight:700;font-size:22px}
+nav a{margin-left:18px;text-decoration:none;color:#374151;font-weight:500}
+nav a:hover{color:#2563eb}
+.container{max-width:900px;margin:40px auto;padding:0 20px}
+h1{font-size:28px;margin-bottom:10px}
+p{margin-bottom:20px;color:#6b7280}
+button{background:#2563eb;color:#fff;border:none;padding:12px 25px;border-radius:8px;font-size:16px;cursor:pointer}
+button:hover{opacity:.9}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Image Converter Tool</h1>
-    <input type="file" id="imageInput" accept="image/*" />
-    <select id="formatSelect">
-      <option value="png">PNG</option>
-      <option value="jpeg">JPG</option>
-      <option value="gif">GIF</option>
-      <option value="webp">WebP</option>
-    </select>
-    <button onclick="convertImage()">Convert Image</button>
 
-    <div id="previewContainer"></div>
-  </div>
+<header>
+  <div class="logo"><i class="fa-solid fa-toolbox"></i>Nagar Tools</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="mailto:nagartools1@gmail.com">Contact</a>
+  </nav>
+</header>
 
-  <script>
-    let originalFile;
+<div class="container">
+  <h1>Image Converter Online Free</h1>
+  <p>Convert JPG, PNG, GIF and other image formats quickly and securely using Nagar Tools. Free, fast, and easy to use.</p>
+  
+  <!-- Tool UI Placeholder -->
+  <button onclick="alert('Tool will open here')">Upload & Convert Image</button>
+  
+  <h2>How to Use</h2>
+  <p>1. Upload your image file.<br>
+     2. Select the desired output format.<br>
+     3. Click Convert.<br>
+     4. Download your converted image.</p>
+  
+  <h2>Benefits of Using Nagar Tools Image Converter</h2>
+  <ul>
+    <li>Supports multiple image formats</li>
+    <li>Fast conversion without watermark</li>
+    <li>Secure & free</li>
+    <li>Works on mobile & desktop</li>
+  </ul>
+</div>
 
-    document.getElementById('imageInput').addEventListener('change', function(e) {
-      originalFile = e.target.files[0];
-      const previewContainer = document.getElementById('previewContainer');
-      previewContainer.innerHTML = '<p>Original Preview:</p>' + '<img src="' + URL.createObjectURL(originalFile) + '" alt="Original Image">';
-    });
+<footer>
+  <div class="logo"><i class="fa-solid fa-toolbox"></i> Nagar Tools</div>
+  <p>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></p>
+  <p><a href="index.html">Home</a> | <a href="index.html#tools">Tools</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+</footer>
 
-    function convertImage() {
-      if (!originalFile) return alert("Please upload an image first.");
-
-      const format = document.getElementById("formatSelect").value;
-      const reader = new FileReader();
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      const img = new Image();
-
-      reader.onload = function(event) {
-        img.onload = function() {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx.drawImage(img, 0, 0);
-
-          canvas.toBlob(function(blob) {
-            const convertedUrl = URL.createObjectURL(blob);
-            const previewContainer = document.getElementById("previewContainer");
-            previewContainer.innerHTML += '<p>Converted Preview:</p>' +
-              '<img src="' + convertedUrl + '" alt="Converted Image">' +
-              '<a class="download-btn" href="' + convertedUrl + '" download="converted-image.' + format + '">Download Converted Image</a>';
-          }, 'image/' + format);
-        };
-        img.src = event.target.result;
-      };
-
-      reader.readAsDataURL(originalFile);
-    }
-  </script>
-  <script type="text/javascript">
-	atOptions = {
-		'key' : '2dc4f45661b63a3580b67602c5ed373f',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2dc4f45661b63a3580b67602c5ed373f/invoke.js"></script>
 </body>
 </html>
-  
-  
