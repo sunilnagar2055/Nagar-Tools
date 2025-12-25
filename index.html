@@ -1,173 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nagar Tools - All free online tools in one place. Convert, calculate, compress, and simplify your digital tasks easily.">
-  <meta name="keywords" content="online tools, Nagar Tools, image tools, pdf tools, text tools, calculator tools, seo tools, developer tools, free tools, nagartools.in">
-  <meta name="author" content="Nagar Tools">
-  <meta name="robots" content="index, follow">
-  <title>Nagar Tools - All Online Tools in One Place</title>
+<meta charset="UTF-8">
+<title>Nagar Tools – Free Online Image, PDF, SEO, Calculator & Utility Tools</title>
 
-  <link rel="icon" href="favicon.png" type="image/png">
+<meta name="description" content="Nagar Tools is a free online tools website offering image tools, PDF tools, calculators, SEO tools, text tools, developer tools, color tools & utilities – fast, secure and easy to use.">
+<meta name="keywords" content="nagar tools, online tools, image tools, pdf tools, calculator tools, seo tools, text tools, developer tools">
+<meta name="author" content="Nagar Tools">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nagartools.in/">
 
-  <!-- Font & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
-    body {background: #f5f8ff; color: #333;}
-    header {background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; padding: 12px 25px; position: sticky; top: 0; z-index: 10;}
-    .logo {font-size: 1.4rem; font-weight: 600; color: #2563eb; display: flex; align-items: center; gap: 8px;}
-    nav a {margin-left: 20px; color: #333; text-decoration: none; font-weight: 500;}
-    nav a:hover {color: #2563eb;}
-    .hero {text-align: center; padding: 60px 20px;}
-    .hero h1 {font-size: 2rem; color: #111;}
-    .hero p {color: #555; margin: 10px 0 25px;}
-    .hero button {background: #2563eb; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer;}
-    .hero button:hover {background: #1e4fd6;}
-    .search-bar {max-width: 500px; margin: 20px auto;}
-    .search-bar input {width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px;}
+<style>
+:root{
+  --blue:#2563eb;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:var(--bg);color:var(--text);line-height:1.6}
 
-    section {padding: 40px 20px; max-width: 1200px; margin: auto;}
-    section h2 {font-size: 1.5rem; color: #2563eb; display: flex; align-items: center; gap: 8px;}
-    section p {margin-bottom: 20px; color: #666;}
+/* HEADER */
+header{
+  background:#fff;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.logo{font-size:22px;font-weight:700;color:var(--blue)}
+.logo i{margin-right:8px}
+nav a{
+  margin-left:18px;
+  text-decoration:none;
+  color:#374151;
+  font-weight:500;
+}
+nav a:hover{color:var(--blue)}
 
-    .tools-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
-    .tool-card {background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: all 0.3s ease;}
-    .tool-card:hover {transform: translateY(-4px); box-shadow: 0 4px 10px rgba(0,0,0,0.15);}
-    .tool-card i {font-size: 30px; color: #2563eb; margin-bottom: 10px;}
-    .tool-card h3 {font-size: 1.1rem; margin-bottom: 6px;}
-    .tool-card p {font-size: 0.9rem; color: #666;}
-    .tool-card a {display: inline-block; margin-top: 10px; color: #2563eb; font-weight: 500; text-decoration: none;}
-    .tool-card a:hover {text-decoration: underline;}
+/* HERO */
+.hero{
+  text-align:center;
+  padding:60px 15px 40px;
+}
+.hero h1{font-size:38px;margin-bottom:10px}
+.hero p{color:#6b7280;margin-bottom:25px}
+.hero button{
+  background:var(--blue);
+  border:none;
+  padding:12px 26px;
+  color:#fff;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+.hero button:hover{opacity:.9}
 
-    footer {background: #0f172a; color: #cbd5e1; padding: 40px 20px; text-align: center;}
-    footer h3 {color: #fff; margin-bottom: 10px;}
-    footer a {color: #93c5fd; text-decoration: none; margin: 0 10px;}
-    footer a:hover {text-decoration: underline;}
-    .footer-links {margin: 15px 0;}
-    .copyright {font-size: 0.85rem; color: #94a3b8; margin-top: 10px;}
+/* SEARCH */
+.search-box{
+  max-width:620px;
+  margin:30px auto 0;
+}
+.search-box input{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:16px;
+}
 
-    @media(max-width: 600px){
-      .hero h1 {font-size: 1.5rem;}
-      nav a {margin-left: 10px;}
-    }
-  </style>
+/* SECTIONS */
+.section{padding:45px 20px}
+.section h2{font-size:26px;margin-bottom:6px}
+.section p{color:#6b7280;margin-bottom:25px}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.06);
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px)}
+.card i{
+  font-size:30px;
+  color:var(--blue);
+  margin-bottom:12px;
+}
+.card h3{font-size:17px;margin-bottom:4px}
+.card p{font-size:14px;color:#6b7280}
+.card a{
+  display:inline-block;
+  margin-top:12px;
+  text-decoration:none;
+  color:var(--blue);
+  font-weight:600;
+}
+
+/* FOOTER */
+footer{
+  background:#0f172a;
+  color:#cbd5f5;
+  padding:45px 20px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+footer h3{color:#fff;margin-bottom:10px}
+footer a{
+  display:block;
+  color:#cbd5f5;
+  text-decoration:none;
+  margin-bottom:6px;
+  font-size:14px;
+}
+footer a:hover{color:#fff}
+.copy{
+  text-align:center;
+  margin-top:30px;
+  font-size:13px;
+  color:#94a3b8;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:28px}
+  nav a{margin-left:10px}
+}
+</style>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo"><i class="fas fa-tools"></i> Nagar Tools</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#tools">Tools</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <h1>All Online Tools in One Place</h1>
-    <p>Image, PDF, Calculator, SEO, Text & Developer Tools – Free & Fast</p>
-    <button>Explore Tools</button>
-  </section>
+<header>
+  <div class="logo"><i class="fa-solid fa-toolbox"></i>Nagar Tools</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#tools">Tools</a>
+    <a href="mailto:nagartools1@gmail.com">Contact</a>
+  </nav>
+</header>
 
-  <!-- SEARCH BAR -->
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search tools here..." onkeyup="searchTools()">
+<section class="hero">
+  <h1>Your Daily Tools, All in One Place</h1>
+  <p>Convert, calculate, compress, and simplify your everyday tasks — fast and free.</p>
+  <button onclick="document.getElementById('tools').scrollIntoView()">Explore Tools</button>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search a tool…">
   </div>
+</section>
 
-  <!-- TOOLS SECTIONS -->
-  <section id="tools">
-    <!-- IMAGE TOOLS -->
-    <h2><i class="far fa-image"></i> Image Tools</h2>
-    <p>Image editing & conversion tools.</p>
-    <div class="tools-grid" id="image-tools">
-      <div class="tool-card"><i class="fas fa-exchange-alt"></i><h3>Image Converter</h3><p>Convert image formats</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-compress"></i><h3>Image Compressor</h3><p>Reduce image size</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-expand-arrows-alt"></i><h3>Image Resizer</h3><p>Resize images easily</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-crop"></i><h3>Image Cropper</h3><p>Crop images precisely</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-font"></i><h3>Image to Text (OCR)</h3><p>Extract text from image</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-sync"></i><h3>Image Rotator/Flipper</h3><p>Rotate or flip images</p><a href="#">Use Tool</a></div>
-    </div>
+<div id="tools">
 
-    <!-- DOCUMENT TOOLS -->
-    <h2><i class="far fa-file-alt"></i> Document Tools</h2>
-    <p>PDF and document utilities.</p>
-    <div class="tools-grid">
-      <div class="tool-card"><i class="fas fa-file-word"></i><h3>PDF to Word</h3><p>Convert PDF to Word</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-file-pdf"></i><h3>Word to PDF</h3><p>Convert Word to PDF</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-lock"></i><h3>PDF Lock/Unlock</h3><p>Secure or unlock PDFs</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-compress-arrows-alt"></i><h3>PDF Compressor</h3><p>Reduce PDF size</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-code"></i><h3>Document Converter</h3><p>Convert between formats</p><a href="#">Use Tool</a></div>
-    </div>
+<!-- IMAGE TOOLS -->
+<section class="section">
+<h2>🖼 Image Tools</h2>
+<p>Image editing & conversion tools.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-regular fa-image"></i><h3>Image Converter</h3><p>Convert image formats</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-compress"></i><h3>Image Compressor</h3><p>Reduce image size</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-expand"></i><h3>Image Resizer</h3><p>Resize images</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-crop"></i><h3>Image Cropper</h3><p>Crop images</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-file-lines"></i><h3>Image to Text</h3><p>OCR extractor</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-rotate"></i><h3>Image Rotator</h3><p>Rotate & flip</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-    <!-- CALCULATOR TOOLS -->
-    <h2><i class="fas fa-calculator"></i> Calculator Tools</h2>
-    <p>Useful daily calculators.</p>
-    <div class="tools-grid">
-      <div class="tool-card"><i class="fas fa-square-root-alt"></i><h3>Scientific Calculator</h3><p>Advanced calculations</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-user-clock"></i><h3>Age Calculator</h3><p>Calculate age</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-weight"></i><h3>BMI Calculator</h3><p>Check BMI</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-rupee-sign"></i><h3>Loan EMI Calculator</h3><p>Calculate EMI</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-percentage"></i><h3>GST Calculator</h3><p>Calculate GST</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-exchange-alt"></i><h3>Currency Converter</h3><p>Convert currencies</p><a href="#">Use Tool</a></div>
-    </div>
+<!-- DOCUMENT TOOLS -->
+<section class="section">
+<h2>📄 Document Tools</h2>
+<p>PDF & document utilities.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-file-word"></i><h3>PDF to Word</h3><p>Convert PDF</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-file-pdf"></i><h3>Word to PDF</h3><p>Convert Word</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-file-circle-plus"></i><h3>PDF Merger</h3><p>Merge PDFs</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-scissors"></i><h3>PDF Splitter</h3><p>Split PDFs</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-lock"></i><h3>PDF Lock/Unlock</h3><p>Secure PDF</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-pen-nib"></i><h3>eSign PDF</h3><p>Sign PDFs</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-    <!-- TEXT TOOLS -->
-    <h2><i class="fas fa-font"></i> Text Tools</h2>
-    <p>Text formatting & utilities.</p>
-    <div class="tools-grid">
-      <div class="tool-card"><i class="fas fa-text-height"></i><h3>Text Case Converter</h3><p>Change text case</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-i-cursor"></i><h3>Word & Character Counter</h3><p>Count text length</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-stream"></i><h3>Remove Duplicate Lines</h3><p>Clean duplicate text</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-sort-alpha-down"></i><h3>Text Sorter</h3><p>Sort text alphabetically</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-random"></i><h3>Text Reverser</h3><p>Reverse text content</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-lock"></i><h3>Text Encryptor/Decryptor</h3><p>Secure your text</p><a href="#">Use Tool</a></div>
-    </div>
+<!-- CALCULATORS -->
+<section class="section">
+<h2>🧮 Calculator Tools</h2>
+<p>Online calculators.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-square-root-variable"></i><h3>Scientific Calculator</h3><p>Advanced math</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-cake-candles"></i><h3>Age Calculator</h3><p>Calculate age</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-heart-pulse"></i><h3>BMI Calculator</h3><p>Check BMI</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-indian-rupee-sign"></i><h3>Loan EMI</h3><p>EMI calculator</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-receipt"></i><h3>GST Calculator</h3><p>GST calculation</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-dollar-sign"></i><h3>Currency Converter</h3><p>Convert currency</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-    <!-- WEB TOOLS -->
-    <h2><i class="fas fa-code"></i> Web / Developer Tools</h2>
-    <p>Tools for web developers.</p>
-    <div class="tools-grid">
-      <div class="tool-card"><i class="fas fa-compress"></i><h3>HTML/CSS/JS Minifier</h3><p>Minify your code</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-file-code"></i><h3>JSON Formatter</h3><p>Format and validate JSON</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-lock"></i><h3>Base64 Encoder/Decoder</h3><p>Encode or decode data</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-link"></i><h3>URL Encoder/Decoder</h3><p>Encode/Decode URLs</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-eye-dropper"></i><h3>Color Picker & Converter</h3><p>Pick & convert colors</p><a href="#">Use Tool</a></div>
-      <div class="tool-card"><i class="fas fa-check"></i><h3>Regex Tester</h3><p>Test regular expressions</p><a href="#">Use Tool</a></div>
-    </div>
-  </section>
+<!-- TEXT TOOLS -->
+<section class="section">
+<h2>🔤 Text Tools</h2>
+<p>Text utilities.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-text-height"></i><h3>Case Converter</h3><p>Change text case</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-list-ol"></i><h3>Word Counter</h3><p>Count words</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-filter"></i><h3>Remove Duplicate Lines</h3><p>Clean text</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-sort"></i><h3>Text Sorter</h3><p>Sort lines</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-arrows-rotate"></i><h3>Text Reverser</h3><p>Reverse text</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-user-secret"></i><h3>Encrypt/Decrypt</h3><p>Secure text</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <h3><i class="fas fa-tools"></i> Nagar Tools</h3>
-    <p>Simplifying your digital life.</p>
-    <p>Contact: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></p>
+<!-- DEVELOPER TOOLS -->
+<section class="section">
+<h2>🌐 Web / Developer Tools</h2>
+<p>Developer utilities.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-brands fa-html5"></i><h3>HTML/CSS/JS Minifier</h3><p>Minify code</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-code"></i><h3>JSON Formatter</h3><p>Validate JSON</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-key"></i><h3>Base64 Encoder</h3><p>Encode/Decode</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-link"></i><h3>URL Encoder</h3><p>Encode URLs</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-palette"></i><h3>Color Picker</h3><p>Pick colors</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-terminal"></i><h3>Regex Tester</h3><p>Test regex</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-    <div class="footer-links">
-      <a href="#">About Us</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Use</a> |
-      <a href="#">Disclaimer</a> |
-      <a href="#">Sitemap</a>
-    </div>
+<!-- COLOR TOOLS -->
+<section class="section">
+<h2>🎨 Color Tools</h2>
+<p>Color utilities.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-eye-dropper"></i><h3>Color Picker from Image</h3><p>Extract colors</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-circle-half-stroke"></i><h3>HEX to RGB</h3><p>Color convert</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-fill-drip"></i><h3>Gradient Generator</h3><p>Create gradients</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-adjust"></i><h3>Contrast Checker</h3><p>Check contrast</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-swatchbook"></i><h3>Palette Generator</h3><p>Create palette</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-eye-slash"></i><h3>Color Blindness Simulator</h3><p>Accessibility</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-    <p class="copyright">© 2025 Nagar Tools. All rights reserved.</p>
-  </footer>
+<!-- SEO TOOLS -->
+<section class="section">
+<h2>🌍 SEO & Marketing Tools</h2>
+<p>SEO analysis tools.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-chart-line"></i><h3>Keyword Density Checker</h3><p>Analyze keywords</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-tags"></i><h3>Meta Tag Analyzer</h3><p>Analyze meta</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-file-word"></i><h3>Word Counter</h3><p>Count words</p><a href="#">Use Tool</a></div>
+</div>
+</section>
 
-  <!-- Search Filter -->
-  <script>
-    function searchTools() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.tool-card');
-      cards.forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(input) ? '' : 'none';
-      });
-    }
-  </script>
+<!-- UTILITY TOOLS -->
+<section class="section">
+<h2>🛠 Utility Tools</h2>
+<p>Daily utility tools.</p>
+<div class="grid tools">
+<div class="card"><i class="fa-solid fa-qrcode"></i><h3>QR Code Generator</h3><p>Create QR</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-barcode"></i><h3>Barcode Generator</h3><p>Create barcode</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-fingerprint"></i><h3>UUID Generator</h3><p>Generate UUID</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-ruler-combined"></i><h3>Unit Converter</h3><p>Convert units</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-globe"></i><h3>Time Zone Converter</h3><p>Convert time</p><a href="#">Use Tool</a></div>
+<div class="card"><i class="fa-solid fa-shuffle"></i><h3>Password Generator</h3><p>Random passwords</p><a href="#">Use Tool</a></div>
+</div>
+</section>
+
+</div>
+
+<footer>
+<div class="footer-grid">
+<div>
+<h3><i class="fa-solid fa-toolbox"></i> Nagar Tools</h3>
+<p>Simplifying your digital life.</p>
+<p>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<a href="#">About Us</a>
+<a href="#">Contact Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Use</a>
+<a href="#">Disclaimer</a>
+</div>
+
+<div>
+<h3>Popular Tools</h3>
+<a href="#">Image Converter</a>
+<a href="#">PDF to Word</a>
+<a href="#">EMI Calculator</a>
+<a href="#">Word Counter</a>
+</div>
+</div>
+
+<div class="copy">© 2025 NagarTools.in – All Rights Reserved</div>
+</footer>
+
+<script>
+document.getElementById("search").addEventListener("keyup",function(){
+  let value=this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
+  });
+});
+</script>
+
 </body>
 </html>
