@@ -5,151 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image Converter Tool – Nagar Tools</title>
 <meta name="description" content="Convert, resize, compress, and rotate images online for free with Nagar Tools. Supports PNG, JPEG, WEBP, BMP, GIF, TIFF formats.">
-<meta name="keywords" content="image converter, image resize, compress image, rotate image, png to jpg, webp converter, bmp, gif, tiff, Nagar Tools">
+<meta name="keywords" content="image converter, image resize, image compress, online image tools, nagar tools">
 <link rel="canonical" href="https://nagartools.in/image-converter.html">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-/* Basic Styles */
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f7fb; color:#1f2937;}
-header { background:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,.05);}
-header .logo { font-size:22px; font-weight:700; color:#2563eb; letter-spacing:0;}
-header nav a { margin-left:18px; text-decoration:none; color:#374151; font-weight:500;}
-header nav a:hover { color:#2563eb;}
-.container { max-width:900px; margin:50px auto; background:#fff; padding:40px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,.1); text-align:center;}
-h1 { font-size:28px; margin-bottom:20px; color:#2563eb;}
-h2 { font-size:22px; margin-top:30px; color:#2563eb;}
-input[type="file"], select, input[type="number"] { width:80%; max-width:400px; padding:12px; margin:15px 0; border-radius:8px; border:1px solid #ccc;}
-button { padding:12px 25px; border:none; border-radius:8px; background:#2563eb; color:#fff; font-size:16px; cursor:pointer; margin-top:10px;}
-button:hover { opacity:0.9;}
-#downloadLink { display:none; margin-top:15px; font-weight:600; color:#2563eb; text-decoration:none;}
-img.preview { max-width:300px; margin-top:15px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.1);}
-.footer { text-align:center; padding:25px; margin-top:50px; background:#0f172a; color:#ffffff;}
-.footer a { color:#ffffff; text-decoration:none; }
-.footer a:hover { color:#fff; }
-@media(max-width:600px){ .container { margin:30px 15px; padding:25px; } input[type="file"], select, input[type="number"] { width:100%; } }
+:root{
+    --primary-blue:#2563eb;
+    --primary-blue-dark:#1d4ed8;
+    --light-gray:#f9fafb;
+    --dark-gray:#1f2937;
+    --medium-gray:#6b7280;
+    --white:#ffffff;
+    --shadow:0 4px 6px rgba(0,0,0,0.1);
+    --border-radius:12px;
+    --transition:all 0.3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--light-gray);color:var(--dark-gray);}
+header{background:var(--white);box-shadow:0 1px 5px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100;}
+.header-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:20px;}
+.logo{font-size:24px;font-weight:700;color:var(--primary-blue);}
+.nav-links{display:flex;gap:25px;}
+.nav-links a{color:var(--dark-gray);text-decoration:none;font-weight:500;transition:var(--transition);}
+.nav-links a:hover{color:var(--primary-blue);}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:28px;color:var(--primary-blue);cursor:pointer;}
+/* Container for Tool */
+.tool-container{max-width:900px;margin:50px auto;background:var(--white);padding:40px;border-radius:var(--border-radius);box-shadow:var(--shadow);text-align:center;}
+.tool-container h1{font-size:32px;color:var(--primary-blue);margin-bottom:20px;}
+.tool-container p{color:var(--medium-gray);margin-bottom:30px;font-size:16px;}
+input[type="file"], select, input[type="number"]{width:80%;max-width:400px;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;font-size:15px;}
+button{padding:12px 25px;border:none;border-radius:8px;background:var(--primary-blue);color:var(--white);font-size:16px;cursor:pointer;transition:var(--transition);}
+button:hover{background:var(--primary-blue-dark);}
+#downloadLink{display:none;margin-top:15px;font-weight:600;color:var(--primary-blue);text-decoration:none;}
+img.preview{max-width:300px;margin-top:20px;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,.1);}
+.footer{background:var(--dark-gray);color:var(--white);padding:60px 20px 30px;}
+.footer a{color:var(--white);text-decoration:none;transition:var(--transition);}
+.footer a:hover{color:var(--primary-blue);}
+.footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;}
+.footer-logo{font-size:24px;font-weight:700;margin-bottom:15px;color:var(--white);}
+.footer-tagline{font-size:16px;color:#cbd5f5;line-height:1.6;}
+.footer-links h3{font-size:18px;margin-bottom:15px;color:var(--white);}
+.footer-links ul{list-style:none;}
+.footer-links li{margin-bottom:10px;}
+.copyright{text-align:center;padding-top:20px;border-top:1px solid #374151;color:var(--white);font-size:14px;}
+@media(max-width:768px){.nav-links{display:none;}.mobile-menu-btn{display:block;}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"><i class="fa-solid fa-toolbox"></i>NagarTools</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#tools">Tools</a>
-    <a href="mailto:nagartools1@gmail.com">Contact</a>
-  </nav>
+<div class="header-container">
+<div class="logo">NagarTools</div>
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="mailto:nagartools1@gmail.com">Contact</a>
+</nav>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+</div>
 </header>
 
-<div class="container">
-<h1>Image Converter Tool</h1>
-<p>Upload your image, choose format, resize, compress, rotate and download instantly.</p>
+<!-- Image Converter Tool Section -->
+<div class="tool-container">
+<h1>Advanced Image Converter Tool</h1>
+<p>Upload your image, convert to different formats, resize, compress, and download instantly.</p>
 
-<input type="file" id="imageInput" accept="image/*">
+<input type="file" id="imageInput" accept="image/*"><br>
 <select id="format">
-  <option value="image/png">PNG</option>
-  <option value="image/jpeg">JPEG</option>
-  <option value="image/webp">WEBP</option>
-  <option value="image/bmp">BMP</option>
-  <option value="image/gif">GIF</option>
-  <option value="image/tiff">TIFF</option>
-</select>
-<br>
-<input type="number" id="width" placeholder="Width (px)">
-<input type="number" id="height" placeholder="Height (px)">
-<br>
-<select id="rotate">
-  <option value="0">Rotate 0°</option>
-  <option value="90">Rotate 90°</option>
-  <option value="180">Rotate 180°</option>
-  <option value="270">Rotate 270°</option>
-</select>
-<br>
-<input type="number" id="quality" placeholder="Quality 0-100 (for JPEG/WebP)">
-<br>
+<option value="image/png">PNG</option>
+<option value="image/jpeg">JPEG</option>
+<option value="image/webp">WEBP</option>
+<option value="image/bmp">BMP</option>
+<option value="image/gif">GIF</option>
+<option value="image/tiff">TIFF</option>
+</select><br>
+<input type="number" id="resizeWidth" placeholder="Width (px)">
+<input type="number" id="resizeHeight" placeholder="Height (px)"><br>
 <button onclick="convertImage()">Convert & Download</button>
 <a id="downloadLink" href="#" download="converted_image">Download Converted Image</a>
-<br>
+
 <img id="preview" class="preview" src="" alt="Image Preview" style="display:none;">
+</div>
 
-<h2>How to Use</h2>
-<p>1. Select an image.<br>
-2. Choose output format.<br>
-3. (Optional) Set width, height, rotate angle, or compression quality.<br>
-4. Click "Convert & Download".<br>
-5. Download your converted image instantly.</p>
-
-<h2>Features</h2>
+<!-- Footer Section -->
+<footer class="footer">
+<div class="footer-container">
+<div>
+<span class="footer-logo">NagarTools</span>
+<p class="footer-tagline">Simplifying your digital life. Free online tools for everyday tasks, conversion, calculation, and optimization.</p>
+</div>
+<div class="footer-links">
+<h3>Quick Links</h3>
 <ul>
-<li>Supports PNG, JPEG, WEBP, BMP, GIF, TIFF</li>
-<li>Resize, compress, rotate images</li>
-<li>Fast client-side conversion, no server required</li>
-<li>Preview before download</li>
-<li>Works on desktop and mobile devices</li>
-<li>Professional and user-friendly UI interface</li>
-<li>Free and secure for everyone</li>
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#tools">All Tools</a></li>
+<li><a href="pages/about.html">About Us</a></li>
+<li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="pages/terms-of-use.html">Terms of Use</a></li>
 </ul>
 </div>
-
-<div class="footer">
-<p>&copy; 2025 Nagar Tools – <a href="index.html">Home</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+<div class="footer-links">
+<h3>Contact</h3>
+<ul>
+<li>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></li>
+</ul>
 </div>
+</div>
+<div class="copyright">
+<p>&copy; <span id="currentYear"></span> Nagar Tools. All rights reserved.</p>
+</div>
+</footer>
 
 <script>
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.querySelector('.nav-links');
+mobileMenuBtn.addEventListener('click',()=>{
+if(navLinks.style.display==='flex'){navLinks.style.display='none';}
+else{navLinks.style.display='flex';navLinks.style.flexDirection='column';navLinks.style.backgroundColor='#fff';navLinks.style.padding='20px';navLinks.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';}
+});
+
+// Set current year
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Image conversion function
 function convertImage(){
-  const file = document.getElementById('imageInput').files[0];
-  if(!file){ alert('Please select an image.'); return; }
-  const format = document.getElementById('format').value;
-  const width = parseInt(document.getElementById('width').value) || null;
-  const height = parseInt(document.getElementById('height').value) || null;
-  const rotate = parseInt(document.getElementById('rotate').value);
-  const quality = parseInt(document.getElementById('quality').value)/100 || 0.92;
-
-  const reader = new FileReader();
-  reader.onload = function(e){
-    const img = new Image();
-    img.src = e.target.result;
-    const preview = document.getElementById('preview');
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    img.onload = function(){
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      
-      // Set width and height
-      canvas.width = width || img.width;
-      canvas.height = height || img.height;
-
-      // Rotate
-      if(rotate !== 0){
-        ctx.save();
-        ctx.translate(canvas.width/2, canvas.height/2);
-        ctx.rotate(rotate * Math.PI / 180);
-        ctx.drawImage(img, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
-        ctx.restore();
-      } else {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      }
-
-      let dataURL;
-      try {
-        if(format === 'image/jpeg' || format === 'image/webp'){
-          dataURL = canvas.toDataURL(format, quality);
-        } else {
-          dataURL = canvas.toDataURL(format);
-        }
-      } catch(e){
-        alert('Selected format may not be supported by browser.');
-        return;
-      }
-
-      const link = document.getElementById('downloadLink');
-      link.href = dataURL;
-      link.download = 'converted_image.' + format.split('/')[1];
-      link.style.display = 'block';
-    }
-  }
-  reader.readAsDataURL(file);
+const file=document.getElementById('imageInput').files[0];
+if(!file){alert('Please select an image.');return;}
+const format=document.getElementById('format').value;
+const width=document.getElementById('resizeWidth').value;
+const height=document.getElementById('resizeHeight').value;
+const reader=new FileReader();
+reader.onload=function(e){
+const img=new Image();
+img.src=e.target.result;
+const preview=document.getElementById('preview');
+preview.src=e.target.result;
+preview.style.display='block';
+img.onload=function(){
+const canvas=document.createElement('canvas');
+canvas.width=width?width:img.width;
+canvas.height=height?height:img.height;
+const ctx=canvas.getContext('2d');
+ctx.drawImage(img,0,0,canvas.width,canvas.height);
+let dataURL;
+try{dataURL=canvas.toDataURL(format);}
+catch(e){alert('Selected format may not be supported by browser.');return;}
+const link=document.getElementById('downloadLink');
+link.href=dataURL;
+link.download='converted_image.'+format.split('/')[1];
+link.style.display='block';
+}
+};
+reader.readAsDataURL(file);
 }
 </script>
 
