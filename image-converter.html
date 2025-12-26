@@ -3,21 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Image Converter – Nagar Tools</title>
+<title>Image Converter Online Free – Nagar Tools</title>
+<meta name="description" content="Convert images online free with Nagar Tools. Supports PNG, JPEG, WEBP formats. Fast, secure, and professional image converter.">
+<meta name="keywords" content="image converter online free, convert image, png to jpg, jpg to webp, nagar tools">
+<link rel="canonical" href="https://nagartools.in/image-converter.html">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; display:flex; justify-content:center; align-items:center; height:100vh; }
-.container { background:#fff; padding:30px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,.1); text-align:center; width:300px; }
-h1 { font-size:20px; margin-bottom:20px; color:#2563eb; }
-input, select, button { margin:10px 0; padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; }
-button { background:#2563eb; color:#fff; border:none; cursor:pointer; }
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.05);
+    padding:15px 20px; display:flex; justify-content:space-between; align-items:center;
+}
+header .logo { color:#2563eb; font-weight:700; font-size:22px; }
+header nav a { margin-left:18px; text-decoration:none; color:#374151; font-weight:500; }
+header nav a:hover { color:#2563eb; }
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    text-align: center;
+}
+.container h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2563eb;
+}
+input[type="file"], select {
+    width: 100%; padding:12px; border-radius:8px; border:1px solid #ccc; margin-bottom:15px;
+}
+button {
+    background: #2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    width:100%;
+}
 button:hover { opacity:0.9; }
-#downloadLink { display:block; margin-top:15px; color:#2563eb; font-weight:bold; text-decoration:none; }
+#downloadLink { display:none; margin-top:15px; font-weight:600; color:#2563eb; text-decoration:none; }
+.footer {
+    text-align:center;
+    margin-top:50px;
+    padding:25px;
+    background:#0f172a;
+    color:#cbd5f5;
+}
+.footer a { color:#cbd5f5; text-decoration:none; }
+.footer a:hover { color:#fff; }
 </style>
 </head>
 <body>
 
+<header>
+  <div class="logo"><i class="fa-solid fa-toolbox"></i> Nagar Tools</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="mailto:nagartools1@gmail.com">Contact</a>
+  </nav>
+</header>
+
 <div class="container">
-  <h1>Simple Image Converter</h1>
+  <h1>Professional Image Converter</h1>
   <input type="file" id="imageInput" accept="image/*">
   <select id="format">
     <option value="image/png">PNG</option>
@@ -25,35 +84,53 @@ button:hover { opacity:0.9; }
     <option value="image/webp">WEBP</option>
   </select>
   <button onclick="convertImage()">Convert & Download</button>
-  <a id="downloadLink" href="#" download="converted_image">Download</a>
+  <a id="downloadLink" href="#" download="converted_image">Download Converted Image</a>
+  
+  <h2>How to Use</h2>
+  <p>1. Select an image from your device.<br>
+     2. Choose the output format (PNG, JPEG, or WEBP).<br>
+     3. Click "Convert & Download".<br>
+     4. Your converted image will be available to download instantly.</p>
+  
+  <h2>Features</h2>
+  <ul style="text-align:left;">
+    <li>Fast client-side conversion (no server required)</li>
+    <li>Supports JPG, PNG, and WEBP formats</li>
+    <li>Works on desktop and mobile devices</li>
+    <li>Free, secure, and professional</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>&copy; 2025 Nagar Tools – Simplifying your digital life. | <a href="index.html">Home</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </div>
 
 <script>
-function convertImage() {
-  const file = document.getElementById("imageInput").files[0];
-  if(!file){ alert("Please select an image."); return; }
-
-  const format = document.getElementById("format").value;
-  const reader = new FileReader();
-
-  reader.onload = function(e) {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = function() {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img,0,0);
-
-      const dataURL = canvas.toDataURL(format);
-      const downloadLink = document.getElementById("downloadLink");
-      downloadLink.href = dataURL;
-      downloadLink.download = "converted_image" + format.replace("image/","");
-      downloadLink.style.display = "block";
+function convertImage(){
+    const file = document.getElementById('imageInput').files[0];
+    if(!file){
+        alert('Please select an image.');
+        return;
     }
-  }
-  reader.readAsDataURL(file);
+    const format = document.getElementById('format').value;
+    const reader = new FileReader();
+    reader.onload = function(e){
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = function(){
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img,0,0);
+            const dataURL = canvas.toDataURL(format);
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = dataURL;
+            downloadLink.download = 'converted_image.' + format.split('/')[1];
+            downloadLink.style.display = 'block';
+        }
+    }
+    reader.readAsDataURL(file);
 }
 </script>
 
