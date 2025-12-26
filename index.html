@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nagar Tools | Free Online Tools for Everyday Tasks</title>
-    <meta name="description" content="Convert, calculate, compress, and simplify your everyday tasks with Nagar Tools. Free online tools for images, documents, text, web development, SEO and more.">
-    <meta name="keywords" content="online tools, free tools, image converter, PDF tools, calculator, text tools, web development tools, SEO tools, utility tools">
+    <title>Nagar Tools | Free Online Tools for Images, PDF, Text, Calculator | nagartools.in</title>
+    <meta name="description" content="Free online tools at nagartools.in - Convert images, PDF documents, calculate, compress files, text tools, web development tools, SEO tools and utilities. All tools are 100% free.">
+    <meta name="keywords" content="nagar tools, nagartools.in, free online tools, image converter, PDF tools, calculator tools, text tools, web tools, SEO tools, utility tools, image compressor, PDF compressor">
     <meta name="author" content="Nagar Tools">
-    <link rel="canonical" href="https://nagartools.com/">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nagartools.in/">
     
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Nagar Tools | Free Online Tools for Everyday Tasks">
-    <meta property="og:description" content="Convert, calculate, compress, and simplify your everyday tasks with Nagar Tools.">
+    <meta property="og:title" content="Nagar Tools | Free Online Tools for Images, PDF, Text, Calculator">
+    <meta property="og:description" content="Convert, calculate, compress, and simplify your everyday tasks with Nagar Tools. All tools are 100% free at nagartools.in">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nagartools.com/">
+    <meta property="og:url" content="https://nagartools.in/">
+    <meta property="og:site_name" content="Nagar Tools">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nagar Tools | Free Online Tools">
+    <meta name="twitter:description" content="Free online tools for images, documents, text, web development and more at nagartools.in">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
@@ -194,6 +201,51 @@
             margin-bottom: 10px;
             box-shadow: var(--shadow);
             font-size: 30px;
+        }
+
+        /* Search Results Indicator */
+        .search-results-indicator {
+            display: none;
+            text-align: center;
+            padding: 15px 0;
+            background-color: #e0f2fe;
+            margin-top: -1px;
+        }
+
+        .search-results-indicator .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-results-indicator p {
+            margin: 0;
+            color: #1e40af;
+            font-weight: 500;
+        }
+
+        #searchTermDisplay {
+            font-weight: 700;
+            color: var(--primary-blue-dark);
+        }
+
+        #clearSearchBtn {
+            background: none;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        #clearSearchBtn:hover {
+            background-color: var(--primary-blue);
+            color: white;
         }
 
         /* Search Section */
@@ -441,6 +493,11 @@
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
             }
+            
+            .search-results-indicator .container {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -512,6 +569,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Search Results Indicator -->
+    <div id="searchResultsIndicator" class="search-results-indicator">
+        <div class="container">
+            <p>
+                Showing results for: <span id="searchTermDisplay"></span>
+                <button id="clearSearchBtn">
+                    Clear Search
+                </button>
+            </p>
+        </div>
+    </div>
 
     <!-- Search Section -->
     <section class="search-section">
@@ -597,7 +666,7 @@
         <div class="container">
             <div class="footer-container">
                 <div>
-                    <a href="#" class="footer-logo">NagarTools</a>
+                    <a href="#" class="footer-logo">nagarTools.in</a>
                     <p class="footer-tagline">Simplifying your digital life. Free online tools for everyday tasks, conversion, calculation, and optimization.</p>
                 </div>
                 
@@ -616,13 +685,13 @@
                     <h3>Contact</h3>
                     <ul>
                         <li>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></li>
-                        <li>No phone support available</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
                 <p>&copy; <span id="currentYear"></span> Nagar Tools. All rights reserved. All tools are free to use.</p>
+                <p>Domain: nagartools.in</p>
             </div>
         </div>
     </footer>
@@ -705,6 +774,92 @@
             `;
         }
 
+        // Search functionality
+        function searchTools() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const searchResultsIndicator = document.getElementById('searchResultsIndicator');
+            const searchTermDisplay = document.getElementById('searchTermDisplay');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+            
+            if (!searchTerm) {
+                // Reset all tools to visible
+                document.querySelectorAll('.tool-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+                // Show all section headings
+                document.querySelectorAll('.section-title, .section-description').forEach(el => {
+                    el.style.display = 'block';
+                });
+                // Hide search results indicator
+                searchResultsIndicator.style.display = 'none';
+                return;
+            }
+            
+            // Show search results indicator
+            searchTermDisplay.textContent = `"${searchTerm}"`;
+            searchResultsIndicator.style.display = 'block';
+            
+            // Hide all tool cards initially
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            // Show only matching tool cards
+            let foundResults = false;
+            let resultsCount = 0;
+            document.querySelectorAll('.tool-card').forEach(card => {
+                const toolName = card.querySelector('.tool-name').textContent.toLowerCase();
+                const toolDescription = card.querySelector('.tool-description').textContent.toLowerCase();
+                
+                if (toolName.includes(searchTerm) || toolDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    foundResults = true;
+                    resultsCount++;
+                    
+                    // Show the parent section
+                    const section = card.closest('.tools-grid').previousElementSibling;
+                    if (section && section.classList.contains('section-title')) {
+                        section.style.display = 'block';
+                        const description = section.nextElementSibling;
+                        if (description && description.classList.contains('section-description')) {
+                            description.style.display = 'block';
+                        }
+                    }
+                }
+            });
+            
+            // Hide section headings that have no visible tools
+            document.querySelectorAll('.section-title').forEach(title => {
+                const sectionGrid = title.nextElementSibling.nextElementSibling;
+                if (sectionGrid && sectionGrid.classList.contains('tools-grid')) {
+                    const visibleTools = sectionGrid.querySelectorAll('.tool-card[style="display: block"]').length;
+                    if (visibleTools === 0) {
+                        title.style.display = 'none';
+                        const description = title.nextElementSibling;
+                        if (description && description.classList.contains('section-description')) {
+                            description.style.display = 'none';
+                        }
+                    }
+                }
+            });
+            
+            // Update search results text
+            if (foundResults) {
+                searchTermDisplay.textContent = `"${searchTerm}" - ${resultsCount} tool${resultsCount > 1 ? 's' : ''} found`;
+            } else {
+                searchTermDisplay.textContent = `"${searchTerm}" - No tools found`;
+            }
+            
+            // Scroll to tools section
+            document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Clear search functionality
+        function clearSearch() {
+            searchInput.value = '';
+            searchTools();
+        }
+
         // Populate tools on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
@@ -753,20 +908,13 @@
                 }
             });
             
-            // Search functionality
+            // Search functionality setup
             const searchInput = document.getElementById('searchInput');
             const searchButton = document.getElementById('searchButton');
-            
-            function searchTools() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                if (!searchTerm) return;
-                
-                // In a real implementation, this would filter tools and show results
-                alert(`Search functionality would filter tools for: "${searchTerm}"\n\nIn a full implementation, this would show only matching tools.`);
-                searchInput.value = '';
-            }
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
             
             searchButton.addEventListener('click', searchTools);
+            clearSearchBtn.addEventListener('click', clearSearch);
             
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
@@ -774,13 +922,18 @@
                 }
             });
             
+            // Real-time search on input
+            searchInput.addEventListener('input', function() {
+                searchTools();
+            });
+            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
+                    
+                    e.preventDefault();
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
@@ -797,6 +950,10 @@
                     }
                 });
             });
+            
+            // Initialize tool counters for SEO
+            const totalTools = Object.values(toolsData).reduce((sum, category) => sum + category.length, 0);
+            console.log(`Nagar Tools: ${totalTools} free online tools available at nagartools.in`);
         });
     </script>
 </body>
