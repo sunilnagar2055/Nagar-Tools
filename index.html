@@ -525,12 +525,13 @@
     <!-- Header Section -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Nagar<span>Tools</span></a>
+            <a href="index.html" class="logo">Nagar<span>Tools</span></a>
             
             <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#tools">Tools</a>
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
                 <a href="#contact">Contact</a>
+                <a href="pages/about.html">About</a>
             </nav>
             
             <div class="contact-email">
@@ -666,18 +667,18 @@
         <div class="container">
             <div class="footer-container">
                 <div>
-                    <a href="#" class="footer-logo">nagarTools.in</a>
+                    <a href="index.html" class="footer-logo">nagarTools.in</a>
                     <p class="footer-tagline">Simplifying your digital life. Free online tools for everyday tasks, conversion, calculation, and optimization.</p>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#tools">All Tools</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#tools">All Tools</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="pages/terms-of-use.html">Terms of Use</a></li>
                     </ul>
                 </div>
                 
@@ -697,68 +698,68 @@
     </footer>
 
     <script>
-        // Tool data organized by category
+        // Tool data organized by category with actual links
         const toolsData = {
             imageTools: [
-                { name: "Image Converter", description: "Convert images between JPG, PNG, WEBP, and more", icon: "🔄" },
-                { name: "Image Compressor", description: "Reduce image file size without losing quality", icon: "🗜️" },
-                { name: "Image Resizer", description: "Resize images to any dimension quickly", icon: "📏" },
-                { name: "Image Cropper", description: "Crop images to remove unwanted parts", icon: "✂️" },
-                { name: "Image to Text (OCR)", description: "Extract text from images using OCR technology", icon: "🔤" },
-                { name: "Image Rotator/Flipper", description: "Rotate or flip images horizontally/vertically", icon: "🔄" }
+                { name: "Image Converter", description: "Convert images between JPG, PNG, WEBP, and more", icon: "🔄", link: "/image-converter.html" },
+                { name: "Image Compressor", description: "Reduce image file size without losing quality", icon: "🗜️", link: "tools/image-compressor.html" },
+                { name: "Image Resizer", description: "Resize images to any dimension quickly", icon: "📏", link: "tools/image-resizer.html" },
+                { name: "Image Cropper", description: "Crop images to remove unwanted parts", icon: "✂️", link: "tools/image-cropper.html" },
+                { name: "Image to Text (OCR)", description: "Extract text from images using OCR technology", icon: "🔤", link: "tools/image-to-text.html" },
+                { name: "Image Rotator/Flipper", description: "Rotate or flip images horizontally/vertically", icon: "🔄", link: "tools/image-rotator.html" }
             ],
             documentTools: [
-                { name: "PDF to Word / Word to PDF", description: "Convert PDF to Word and Word to PDF", icon: "📄" },
-                { name: "PDF Compressor", description: "Reduce PDF file size while preserving quality", icon: "🗜️" },
-                { name: "PDF Merger & Splitter", description: "Merge multiple PDFs or split a PDF", icon: "🔗" },
-                { name: "Document Converter", description: "Convert between various document formats", icon: "🔄" },
-                { name: "PDF Lock/Unlock", description: "Add or remove passwords from PDF files", icon: "🔒" },
-                { name: "eSign PDF", description: "Add electronic signatures to PDF documents", icon: "✍️" }
+                { name: "PDF to Word / Word to PDF", description: "Convert PDF to Word and Word to PDF", icon: "📄", link: "tools/pdf-to-word.html" },
+                { name: "PDF Compressor", description: "Reduce PDF file size while preserving quality", icon: "🗜️", link: "tools/pdf-compressor.html" },
+                { name: "PDF Merger & Splitter", description: "Merge multiple PDFs or split a PDF", icon: "🔗", link: "tools/pdf-merger.html" },
+                { name: "Document Converter", description: "Convert between various document formats", icon: "🔄", link: "tools/document-converter.html" },
+                { name: "PDF Lock/Unlock", description: "Add or remove passwords from PDF files", icon: "🔒", link: "tools/pdf-lock.html" },
+                { name: "eSign PDF", description: "Add electronic signatures to PDF documents", icon: "✍️", link: "tools/esign-pdf.html" }
             ],
             calculatorTools: [
-                { name: "Scientific Calculator", description: "Advanced calculator for complex calculations", icon: "🧮" },
-                { name: "Age Calculator", description: "Calculate age from birth date to present", icon: "🎂" },
-                { name: "BMI Calculator", description: "Calculate Body Mass Index for health assessment", icon: "⚖️" },
-                { name: "Loan EMI Calculator", description: "Calculate Equated Monthly Installments for loans", icon: "💰" },
-                { name: "GST Calculator", description: "Calculate Goods and Services Tax amounts", icon: "🏷️" },
-                { name: "Currency Converter", description: "Convert between world currencies", icon: "💱" }
+                { name: "Scientific Calculator", description: "Advanced calculator for complex calculations", icon: "🧮", link: "tools/scientific-calculator.html" },
+                { name: "Age Calculator", description: "Calculate age from birth date to present", icon: "🎂", link: "tools/age-calculator.html" },
+                { name: "BMI Calculator", description: "Calculate Body Mass Index for health assessment", icon: "⚖️", link: "tools/bmi-calculator.html" },
+                { name: "Loan EMI Calculator", description: "Calculate Equated Monthly Installments for loans", icon: "💰", link: "tools/emi-calculator.html" },
+                { name: "GST Calculator", description: "Calculate Goods and Services Tax amounts", icon: "🏷️", link: "tools/gst-calculator.html" },
+                { name: "Currency Converter", description: "Convert between world currencies", icon: "💱", link: "tools/currency-converter.html" }
             ],
             textTools: [
-                { name: "Text Case Converter", description: "Convert text between uppercase, lowercase, etc.", icon: "🔠" },
-                { name: "Word & Character Counter", description: "Count words, characters, and sentences", icon: "📊" },
-                { name: "Remove Duplicate Lines", description: "Remove duplicate lines from text", icon: "🧹" },
-                { name: "Text Sorter", description: "Sort lines of text alphabetically or numerically", icon: "📈" },
-                { name: "Text Reverser", description: "Reverse text or string order", icon: "↔️" },
-                { name: "Text Encryptor/Decryptor", description: "Encrypt and decrypt text securely", icon: "🔐" }
+                { name: "Text Case Converter", description: "Convert text between uppercase, lowercase, etc.", icon: "🔠", link: "tools/text-case-converter.html" },
+                { name: "Word & Character Counter", description: "Count words, characters, and sentences", icon: "📊", link: "tools/word-counter.html" },
+                { name: "Remove Duplicate Lines", description: "Remove duplicate lines from text", icon: "🧹", link: "tools/remove-duplicate-lines.html" },
+                { name: "Text Sorter", description: "Sort lines of text alphabetically or numerically", icon: "📈", link: "tools/text-sorter.html" },
+                { name: "Text Reverser", description: "Reverse text or string order", icon: "↔️", link: "tools/text-reverser.html" },
+                { name: "Text Encryptor/Decryptor", description: "Encrypt and decrypt text securely", icon: "🔐", link: "tools/text-encryptor.html" }
             ],
             webTools: [
-                { name: "HTML/CSS/JS Minifier", description: "Minify HTML, CSS and JavaScript code", icon: "📝" },
-                { name: "JSON Formatter & Validator", description: "Format and validate JSON data", icon: "{}" },
-                { name: "Base64 Encoder/Decoder", description: "Encode and decode Base64 data", icon: "🔢" },
-                { name: "URL Encoder/Decoder", description: "Encode and decode URL strings", icon: "🔗" },
-                { name: "Color Picker & Converter", description: "Pick colors and convert between formats", icon: "🎨" },
-                { name: "Regex Tester", description: "Test and debug regular expressions", icon: ".*" }
+                { name: "HTML/CSS/JS Minifier", description: "Minify HTML, CSS and JavaScript code", icon: "📝", link: "tools/html-minifier.html" },
+                { name: "JSON Formatter & Validator", description: "Format and validate JSON data", icon: "{}", link: "tools/json-formatter.html" },
+                { name: "Base64 Encoder/Decoder", description: "Encode and decode Base64 data", icon: "🔢", link: "tools/base64-converter.html" },
+                { name: "URL Encoder/Decoder", description: "Encode and decode URL strings", icon: "🔗", link: "tools/url-encoder.html" },
+                { name: "Color Picker & Converter", description: "Pick colors and convert between formats", icon: "🎨", link: "tools/color-picker.html" },
+                { name: "Regex Tester", description: "Test and debug regular expressions", icon: ".*", link: "tools/regex-tester.html" }
             ],
             colorTools: [
-                { name: "Color Picker from Image", description: "Extract colors from uploaded images", icon: "🖼️" },
-                { name: "HEX to RGB Converter", description: "Convert HEX color codes to RGB values", icon: "🔄" },
-                { name: "Gradient Generator", description: "Create beautiful CSS gradients", icon: "🌈" },
-                { name: "Contrast Checker", description: "Check color contrast for accessibility", icon: "👁️" },
-                { name: "Palette Generator", description: "Generate color palettes for design projects", icon: "🎨" },
-                { name: "Color Blindness Simulator", description: "Simulate how colors appear to color blind users", icon: "👓" }
+                { name: "Color Picker from Image", description: "Extract colors from uploaded images", icon: "🖼️", link: "tools/color-picker-from-image.html" },
+                { name: "HEX to RGB Converter", description: "Convert HEX color codes to RGB values", icon: "🔄", link: "tools/hex-to-rgb.html" },
+                { name: "Gradient Generator", description: "Create beautiful CSS gradients", icon: "🌈", link: "tools/gradient-generator.html" },
+                { name: "Contrast Checker", description: "Check color contrast for accessibility", icon: "👁️", link: "tools/contrast-checker.html" },
+                { name: "Palette Generator", description: "Generate color palettes for design projects", icon: "🎨", link: "tools/palette-generator.html" },
+                { name: "Color Blindness Simulator", description: "Simulate how colors appear to color blind users", icon: "👓", link: "tools/color-blindness-simulator.html" }
             ],
             seoTools: [
-                { name: "Keyword Density Checker", description: "Analyze keyword density in your content", icon: "🔍" },
-                { name: "Meta Tag Analyzer", description: "Check and analyze meta tags for SEO", icon: "🏷️" },
-                { name: "Word Counter", description: "Count words and characters for SEO optimization", icon: "📊" }
+                { name: "Keyword Density Checker", description: "Analyze keyword density in your content", icon: "🔍", link: "tools/keyword-density-checker.html" },
+                { name: "Meta Tag Analyzer", description: "Check and analyze meta tags for SEO", icon: "🏷️", link: "tools/meta-tag-analyzer.html" },
+                { name: "Word Counter", description: "Count words and characters for SEO optimization", icon: "📊", link: "tools/seo-word-counter.html" }
             ],
             utilityTools: [
-                { name: "QR Code Generator & Scanner", description: "Create and scan QR codes", icon: "📱" },
-                { name: "Barcode Generator", description: "Generate barcodes in various formats", icon: "📊" },
-                { name: "UUID Generator", description: "Generate unique UUIDs for development", icon: "🆔" },
-                { name: "Unit Converter", description: "Convert between various units of measurement", icon: "📏" },
-                { name: "Time Zone Converter", description: "Convert time between different time zones", icon: "🕐" },
-                { name: "Random Number/Password Generator", description: "Generate random numbers and secure passwords", icon: "🎲" }
+                { name: "QR Code Generator & Scanner", description: "Create and scan QR codes", icon: "📱", link: "tools/qr-code-generator.html" },
+                { name: "Barcode Generator", description: "Generate barcodes in various formats", icon: "📊", link: "tools/barcode-generator.html" },
+                { name: "UUID Generator", description: "Generate unique UUIDs for development", icon: "🆔", link: "tools/uuid-generator.html" },
+                { name: "Unit Converter", description: "Convert between various units of measurement", icon: "📏", link: "tools/unit-converter.html" },
+                { name: "Time Zone Converter", description: "Convert time between different time zones", icon: "🕐", link: "tools/timezone-converter.html" },
+                { name: "Random Number/Password Generator", description: "Generate random numbers and secure passwords", icon: "🎲", link: "tools/password-generator.html" }
             ]
         };
 
@@ -769,7 +770,7 @@
                     <div class="tool-icon-small">${tool.icon}</div>
                     <h3 class="tool-name">${tool.name}</h3>
                     <p class="tool-description">${tool.description}</p>
-                    <a href="#" class="use-tool-btn">Use Tool</a>
+                    <a href="${tool.link}" class="use-tool-btn">Use Tool</a>
                 </div>
             `;
         }
