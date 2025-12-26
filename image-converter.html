@@ -4,43 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image Converter Tool – Nagar Tools</title>
+<title>Image Converter Tool – NagarTools</title>
 
-<meta name="description" content="Free Image Converter Tool by Nagar Tools. Convert images to PNG, JPG, WEBP, BMP online instantly. SEO friendly & secure.">
-<meta name="keywords" content="image converter, png to jpg, jpg to webp, nagar tools image converter">
+<meta name="description" content="Free Image Converter Tool by NagarTools. Convert images to PNG, JPG, WEBP, BMP online instantly.">
+<meta name="keywords" content="image converter, png to jpg, nagartools image converter">
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://nagartools.in/image-converter.html">
 
-<!-- SAME FAVICON AS INDEX -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
 
 <style>
 :root{
   --primary:#2563eb;
   --dark:#1f2937;
-  --light:#f5f7fb;
+  --bg:#f5f7fb;
 }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:var(--bg);color:var(--dark);}
 
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
-/* BODY */
-body{
-  background:var(--light);
-  color:var(--dark);
-}
-
-/* ================= HEADER (EXACT INDEX STYLE) ================= */
-header{
-  background:#ffffff;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
+/* HEADER */
+header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);}
 .header-wrap{
   max-width:1200px;
   margin:auto;
@@ -49,109 +32,68 @@ header{
   justify-content:space-between;
   align-items:center;
 }
-
-/* 👇 EXACT SAME LOGO AS INDEX.HTML */
 .logo{
   font-size:22px;
   font-weight:700;
   color:var(--primary);
   text-decoration:none;
 }
-.logo span{
-  color:var(--dark);
-}
-
+.logo span{color:var(--dark);}
 nav a{
   margin-left:18px;
   text-decoration:none;
   color:#374151;
   font-weight:500;
 }
-nav a:hover{
-  color:var(--primary);
-}
+nav a:hover{color:var(--primary);}
 
-/* ================= MAIN ================= */
-main{
-  max-width:1100px;
-  margin:40px auto;
-  padding:0 15px;
-}
-
-.tool-card{
-  background:#ffffff;
+/* MAIN */
+main{max-width:1100px;margin:40px auto;padding:0 15px;}
+.tool{
+  background:#fff;
   padding:40px;
   border-radius:14px;
   box-shadow:0 20px 40px rgba(0,0,0,.12);
   text-align:center;
 }
+h1{color:var(--primary);margin-bottom:6px;}
+p{color:#475569;margin-bottom:20px;}
 
-h1{
-  font-size:30px;
-  color:var(--primary);
-  margin-bottom:8px;
-}
-.subtitle{
-  color:#475569;
-  margin-bottom:25px;
-}
-
-input, select, button{
+input,select,button{
   width:100%;
   max-width:420px;
   padding:14px;
   margin:10px auto;
+  display:block;
   border-radius:10px;
   border:1px solid #cbd5e1;
-  font-size:16px;
-  display:block;
 }
-
 button{
   background:var(--primary);
-  color:#ffffff;
+  color:#fff;
   border:none;
   font-weight:600;
   cursor:pointer;
 }
 button:hover{opacity:.9}
 
-img{
-  max-width:320px;
-  margin-top:20px;
-  border-radius:10px;
-  display:none;
-}
+img{max-width:320px;margin-top:20px;border-radius:10px;display:none;}
+#download{display:none;margin-top:12px;font-weight:600;color:var(--primary);text-decoration:none;}
 
-#download{
-  display:none;
-  margin-top:15px;
-  font-weight:600;
-  color:var(--primary);
-  text-decoration:none;
-}
-
-/* ================= FOOTER (WHITE TEXT) ================= */
+/* FOOTER */
 footer{
   background:#0f172a;
-  color:#ffffff;
+  color:#fff;
   text-align:center;
   padding:22px 15px;
   margin-top:60px;
 }
-footer a{
-  color:#ffffff;
-  text-decoration:none;
-  margin:0 6px;
-}
-footer a:hover{
-  color:#e5e7eb;
-}
+footer a{color:#fff;text-decoration:none;margin:0 6px;}
+footer a:hover{color:#e5e7eb;}
 
-/* MOBILE */
 @media(max-width:600px){
   h1{font-size:24px}
-  .tool-card{padding:25px}
+  .tool{padding:25px}
 }
 </style>
 </head>
@@ -160,9 +102,8 @@ footer a:hover{
 
 <header>
   <div class="header-wrap">
-    <!-- ✅ SAME LOGO STRUCTURE AS INDEX -->
-    <a href="index.html" class="logo">Nagar <span>Tools</span></a>
-
+    <!-- ✅ NO SPACE LOGO -->
+    <a href="index.html" class="logo">Nagar<span>Tools</span></a>
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#tools">Tools</a>
@@ -172,12 +113,11 @@ footer a:hover{
 </header>
 
 <main>
-  <div class="tool-card">
+  <div class="tool">
     <h1>Image Converter Tool</h1>
-    <p class="subtitle">Upload your image, convert format and download instantly.</p>
+    <p>Upload your image, choose format and download instantly.</p>
 
-    <input type="file" id="imageInput" accept="image/*">
-
+    <input type="file" id="img" accept="image/*">
     <select id="format">
       <option value="image/png">PNG</option>
       <option value="image/jpeg">JPG</option>
@@ -185,54 +125,42 @@ footer a:hover{
       <option value="image/bmp">BMP</option>
     </select>
 
-    <button onclick="convertImage()">Convert Image</button>
+    <button onclick="convert()">Convert Image</button>
 
-    <img id="preview" alt="Image Preview">
-    <a id="download">Download Converted Image</a>
+    <img id="preview">
+    <a id="download">Download Image</a>
   </div>
 </main>
 
 <footer>
-  <p>
-    © 2025 Nagar Tools |
+  <p>© 2025 NagarTools |
     <a href="index.html">Home</a> |
-    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="privacy-policy.html">Privacy</a> |
     <a href="terms.html">Terms</a>
   </p>
 </footer>
 
 <script>
-function convertImage(){
-  const file=document.getElementById("imageInput").files[0];
-  if(!file){
-    alert("Please select an image");
-    return;
-  }
-
-  const format=document.getElementById("format").value;
-  const reader=new FileReader();
-
-  reader.onload=e=>{
-    const img=new Image();
-    img.src=e.target.result;
-    img.onload=()=>{
-      const canvas=document.createElement("canvas");
-      canvas.width=img.width;
-      canvas.height=img.height;
-      canvas.getContext("2d").drawImage(img,0,0);
-
-      const url=canvas.toDataURL(format);
-
-      document.getElementById("preview").src=url;
-      document.getElementById("preview").style.display="block";
-
-      const d=document.getElementById("download");
-      d.href=url;
-      d.download="converted-image."+format.split("/")[1];
-      d.style.display="block";
+function convert(){
+  const f=document.getElementById("img").files[0];
+  if(!f){alert("Select image");return;}
+  const type=document.getElementById("format").value;
+  const r=new FileReader();
+  r.onload=e=>{
+    const i=new Image();
+    i.src=e.target.result;
+    i.onload=()=>{
+      const c=document.createElement("canvas");
+      c.width=i.width;c.height=i.height;
+      c.getContext("2d").drawImage(i,0,0);
+      const url=c.toDataURL(type);
+      preview.src=url;preview.style.display="block";
+      download.href=url;
+      download.download="converted."+type.split("/")[1];
+      download.style.display="block";
     }
-  };
-  reader.readAsDataURL(file);
+  }
+  r.readAsDataURL(f);
 }
 </script>
 
