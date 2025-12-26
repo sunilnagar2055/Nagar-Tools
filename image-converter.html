@@ -2,64 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Image Converter Online Free – Nagar Tools</title>
-<meta name="description" content="Convert images online free with Nagar Tools. Supports JPG, PNG, GIF, and more. Fast, easy, and secure image converter.">
-<meta name="keywords" content="image converter online free, convert image, jpg to png, nagar tools image converter">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://nagartools.in/image-converter.html">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+<title>Simple Image Converter – Nagar Tools</title>
 <style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;background:#f5f7fb;color:#1f2937}
-header,footer{background:#fff;padding:15px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-header .logo,footer .logo{color:#2563eb;font-weight:700;font-size:22px}
-nav a{margin-left:18px;text-decoration:none;color:#374151;font-weight:500}
-nav a:hover{color:#2563eb}
-.container{max-width:900px;margin:40px auto;padding:0 20px}
-h1{font-size:28px;margin-bottom:10px}
-p{margin-bottom:20px;color:#6b7280}
-button{background:#2563eb;color:#fff;border:none;padding:12px 25px;border-radius:8px;font-size:16px;cursor:pointer}
-button:hover{opacity:.9}
+body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; display:flex; justify-content:center; align-items:center; height:100vh; }
+.container { background:#fff; padding:30px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,.1); text-align:center; width:300px; }
+h1 { font-size:20px; margin-bottom:20px; color:#2563eb; }
+input, select, button { margin:10px 0; padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; }
+button { background:#2563eb; color:#fff; border:none; cursor:pointer; }
+button:hover { opacity:0.9; }
+#downloadLink { display:block; margin-top:15px; color:#2563eb; font-weight:bold; text-decoration:none; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo"><i class="fa-solid fa-toolbox"></i>Nagar Tools</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#tools">Tools</a>
-    <a href="mailto:nagartools1@gmail.com">Contact</a>
-  </nav>
-</header>
-
 <div class="container">
-  <h1>Image Converter Online Free</h1>
-  <p>Convert JPG, PNG, GIF and other image formats quickly and securely using Nagar Tools. Free, fast, and easy to use.</p>
-  
-  <!-- Tool UI Placeholder -->
-  <button onclick="alert('Tool will open here')">Upload & Convert Image</button>
-  
-  <h2>How to Use</h2>
-  <p>1. Upload your image file.<br>
-     2. Select the desired output format.<br>
-     3. Click Convert.<br>
-     4. Download your converted image.</p>
-  
-  <h2>Benefits of Using Nagar Tools Image Converter</h2>
-  <ul>
-    <li>Supports multiple image formats</li>
-    <li>Fast conversion without watermark</li>
-    <li>Secure & free</li>
-    <li>Works on mobile & desktop</li>
-  </ul>
+  <h1>Simple Image Converter</h1>
+  <input type="file" id="imageInput" accept="image/*">
+  <select id="format">
+    <option value="image/png">PNG</option>
+    <option value="image/jpeg">JPEG</option>
+    <option value="image/webp">WEBP</option>
+  </select>
+  <button onclick="convertImage()">Convert & Download</button>
+  <a id="downloadLink" href="#" download="converted_image">Download</a>
 </div>
 
-<footer>
-  <div class="logo"><i class="fa-solid fa-toolbox"></i> Nagar Tools</div>
-  <p>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></p>
-  <p><a href="index.html">Home</a> | <a href="index.html#tools">Tools</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-</footer>
+<script>
+function convertImage() {
+  const file = document.getElementById("imageInput").files[0];
+  if(!file){ alert("Please select an image."); return; }
+
+  const format = document.getElementById("format").value;
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const img = new Image();
+    img.src = e.target.result;
+    img.onload = function() {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img,0,0);
+
+      const dataURL = canvas.toDataURL(format);
+      const downloadLink = document.getElementById("downloadLink");
+      downloadLink.href = dataURL;
+      downloadLink.download = "converted_image" + format.replace("image/","");
+      downloadLink.style.display = "block";
+    }
+  }
+  reader.readAsDataURL(file);
+}
+</script>
 
 </body>
 </html>
