@@ -3,164 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Image Converter Tool – NagarTools</title>
-
-<meta name="description" content="Free Image Converter Tool by NagarTools. Convert images to PNG, JPG, WEBP, BMP online instantly.">
-<meta name="keywords" content="image converter, png to jpg, nagartools image converter">
-<meta name="robots" content="index, follow">
+<title>Image Converter Online – NagarTools</title>
+<meta name="description" content="Convert images online free with NagarTools. Supports PNG, JPEG, WEBP, BMP, GIF, TIFF formats. Professional, fast, and secure image converter.">
+<meta name="keywords" content="image converter online, convert png to jpg, jpg to webp, bmp converter, tiff converter, nagartools">
 <link rel="canonical" href="https://nagartools.in/image-converter.html">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
 
 <style>
-:root{
-  --primary:#2563eb;
-  --dark:#1f2937;
-  --bg:#f5f7fb;
+/* Body & Fonts */
+body {
+    font-family: Arial, sans-serif;
+    margin:0; padding:0;
+    background:#f5f7fb;
+    color:#1f2937;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:var(--bg);color:var(--dark);}
 
-/* HEADER */
-header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);}
-.header-wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* Header */
+header {
+    background:#fff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
-.logo{
-  font-size:22px;
-  font-weight:700;
-  color:var(--primary);
-  text-decoration:none;
+header .logo {
+    font-size:22px;
+    font-weight:700;
+    color:#2563eb;
 }
-.logo span{color:var(--dark);}
-nav a{
-  margin-left:18px;
-  text-decoration:none;
-  color:#374151;
-  font-weight:500;
+header nav a {
+    margin-left:18px;
+    text-decoration:none;
+    color:#374151;
+    font-weight:500;
 }
-nav a:hover{color:var(--primary);}
+header nav a:hover { color:#2563eb; }
 
-/* MAIN */
-main{max-width:1100px;margin:40px auto;padding:0 15px;}
-.tool{
-  background:#fff;
-  padding:40px;
-  border-radius:14px;
-  box-shadow:0 20px 40px rgba(0,0,0,.12);
-  text-align:center;
+/* Container */
+.container {
+    max-width:900px;
+    margin:50px auto;
+    background:#fff;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    text-align:center;
 }
-h1{color:var(--primary);margin-bottom:6px;}
-p{color:#475569;margin-bottom:20px;}
-
-input,select,button{
-  width:100%;
-  max-width:420px;
-  padding:14px;
-  margin:10px auto;
-  display:block;
-  border-radius:10px;
-  border:1px solid #cbd5e1;
+h1 {
+    font-size:28px;
+    margin-bottom:20px;
+    color:#2563eb;
 }
-button{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  font-weight:600;
-  cursor:pointer;
+input[type="file"], select {
+    width:80%;
+    max-width:400px;
+    padding:12px;
+    margin:15px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
-button:hover{opacity:.9}
-
-img{max-width:320px;margin-top:20px;border-radius:10px;display:none;}
-#download{display:none;margin-top:12px;font-weight:600;color:var(--primary);text-decoration:none;}
-
-/* FOOTER */
-footer{
-  background:#0f172a;
-  color:#fff;
-  text-align:center;
-  padding:22px 15px;
-  margin-top:60px;
+button {
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
 }
-footer a{color:#fff;text-decoration:none;margin:0 6px;}
-footer a:hover{color:#e5e7eb;}
+button:hover { opacity:0.9; }
+#downloadLink {
+    display:none;
+    margin-top:15px;
+    font-weight:600;
+    color:#2563eb;
+    text-decoration:none;
+}
+img.preview {
+    max-width:300px;
+    margin-top:15px;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
 
+/* Footer */
+footer {
+    background:#0f172a;
+    color:#ffffff;
+    text-align:center;
+    padding:22px 15px;
+    margin-top:60px;
+    font-size:14px;
+    font-weight:500;
+    opacity:1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+footer p {
+    color:#ffffff;
+    margin:0;
+}
+footer a {
+    color:#ffffff;
+    text-decoration:none;
+    font-weight:500;
+    margin: 0 5px;
+}
+footer a:hover { color:#e5e7eb; }
+
+/* Mobile Responsive */
 @media(max-width:600px){
-  h1{font-size:24px}
-  .tool{padding:25px}
+    .container { margin:30px 15px; padding:25px; }
+    input[type="file"], select { width:100%; }
 }
 </style>
 </head>
-
 <body>
 
+<!-- Header -->
 <header>
-  <div class="header-wrap">
-    <!-- ✅ NO SPACE LOGO -->
-    <a href="index.html" class="logo">Nagar<span>Tools</span></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+  <div class="logo"><i class="fa-solid fa-toolbox"></i> NagarTools</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="mailto:nagartools1@gmail.com">Contact</a>
+  </nav>
 </header>
 
-<main>
-  <div class="tool">
-    <h1>Image Converter Tool</h1>
-    <p>Upload your image, choose format and download instantly.</p>
+<!-- Image Converter Tool -->
+<div class="container">
+<h1>Image Converter Tool</h1>
+<p>Upload your image, choose format, and download instantly.</p>
 
-    <input type="file" id="img" accept="image/*">
-    <select id="format">
-      <option value="image/png">PNG</option>
-      <option value="image/jpeg">JPG</option>
-      <option value="image/webp">WEBP</option>
-      <option value="image/bmp">BMP</option>
-    </select>
+<input type="file" id="imageInput" accept="image/*">
+<select id="format">
+  <option value="image/png">PNG</option>
+  <option value="image/jpeg">JPEG</option>
+  <option value="image/webp">WEBP</option>
+  <option value="image/bmp">BMP</option>
+  <option value="image/gif">GIF</option>
+  <option value="image/tiff">TIFF</option>
+</select>
+<br>
+<button onclick="convertImage()">Convert Image</button>
+<a id="downloadLink" href="#" download="converted_image">Download Converted Image</a>
 
-    <button onclick="convert()">Convert Image</button>
+<img id="preview" class="preview" src="" alt="Image Preview" style="display:none;">
+</div>
 
-    <img id="preview">
-    <a id="download">Download Image</a>
-  </div>
-</main>
-
+<!-- Footer -->
 <footer>
-  <p>© 2025 Nagar Tools |
-    <a href="index.html">Home</a> |
-    <a href="privacy-policy.html">Privacy</a> |
-    <a href="terms.html">Terms</a>
-  </p>
+<p>© 2025 NagarTools |
+  <a href="index.html">Home</a> |
+  <a href="privacy-policy.html">Privacy</a> |
+  <a href="terms.html">Terms</a>
+</p>
 </footer>
 
+<!-- JavaScript -->
 <script>
-function convert(){
-  const f=document.getElementById("img").files[0];
-  if(!f){alert("Select image");return;}
-  const type=document.getElementById("format").value;
-  const r=new FileReader();
-  r.onload=e=>{
-    const i=new Image();
-    i.src=e.target.result;
-    i.onload=()=>{
-      const c=document.createElement("canvas");
-      c.width=i.width;c.height=i.height;
-      c.getContext("2d").drawImage(i,0,0);
-      const url=c.toDataURL(type);
-      preview.src=url;preview.style.display="block";
-      download.href=url;
-      download.download="converted."+type.split("/")[1];
-      download.style.display="block";
+function convertImage(){
+  const file = document.getElementById('imageInput').files[0];
+  if(!file){ alert('Please select an image.'); return; }
+  const format = document.getElementById('format').value;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.src = e.target.result;
+    const preview = document.getElementById('preview');
+    preview.src = e.target.result;
+    preview.style.display = 'block';
+    img.onload = function(){
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img,0,0);
+      let dataURL;
+      try { dataURL = canvas.toDataURL(format); } 
+      catch(e) { alert('Selected format may not be supported by browser.'); return; }
+      const link = document.getElementById('downloadLink');
+      link.href = dataURL;
+      link.download = 'converted_image.' + format.split('/')[1];
+      link.style.display = 'block';
     }
   }
-  r.readAsDataURL(f);
+  reader.readAsDataURL(file);
 }
 </script>
 
