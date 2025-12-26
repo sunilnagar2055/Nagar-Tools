@@ -3,113 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Converter Online – Nagar Tools</title>
-<meta name="description" content="Convert images online free with Nagar Tools. Supports PNG, JPEG, WEBP, BMP, GIF, TIFF formats. Professional, fast, and secure image converter.">
-<meta name="keywords" content="image converter online, convert png to jpg, jpg to webp, bmp converter, tiff converter, nagar tools">
-<link rel="canonical" href="https://nagartools.in/image-converter.html">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<title>Image Converter Online Free – PNG, JPG, WEBP | Nagar Tools</title>
+
+<meta name="description" content="Free Image Converter Tool by Nagar Tools. Convert PNG to JPG, JPG to WEBP, BMP, GIF online fast & secure. No upload, 100% client-side.">
+<meta name="keywords" content="image converter, png to jpg, jpg to webp, online image converter, nagar tools">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://nagartools.in/image-converter.html">
+
+<!-- Favicon SAME as index.html -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f7fb; color:#1f2937;}
-header { background:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,.05);}
-header .logo { font-size:22px; font-weight:700; color:#2563eb;}
-header nav a { margin-left:18px; text-decoration:none; color:#374151; font-weight:500;}
-header nav a:hover { color:#2563eb;}
-.container { max-width:900px; margin:50px auto; background:#fff; padding:40px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,.1); text-align:center;}
-h1 { font-size:28px; margin-bottom:20px; color:#2563eb;}
-h2 { font-size:22px; margin-top:30px; color:#2563eb;}
-input[type="file"], select { width:80%; max-width:400px; padding:12px; margin:15px 0; border-radius:8px; border:1px solid #ccc;}
-button { padding:12px 25px; border:none; border-radius:8px; background:#2563eb; color:#fff; font-size:16px; cursor:pointer; margin-top:10px;}
-button:hover { opacity:0.9;}
-#downloadLink { display:none; margin-top:15px; font-weight:600; color:#2563eb; text-decoration:none;}
-ul { text-align:left; margin-top:15px; }
-ul li { margin-bottom:6px; }
-.footer { text-align:center; padding:25px; margin-top:50px; background:#0f172a; color:#cbd5f5;}
-.footer a { color:#cbd5f5; text-decoration:none; }
-.footer a:hover { color:#fff; }
-img.preview { max-width:300px; margin-top:15px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.1);}
-@media(max-width:600px){ .container { margin:30px 15px; padding:25px; } input[type="file"], select { width:100%; } }
+:root{
+  --primary-blue:#2563eb;
+  --dark-gray:#1f2937;
+  --light:#f8fafc;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,sans-serif;
+  background:#f1f5f9;
+  color:var(--dark-gray);
+}
+
+/* HEADER */
+header{
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.header-wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:24px;
+  font-weight:700;
+  color:var(--primary-blue);
+}
+.logo span{color:var(--dark-gray)}
+nav a{
+  margin-left:18px;
+  text-decoration:none;
+  color:#374151;
+  font-weight:500;
+}
+nav a:hover{color:var(--primary-blue)}
+
+/* MAIN */
+main{
+  max-width:900px;
+  margin:50px auto;
+  background:#fff;
+  padding:40px;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  text-align:center;
+}
+h1{
+  color:var(--primary-blue);
+  font-size:32px;
+  margin-bottom:15px;
+}
+p{color:#475569;margin-bottom:20px}
+
+input,select,button{
+  width:100%;
+  max-width:420px;
+  padding:14px;
+  margin:10px 0;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  font-size:16px;
+}
+button{
+  background:var(--primary-blue);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{opacity:.9}
+
+#download{
+  display:none;
+  margin-top:15px;
+  font-weight:600;
+  color:var(--primary-blue);
+}
+
+img{
+  max-width:320px;
+  margin-top:20px;
+  border-radius:10px;
+  display:none;
+}
+
+/* SEO CONTENT */
+section{
+  text-align:left;
+  margin-top:40px;
+}
+h2{
+  color:var(--primary-blue);
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  background:#0f172a;
+  color:#cbd5f5;
+  text-align:center;
+  padding:25px;
+}
+footer a{color:#cbd5f5;text-decoration:none}
+footer a:hover{color:#fff}
+
+@media(max-width:600px){
+  main{margin:30px 15px;padding:25px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo"><i class="fa-solid fa-toolbox"></i> NagarTools</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#tools">Tools</a>
-    <a href="mailto:nagartools1@gmail.com">Contact</a>
-  </nav>
+  <div class="header-wrap">
+    <div class="logo">Nagar<span>Tools</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="mailto:nagartools1@gmail.com">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-<h1>Advanced Image Converter</h1>
-<p>Convert images online free to PNG, JPEG, WEBP, BMP, GIF, or TIFF formats. Fast, secure, and professional client-side converter.</p>
+<main>
+<h1>Free Image Converter Online</h1>
+<p>Convert images to PNG, JPG, WEBP, BMP, GIF instantly. 100% secure & browser-based.</p>
 
-<input type="file" id="imageInput" accept="image/*">
+<input type="file" id="file" accept="image/*">
+
 <select id="format">
   <option value="image/png">PNG</option>
-  <option value="image/jpeg">JPEG</option>
+  <option value="image/jpeg">JPG</option>
   <option value="image/webp">WEBP</option>
   <option value="image/bmp">BMP</option>
-  <option value="image/gif">GIF</option>
-  <option value="image/tiff">TIFF</option>
 </select>
-<br>
-<button onclick="convertImage()">Convert & Download</button>
-<a id="downloadLink" href="#" download="converted_image">Download Converted Image</a>
 
-<img id="preview" class="preview" src="" alt="Image Preview" style="display:none;">
+<button onclick="convert()">Convert Image</button>
 
-<h2>How to Use</h2>
-<p>1. Select an image from your device.<br>
-2. Choose the output format.<br>
-3. Click "Convert & Download".<br>
-4. Download your converted image instantly.</p>
+<a id="download">Download Image</a>
+<img id="preview" alt="Converted image preview">
 
-<h2>Features</h2>
+<!-- SEO CONTENT -->
+<section>
+<h2>How to Convert Image Online</h2>
+<p>Upload your image, choose output format and click convert. Your image never leaves your device.</p>
+
+<h2>Why Use Nagar Tools Image Converter?</h2>
 <ul>
-<li>Supports PNG, JPEG, WEBP, BMP, GIF, TIFF formats</li>
-<li>Fast client-side conversion, no server required</li>
-<li>Works on desktop and mobile devices</li>
-<li>Professional and user-friendly UI interface</li>
-<li>Free and secure for everyone</li>
+<li>✔ No upload – 100% secure</li>
+<li>✔ Fast conversion</li>
+<li>✔ Mobile & desktop friendly</li>
+<li>✔ Free forever</li>
 </ul>
-</div>
+</section>
 
-<div class="footer">
-<p>&copy; 2025 Nagar Tools – Simplifying your digital life. | <a href="index.html">Home</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-</div>
+</main>
+
+<footer>
+<p>© 2025 Nagar Tools | Free Online Image Converter</p>
+</footer>
 
 <script>
-function convertImage(){
-  const file = document.getElementById('imageInput').files[0];
-  if(!file){ alert('Please select an image.'); return; }
-  const format = document.getElementById('format').value;
-  const reader = new FileReader();
-  reader.onload = function(e){
-    const img = new Image();
-    img.src = e.target.result;
-    const preview = document.getElementById('preview');
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    img.onload = function(){
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img,0,0);
-      let dataURL;
-      try { dataURL = canvas.toDataURL(format); } 
-      catch(e) { alert('Selected format may not be supported by browser.'); return; }
-      const link = document.getElementById('downloadLink');
-      link.href = dataURL;
-      link.download = 'converted_image.' + format.split('/')[1];
-      link.style.display = 'block';
+function convert(){
+  const f=document.getElementById('file').files[0];
+  if(!f){alert("Select image");return;}
+  const format=document.getElementById('format').value;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=new Image();
+    img.src=e.target.result;
+    img.onload=()=>{
+      const c=document.createElement("canvas");
+      c.width=img.width;c.height=img.height;
+      c.getContext("2d").drawImage(img,0,0);
+      const url=c.toDataURL(format);
+      document.getElementById("preview").src=url;
+      document.getElementById("preview").style.display="block";
+      const d=document.getElementById("download");
+      d.href=url;
+      d.download="converted."+format.split("/")[1];
+      d.style.display="block";
     }
   }
-  reader.readAsDataURL(file);
+  r.readAsDataURL(f);
 }
 </script>
 
