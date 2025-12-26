@@ -4,45 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image Converter Online – PNG JPG WEBP | Nagar Tools</title>
-
-<meta name="description" content="Free Image Converter Tool. Convert images to PNG, JPG, WEBP, BMP online. Fast, secure and mobile friendly.">
-<meta name="keywords" content="image converter, png to jpg, jpg to webp, image converter online">
+<title>Image Converter Online – Nagar Tools</title>
+<meta name="description" content="Free Image Converter Tool by Nagar Tools. Convert PNG, JPG, WEBP, BMP online instantly.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://nagartools.in/image-converter.html">
 
-<!-- SAME STYLE THEME AS INDEX -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
 <style>
 :root{
   --primary:#2563eb;
-  --white:#ffffff;
   --dark:#1f2937;
-  --light:#f5f7fb;
+  --bg:#f5f7fb;
 }
 
+/* RESET */
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:Arial, sans-serif;
 }
 
+/* BODY + FOOTER FIX */
 body{
-  background:var(--light);
+  background:var(--bg);
   color:var(--dark);
   min-height:100vh;
   display:flex;
   flex-direction:column;
 }
 
-/* HEADER */
+/* ===== HEADER (MATCH INDEX) ===== */
 header{
-  background:var(--white);
+  background:#fff;
   box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
-.header-inner{
-  max-width:1100px;
+.header-wrap{
+  max-width:1200px;
   margin:auto;
   padding:15px 20px;
   display:flex;
@@ -53,9 +53,15 @@ header{
   font-size:22px;
   font-weight:700;
   color:var(--primary);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.logo span{
+  color:var(--dark);
 }
 nav a{
-  margin-left:16px;
+  margin-left:18px;
   text-decoration:none;
   color:#374151;
   font-weight:500;
@@ -64,22 +70,27 @@ nav a:hover{
   color:var(--primary);
 }
 
-/* MAIN TOOL */
+/* ===== FULL PAGE TOOL ===== */
 main{
   flex:1;
-  max-width:900px;
-  margin:40px auto;
-  background:var(--white);
-  padding:35px;
-  border-radius:14px;
-  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  width:100%;
+  padding:50px 20px;
+}
+
+.tool-box{
+  max-width:1100px;
+  margin:auto;
+  background:#fff;
+  padding:45px;
+  border-radius:16px;
+  box-shadow:0 25px 45px rgba(0,0,0,.12);
   text-align:center;
 }
 
 h1{
   color:var(--primary);
+  font-size:34px;
   margin-bottom:10px;
-  font-size:30px;
 }
 p{
   color:#475569;
@@ -88,12 +99,13 @@ p{
 
 input, select, button{
   width:100%;
-  max-width:420px;
+  max-width:450px;
   padding:14px;
-  margin:10px 0;
+  margin:10px auto;
   border-radius:10px;
   border:1px solid #cbd5e1;
   font-size:16px;
+  display:block;
 }
 
 button{
@@ -103,14 +115,12 @@ button{
   font-weight:600;
   cursor:pointer;
 }
-button:hover{
-  opacity:.9;
-}
+button:hover{opacity:.9}
 
 img{
   max-width:320px;
   margin-top:20px;
-  border-radius:10px;
+  border-radius:12px;
   display:none;
 }
 
@@ -122,7 +132,7 @@ img{
   text-decoration:none;
 }
 
-/* FOOTER */
+/* ===== FOOTER (100% FIXED) ===== */
 footer{
   background:#0f172a;
   color:#cbd5f5;
@@ -134,17 +144,12 @@ footer a{
   text-decoration:none;
   margin:0 6px;
 }
-footer a:hover{
-  color:#fff;
-}
+footer a:hover{color:#fff}
 
 /* MOBILE */
 @media(max-width:600px){
-  main{
-    margin:25px 15px;
-    padding:25px;
-  }
-  h1{font-size:24px}
+  h1{font-size:26px}
+  .tool-box{padding:25px}
 }
 </style>
 </head>
@@ -152,8 +157,8 @@ footer a:hover{
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">NagarTools</div>
+  <div class="header-wrap">
+    <div class="logo">🔧 Nagar<span>Tools</span></div>
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#tools">Tools</a>
@@ -163,68 +168,66 @@ footer a:hover{
 </header>
 
 <main>
-<h1>Image Converter Tool</h1>
-<p>Upload an image, choose format and download instantly.</p>
+  <div class="tool-box">
+    <h1>Image Converter Tool</h1>
+    <p>Upload your image, convert format and download instantly.</p>
 
-<input type="file" id="imageInput" accept="image/*">
+    <input type="file" id="imageInput" accept="image/*">
 
-<select id="format">
-  <option value="image/png">PNG</option>
-  <option value="image/jpeg">JPG</option>
-  <option value="image/webp">WEBP</option>
-  <option value="image/bmp">BMP</option>
-</select>
+    <select id="format">
+      <option value="image/png">PNG</option>
+      <option value="image/jpeg">JPG</option>
+      <option value="image/webp">WEBP</option>
+      <option value="image/bmp">BMP</option>
+    </select>
 
-<button onclick="convertImage()">Convert Image</button>
+    <button onclick="convertImage()">Convert Image</button>
 
-<img id="preview" alt="Image Preview">
-<a id="download">Download Image</a>
+    <img id="preview" alt="Image Preview">
+    <a id="download">Download Converted Image</a>
+  </div>
 </main>
 
 <footer>
-<p>
-© 2025 Nagar Tools |
-<a href="index.html">Home</a> |
-<a href="privacy-policy.html">Privacy Policy</a> |
-<a href="terms.html">Terms</a>
-</p>
+  <p>
+    © 2025 Nagar Tools |
+    <a href="index.html">Home</a> |
+    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a>
+  </p>
 </footer>
 
 <script>
 function convertImage(){
-  const file = document.getElementById("imageInput").files[0];
+  const file=document.getElementById("imageInput").files[0];
   if(!file){
     alert("Please select an image");
     return;
   }
 
-  const format = document.getElementById("format").value;
-  const reader = new FileReader();
+  const format=document.getElementById("format").value;
+  const reader=new FileReader();
 
-  reader.onload = function(e){
-    const img = new Image();
-    img.src = e.target.result;
+  reader.onload=e=>{
+    const img=new Image();
+    img.src=e.target.result;
+    img.onload=()=>{
+      const canvas=document.createElement("canvas");
+      canvas.width=img.width;
+      canvas.height=img.height;
+      canvas.getContext("2d").drawImage(img,0,0);
 
-    img.onload = function(){
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img,0,0);
+      const url=canvas.toDataURL(format);
 
-      const output = canvas.toDataURL(format);
+      document.getElementById("preview").src=url;
+      document.getElementById("preview").style.display="block";
 
-      const preview = document.getElementById("preview");
-      preview.src = output;
-      preview.style.display = "block";
-
-      const download = document.getElementById("download");
-      download.href = output;
-      download.download = "converted-image."+format.split("/")[1];
-      download.style.display = "block";
+      const d=document.getElementById("download");
+      d.href=url;
+      d.download="converted-image."+format.split("/")[1];
+      d.style.display="block";
     }
   };
-
   reader.readAsDataURL(file);
 }
 </script>
