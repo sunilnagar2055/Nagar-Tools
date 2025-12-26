@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image Converter Tool – NagarTools</title>
+<title>Image Converter Tool – Nagar Tools</title>
 
-<meta name="description" content="Free Image Converter Tool by NagarTools. Convert images to PNG, JPG, WEBP, BMP online instantly. Secure and SEO friendly.">
-<meta name="keywords" content="image converter, png to jpg, jpg to webp, nagartools image converter">
+<meta name="description" content="Free Image Converter Tool by Nagar Tools. Convert images to PNG, JPG, WEBP, BMP online instantly. SEO friendly & secure.">
+<meta name="keywords" content="image converter, png to jpg, jpg to webp, nagar tools image converter">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://nagartools.in/image-converter.html">
 
+<!-- SAME FAVICON AS INDEX -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
 
 <style>
@@ -35,7 +36,7 @@ body{
   color:var(--dark);
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER (EXACT INDEX STYLE) ================= */
 header{
   background:#ffffff;
   box-shadow:0 2px 10px rgba(0,0,0,.08);
@@ -43,17 +44,23 @@ header{
 .header-wrap{
   max-width:1200px;
   margin:auto;
-  padding:14px 20px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
+
+/* 👇 EXACT SAME LOGO AS INDEX.HTML */
 .logo{
   font-size:22px;
   font-weight:700;
   color:var(--primary);
-  white-space:nowrap;
+  text-decoration:none;
 }
+.logo span{
+  color:var(--dark);
+}
+
 nav a{
   margin-left:18px;
   text-decoration:none;
@@ -127,13 +134,13 @@ img{
 /* ================= FOOTER (WHITE TEXT) ================= */
 footer{
   background:#0f172a;
-  color:#ffffff;              /* ✅ WHITE TEXT */
+  color:#ffffff;
   text-align:center;
   padding:22px 15px;
   margin-top:60px;
 }
 footer a{
-  color:#ffffff;              /* ✅ WHITE LINKS */
+  color:#ffffff;
   text-decoration:none;
   margin:0 6px;
 }
@@ -153,7 +160,9 @@ footer a:hover{
 
 <header>
   <div class="header-wrap">
-    <div class="logo">NagarTools</div>
+    <!-- ✅ SAME LOGO STRUCTURE AS INDEX -->
+    <a href="index.html" class="logo">Nagar <span>Tools</span></a>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#tools">Tools</a>
@@ -185,7 +194,7 @@ footer a:hover{
 
 <footer>
   <p>
-    © 2025 NagarTools |
+    © 2025 Nagar Tools |
     <a href="index.html">Home</a> |
     <a href="privacy-policy.html">Privacy Policy</a> |
     <a href="terms.html">Terms</a>
@@ -194,34 +203,33 @@ footer a:hover{
 
 <script>
 function convertImage(){
-  const file = document.getElementById("imageInput").files[0];
+  const file=document.getElementById("imageInput").files[0];
   if(!file){
     alert("Please select an image");
     return;
   }
 
-  const format = document.getElementById("format").value;
-  const reader = new FileReader();
+  const format=document.getElementById("format").value;
+  const reader=new FileReader();
 
-  reader.onload = function(e){
-    const img = new Image();
-    img.src = e.target.result;
-
-    img.onload = function(){
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
+  reader.onload=e=>{
+    const img=new Image();
+    img.src=e.target.result;
+    img.onload=()=>{
+      const canvas=document.createElement("canvas");
+      canvas.width=img.width;
+      canvas.height=img.height;
       canvas.getContext("2d").drawImage(img,0,0);
 
-      const output = canvas.toDataURL(format);
+      const url=canvas.toDataURL(format);
 
-      document.getElementById("preview").src = output;
-      document.getElementById("preview").style.display = "block";
+      document.getElementById("preview").src=url;
+      document.getElementById("preview").style.display="block";
 
-      const d = document.getElementById("download");
-      d.href = output;
-      d.download = "converted-image." + format.split("/")[1];
-      d.style.display = "block";
+      const d=document.getElementById("download");
+      d.href=url;
+      d.download="converted-image."+format.split("/")[1];
+      d.style.display="block";
     }
   };
   reader.readAsDataURL(file);
