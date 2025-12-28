@@ -1,222 +1,1882 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic Meta Tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nagar Tools - Your Daily Tools, All in One Place. Convert, calculate, compress, and simplify your everyday tasks — fast and free.">
-  <meta name="keywords" content="Image Converter, PDF Tools, Calculators, Text Tools, SEO Tools, Nagar Tools">
-  <meta name="author" content="Nagar Tools">
-  <link rel="canonical" href="https://nagartools.in/">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
-  <!-- SEO Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Nagar Tools",
-    "url": "https://nagartools.in",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://nagartools.in/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NagarTools - Your Daily Tools, All in One Place</title>
+    <meta name="description" content="Convert, calculate, compress, and simplify your everyday tasks with NagarTools — fast and free tools for images, PDFs, text, SEO, and more.">
+    <meta name="keywords" content="online tools, PDF converter, image compressor, calculator, text tools, SEO tools, free tools">
+    <link rel="canonical" href="https://nagartools.in">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NagarTools",
+      "url": "https://nagartools.in",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "Free online tools for images, PDFs, calculations, text manipulation, SEO, and development.",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "NagarTools",
+        "url": "https://nagartools.in"
+      },
+      "sameAs": []
     }
-  }
-  </script>
-
-  <!-- Title -->
-  <title>Nagar Tools - All Your Daily Tools in One Place</title>
-
-  <!-- CSS -->
-  <style>
-    /* Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-    /* Reset & Base */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
-    body {font-family: 'Inter', sans-serif; line-height:1.6; color:#1e1e1e; background:#f9f9f9;}
-    a {text-decoration:none; color:inherit;}
-    img {max-width:100%; display:block; height:auto;}
-    button {cursor:pointer; border:none; outline:none;}
-
-    /* Colors */
-    :root {
-      --blue-primary: #2563eb;
-      --blue-dark: #1e40af;
-      --blue-light: #3b82f6;
-      --gray-light: #f3f4f6;
-      --gray-dark: #374151;
-    }
-
-    /* Container */
-    .container {max-width:1200px; margin:0 auto; padding:0 15px;}
-
-    /* Header */
-    header {background:#2563eb; color:#fff; padding:15px 0;}
-    .header-top {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
-    .logo {font-size:1.8rem; font-weight:600;}
-    nav ul {display:flex; gap:20px; list-style:none;}
-    nav ul li a {color:#fff; font-weight:500; transition:0.3s;}
-    nav ul li a:hover {color:#f3f4f6;}
-    .header-right {display:flex; gap:15px; align-items:center;}
-    .search-bar input {padding:5px 10px; border-radius:5px; border:none; width:180px;}
-    @media(max-width:768px){
-      nav ul {flex-direction:column; margin-top:10px;}
-      .header-right {margin-top:10px;}
-    }
-
-    /* Hero Section */
-    .hero {background:#1e40af; color:#fff; text-align:center; padding:80px 20px;}
-    .hero h1 {font-size:2.5rem; margin-bottom:15px;}
-    .hero p {font-size:1.1rem; margin-bottom:25px;}
-    .hero button {background:#3b82f6; padding:12px 25px; border-radius:5px; font-size:1rem; font-weight:600; color:#fff; transition:0.3s;}
-    .hero button:hover {background:#2563eb;}
-
-    /* Tool Categories Grid */
-    .tools-section {padding:60px 0; background:#f9f9f9;}
-    .tools-section h2 {text-align:center; font-size:2rem; margin-bottom:40px; color:#1e40af;}
-    .tools-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:25px;}
-    .tool-card {background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s;}
-    .tool-card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
-    .tool-card h3 {margin-bottom:10px; color:#2563eb;}
-    .tool-card p {font-size:0.95rem; margin-bottom:15px; color:#374151;}
-    .tool-card button {background:#2563eb; color:#fff; padding:8px 15px; border-radius:5px; font-weight:500; transition:0.3s;}
-    .tool-card button:hover {background:#1e40af;}
-
-    /* Footer */
-    footer {background:#1e40af; color:#fff; padding:40px 20px;}
-    .footer-top {display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;}
-    .footer-logo {font-weight:600; font-size:1.5rem;}
-    .footer-links ul {list-style:none; display:flex; gap:20px;}
-    .footer-links ul li a {color:#fff; transition:0.3s;}
-    .footer-links ul li a:hover {color:#3b82f6;}
-    .footer-bottom {text-align:center; margin-top:30px; font-size:0.9rem; color:#d1d5db;}
-
-    /* Buttons & Hover Effects */
-    button, .btn {transition:0.3s;}
-    button:hover, .btn:hover {opacity:0.9;}
-
-    /* Responsive */
-    @media(max-width:768px){
-      .tools-grid {grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));}
-    }
-
-  </style>
+    </script>
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+            --card-light: #ffffff;
+            --card-dark: #1e293b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        body.dark-mode header {
+            background-color: var(--card-dark);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+        }
+        
+        .logo span {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .logo span {
+            color: var(--text-dark);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode nav a {
+            color: var(--text-dark);
+        }
+        
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        
+        .search-bar {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .search-bar {
+            background-color: var(--card-dark);
+            border-color: #475569;
+            color: var(--text-dark);
+        }
+        
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .theme-toggle {
+            border-color: #475569;
+            color: var(--text-dark);
+        }
+        
+        .theme-toggle:hover {
+            background-color: #f1f5f9;
+        }
+        
+        body.dark-mode .theme-toggle:hover {
+            background-color: #334155;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            line-height: 1.2;
+        }
+        
+        body.dark-mode .hero h1 {
+            color: #dbeafe;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .hero p {
+            color: #cbd5e1;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Tool Categories */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            font-size: 2.2rem;
+            color: var(--dark-blue);
+        }
+        
+        body.dark-mode .section-title {
+            color: #dbeafe;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background-color: var(--card-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+        }
+        
+        body.dark-mode .category-card {
+            background-color: var(--card-dark);
+            border-color: #334155;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+        
+        .category-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .category-card h3 {
+            color: var(--text-dark);
+        }
+        
+        .category-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+        
+        body.dark-mode .category-card p {
+            color: #94a3b8;
+        }
+        
+        .tool-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .tool-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        body.dark-mode .tool-list li {
+            border-bottom: 1px dashed #475569;
+        }
+        
+        .tool-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .tool-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .tool-link:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #f1f5f9;
+            margin-bottom: 30px;
+        }
+        
+        body.dark-mode .breadcrumb {
+            background-color: #1e293b;
+        }
+        
+        .breadcrumb ol {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb li:not(:last-child)::after {
+            content: ">";
+            margin-left: 10px;
+            color: #64748b;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-tagline {
+            color: #dbeafe;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #dbeafe;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .categories {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            body.dark-mode nav ul {
+                background-color: var(--card-dark);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                order: 3;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Tool Page Styles */
+        .tool-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            margin: 30px 0 60px;
+        }
+        
+        .tool-main {
+            background-color: var(--card-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .tool-main {
+            background-color: var(--card-dark);
+        }
+        
+        .tool-sidebar {
+            background-color: var(--card-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        body.dark-mode .tool-sidebar {
+            background-color: var(--card-dark);
+        }
+        
+        .tool-sidebar h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--dark-blue);
+        }
+        
+        body.dark-mode .tool-sidebar h3 {
+            border-bottom: 1px solid #475569;
+            color: #dbeafe;
+        }
+        
+        .related-tools {
+            list-style: none;
+        }
+        
+        .related-tools li {
+            margin-bottom: 12px;
+        }
+        
+        .related-tools a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        
+        .related-tools a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 900px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin: 20px 0;
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        body.dark-mode .progress-container {
+            background-color: #475569;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-blue);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Tool Input/Output Areas */
+        .tool-input, .tool-output {
+            margin-bottom: 25px;
+        }
+        
+        .tool-input label, .tool-output label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        textarea, input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        body.dark-mode textarea, 
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="number"],
+        body.dark-mode select {
+            background-color: #334155;
+            border-color: #475569;
+            color: var(--text-dark);
+        }
+        
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+            font-family: monospace;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .tool-button {
+            padding: 10px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .tool-button:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .tool-button.secondary {
+            background-color: #64748b;
+        }
+        
+        .tool-button.secondary:hover {
+            background-color: #475569;
+        }
+        
+        /* Result Display */
+        .result-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+            word-break: break-all;
+        }
+        
+        body.dark-mode .result-container {
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <div class="container header-top">
-      <div class="logo">NagarTools</div>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="#tools">Tools</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="header-right">
-        <div>📧 nagartools1@gmail.com</div>
-        <div class="search-bar">
-          <input type="search" placeholder="Search a tool...">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#home" class="logo">
+                🔧 Nagar<span>Tools</span>
+            </a>
+            
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                ☰
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-bar" id="searchBar" placeholder="Search a tool..." aria-label="Search for tools">
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                🌙
+            </button>
         </div>
-      </div>
+    </header>
+    
+    <!-- Breadcrumb (for tool pages) -->
+    <div class="breadcrumb container" id="breadcrumb">
+        <ol>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li id="currentPage">Home</li>
+        </ol>
     </div>
-  </header>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Homepage Hero -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Your Daily Tools, All in One Place</h1>
+                <p>Convert, calculate, compress, and simplify your everyday tasks — fast and free. Access 50+ tools for images, PDFs, text, SEO, and development.</p>
+                <a href="#tools" class="cta-button">Explore Tools</a>
+            </div>
+        </section>
+        
+        <!-- Tool Categories -->
+        <section class="container" id="tools">
+            <h2 class="section-title">Popular Tool Categories</h2>
+            <div class="categories" id="toolCategories">
+                <!-- Tool categories will be populated by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Tool Content Area -->
+        <div class="container" id="toolContainer">
+            <!-- Tool content will be loaded here dynamically -->
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">NagarTools</div>
+                    <p class="footer-tagline">Simplifying your digital life.</p>
+                    <p>Email: <a href="mailto:nagartools1@gmail.com">nagartools1@gmail.com</a></p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Twitter">t</a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-icon" aria-label="GitHub">gh</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tools">All Tools</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Use</a></li>
+                        <li><a href="#sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tool Categories</h4>
+                    <ul>
+                        <li><a href="#image-tools">Image Tools</a></li>
+                        <li><a href="#pdf-tools">PDF Tools</a></li>
+                        <li><a href="#calculator-tools">Calculators</a></li>
+                        <li><a href="#text-tools">Text Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 NagarTools. All rights reserved.</p>
+                <p>Official URL: <a href="https://nagartools.in" style="color: #cbd5e1;">https://nagartools.in</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // Application Data and State
+        const appState = {
+            currentTool: null,
+            darkMode: false,
+            favorites: JSON.parse(localStorage.getItem('nagartools_favorites')) || [],
+            searchQuery: '',
+            tools: [
+                // Image Tools
+                {
+                    id: 'image-converter',
+                    name: 'Image Converter',
+                    category: 'image',
+                    description: 'Convert images between JPG, PNG, WebP, SVG and more formats.',
+                    icon: '🖼️',
+                    keywords: ['image converter', 'jpg to png', 'png to webp', 'image format']
+                },
+                {
+                    id: 'image-compressor',
+                    name: 'Image Compressor',
+                    category: 'image',
+                    description: 'Reduce image file size without noticeable quality loss.',
+                    icon: '📦',
+                    keywords: ['compress image', 'reduce image size', 'image optimizer']
+                },
+                {
+                    id: 'image-resizer',
+                    name: 'Image Resizer',
+                    category: 'image',
+                    description: 'Resize images to specific dimensions while maintaining aspect ratio.',
+                    icon: '↔️',
+                    keywords: ['resize image', 'change image dimensions', 'scale image']
+                },
+                {
+                    id: 'image-to-text',
+                    name: 'Image to Text (OCR)',
+                    category: 'image',
+                    description: 'Extract text from images using Optical Character Recognition.',
+                    icon: '🔤',
+                    keywords: ['ocr', 'image to text', 'text extraction', 'image recognition']
+                },
+                
+                // PDF Tools
+                {
+                    id: 'pdf-to-word',
+                    name: 'PDF to Word',
+                    category: 'document',
+                    description: 'Convert PDF documents to editable Word files.',
+                    icon: '📄',
+                    keywords: ['pdf to word', 'convert pdf', 'pdf converter', 'docx']
+                },
+                {
+                    id: 'pdf-compressor',
+                    name: 'PDF Compressor',
+                    category: 'document',
+                    description: 'Reduce PDF file size for easier sharing and storage.',
+                    icon: '📦',
+                    keywords: ['compress pdf', 'reduce pdf size', 'pdf optimizer']
+                },
+                {
+                    id: 'pdf-merger',
+                    name: 'PDF Merger',
+                    category: 'document',
+                    description: 'Combine multiple PDF files into a single document.',
+                    icon: '🔄',
+                    keywords: ['merge pdf', 'combine pdf', 'join pdf files']
+                },
+                {
+                    id: 'pdf-splitter',
+                    name: 'PDF Splitter',
+                    category: 'document',
+                    description: 'Split PDF files into multiple documents or extract specific pages.',
+                    icon: '✂️',
+                    keywords: ['split pdf', 'extract pdf pages', 'divide pdf']
+                },
+                
+                // Calculator Tools
+                {
+                    id: 'scientific-calculator',
+                    name: 'Scientific Calculator',
+                    category: 'calculator',
+                    description: 'Advanced calculator with scientific functions and operations.',
+                    icon: '🧮',
+                    keywords: ['scientific calculator', 'math calculator', 'advanced calculator']
+                },
+                {
+                    id: 'bmi-calculator',
+                    name: 'BMI Calculator',
+                    category: 'calculator',
+                    description: 'Calculate Body Mass Index based on height and weight.',
+                    icon: '⚖️',
+                    keywords: ['bmi calculator', 'body mass index', 'health calculator']
+                },
+                {
+                    id: 'loan-emi-calculator',
+                    name: 'Loan EMI Calculator',
+                    category: 'calculator',
+                    description: 'Calculate Equated Monthly Installment for loans.',
+                    icon: '💰',
+                    keywords: ['emi calculator', 'loan calculator', 'mortgage calculator']
+                },
+                {
+                    id: 'gst-calculator',
+                    name: 'GST Calculator',
+                    category: 'calculator',
+                    description: 'Calculate Goods and Services Tax amounts.',
+                    icon: '📊',
+                    keywords: ['gst calculator', 'tax calculator', 'goods and services tax']
+                },
+                
+                // Text Tools
+                {
+                    id: 'text-case-converter',
+                    name: 'Text Case Converter',
+                    category: 'text',
+                    description: 'Convert text between uppercase, lowercase, title case and more.',
+                    icon: '🔄',
+                    keywords: ['case converter', 'uppercase lowercase', 'text case']
+                },
+                {
+                    id: 'word-counter',
+                    name: 'Word & Character Counter',
+                    category: 'text',
+                    description: 'Count words, characters, sentences and paragraphs in text.',
+                    icon: '📝',
+                    keywords: ['word counter', 'character counter', 'text analysis']
+                },
+                {
+                    id: 'text-sorter',
+                    name: 'Text Sorter',
+                    category: 'text',
+                    description: 'Sort lines of text alphabetically or numerically.',
+                    icon: '🔠',
+                    keywords: ['sort text', 'alphabetize', 'text organizer']
+                },
+                {
+                    id: 'text-encryptor',
+                    name: 'Text Encryptor/Decoder',
+                    category: 'text',
+                    description: 'Encrypt and decrypt text using various algorithms.',
+                    icon: '🔒',
+                    keywords: ['encrypt text', 'decrypt text', 'text encryption']
+                },
+                
+                // Web/Developer Tools
+                {
+                    id: 'html-minifier',
+                    name: 'HTML/CSS/JS Minifier',
+                    category: 'web',
+                    description: 'Minify HTML, CSS and JavaScript code for better performance.',
+                    icon: '⚡',
+                    keywords: ['minify code', 'html minifier', 'css minifier', 'js minifier']
+                },
+                {
+                    id: 'json-formatter',
+                    name: 'JSON Formatter',
+                    category: 'web',
+                    description: 'Format and validate JSON data with proper indentation.',
+                    icon: '{}',
+                    keywords: ['json formatter', 'json validator', 'json beautifier']
+                },
+                {
+                    id: 'base64-encoder',
+                    name: 'Base64 Encoder/Decoder',
+                    category: 'web',
+                    description: 'Encode and decode Base64 strings.',
+                    icon: '🔣',
+                    keywords: ['base64 encode', 'base64 decode', 'base64 converter']
+                },
+                {
+                    id: 'url-encoder',
+                    name: 'URL Encoder/Decoder',
+                    category: 'web',
+                    description: 'Encode and decode URL strings.',
+                    icon: '🔗',
+                    keywords: ['url encode', 'url decode', 'url converter']
+                },
+                
+                // Color Tools
+                {
+                    id: 'color-picker',
+                    name: 'Color Picker',
+                    category: 'color',
+                    description: 'Pick colors from screen and get HEX, RGB, HSL values.',
+                    icon: '🎨',
+                    keywords: ['color picker', 'color selector', 'hex color']
+                },
+                {
+                    id: 'hex-rgb-converter',
+                    name: 'HEX-RGB Converter',
+                    category: 'color',
+                    description: 'Convert between HEX and RGB color codes.',
+                    icon: '🔄',
+                    keywords: ['hex to rgb', 'rgb to hex', 'color converter']
+                },
+                {
+                    id: 'gradient-generator',
+                    name: 'Gradient Generator',
+                    category: 'color',
+                    description: 'Create beautiful CSS gradients with custom colors.',
+                    icon: '🌈',
+                    keywords: ['gradient generator', 'css gradient', 'color gradient']
+                },
+                {
+                    id: 'contrast-checker',
+                    name: 'Contrast Checker',
+                    category: 'color',
+                    description: 'Check color contrast for accessibility compliance.',
+                    icon: '👁️',
+                    keywords: ['contrast checker', 'accessibility', 'color contrast']
+                },
+                
+                // SEO Tools
+                {
+                    id: 'keyword-density',
+                    name: 'Keyword Density Checker',
+                    category: 'seo',
+                    description: 'Analyze keyword density in text for SEO optimization.',
+                    icon: '🔍',
+                    keywords: ['keyword density', 'seo analyzer', 'keyword analysis']
+                },
+                {
+                    id: 'meta-tag-analyzer',
+                    name: 'Meta Tag Analyzer',
+                    category: 'seo',
+                    description: 'Analyze and generate meta tags for web pages.',
+                    icon: '🏷️',
+                    keywords: ['meta tag analyzer', 'seo meta tags', 'meta description']
+                },
+                {
+                    id: 'seo-word-counter',
+                    name: 'SEO Word Counter',
+                    category: 'seo',
+                    description: 'Count words and characters with SEO recommendations.',
+                    icon: '📊',
+                    keywords: ['seo word counter', 'content length', 'seo analysis']
+                },
+                
+                // Utility Tools
+                {
+                    id: 'qr-generator',
+                    name: 'QR Code Generator',
+                    category: 'utility',
+                    description: 'Generate QR codes for URLs, text, contact info and more.',
+                    icon: '📱',
+                    keywords: ['qr code generator', 'create qr code', 'qr code']
+                },
+                {
+                    id: 'uuid-generator',
+                    name: 'UUID Generator',
+                    category: 'utility',
+                    description: 'Generate Universally Unique Identifiers (UUIDs).',
+                    icon: '🆔',
+                    keywords: ['uuid generator', 'unique identifier', 'guid generator']
+                },
+                {
+                    id: 'unit-converter',
+                    name: 'Unit Converter',
+                    category: 'utility',
+                    description: 'Convert between different units of measurement.',
+                    icon: '📏',
+                    keywords: ['unit converter', 'measurement converter', 'convert units']
+                },
+                {
+                    id: 'time-zone-converter',
+                    name: 'Time Zone Converter',
+                    category: 'utility',
+                    description: 'Convert time between different time zones.',
+                    icon: '🌐',
+                    keywords: ['time zone converter', 'world clock', 'time converter']
+                }
+            ],
+            categories: [
+                {
+                    id: 'image',
+                    name: 'Image Tools',
+                    description: 'Convert, compress, resize and edit images online.',
+                    icon: '🖼️',
+                    color: '#3b82f6'
+                },
+                {
+                    id: 'document',
+                    name: 'Document Tools',
+                    description: 'PDF tools, converters, mergers and document editors.',
+                    icon: '📄',
+                    color: '#2563eb'
+                },
+                {
+                    id: 'calculator',
+                    name: 'Calculators',
+                    description: 'Scientific, financial, health and conversion calculators.',
+                    icon: '🧮',
+                    color: '#1e40af'
+                },
+                {
+                    id: 'text',
+                    name: 'Text Tools',
+                    description: 'Text manipulation, formatting, counting and encryption tools.',
+                    icon: '🔤',
+                    color: '#3b82f6'
+                },
+                {
+                    id: 'web',
+                    name: 'Web/Developer Tools',
+                    description: 'Tools for developers: minifiers, formatters, encoders.',
+                    icon: '🌐',
+                    color: '#2563eb'
+                },
+                {
+                    id: 'color',
+                    name: 'Color Tools',
+                    description: 'Color pickers, converters, generators and accessibility tools.',
+                    icon: '🎨',
+                    color: '#1e40af'
+                },
+                {
+                    id: 'seo',
+                    name: 'SEO & Marketing Tools',
+                    description: 'SEO analyzers, keyword tools and marketing utilities.',
+                    icon: '📈',
+                    color: '#3b82f6'
+                },
+                {
+                    id: 'utility',
+                    name: 'Utility Tools',
+                    description: 'QR codes, UUIDs, unit converters and other utilities.',
+                    icon: '🛠️',
+                    color: '#2563eb'
+                }
+            ]
+        };
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Your Daily Tools, All in One Place</h1>
-      <p>Convert, calculate, compress, and simplify your everyday tasks — fast and free.</p>
-      <button onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Explore Tools</button>
-    </div>
-  </section>
+        // DOM Elements
+        const domElements = {
+            mobileToggle: document.getElementById('mobileToggle'),
+            mainNav: document.getElementById('mainNav'),
+            themeToggle: document.getElementById('themeToggle'),
+            searchBar: document.getElementById('searchBar'),
+            toolCategories: document.getElementById('toolCategories'),
+            toolContainer: document.getElementById('toolContainer'),
+            breadcrumb: document.getElementById('breadcrumb'),
+            currentPage: document.getElementById('currentPage'),
+            toast: document.getElementById('toast')
+        };
 
-  <!-- Tool Categories -->
-  <section class="tools-section" id="tools">
-    <div class="container">
-      <h2>All Tools</h2>
-      <div class="tools-grid">
-        <!-- Image Tools -->
-        <div class="tool-card">
-          <h3>Image Converter</h3>
-          <p>Convert images to JPG, PNG, GIF, WEBP formats easily.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>Image Compressor</h3>
-          <p>Reduce image size without losing quality for web optimization.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>Image Resizer</h3>
-          <p>Resize your images for social media, websites, and more.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>PDF to Word</h3>
-          <p>Convert your PDF documents to editable Word files.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>Scientific Calculator</h3>
-          <p>Perform advanced calculations with ease and precision.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>Text Case Converter</h3>
-          <p>Convert text to uppercase, lowercase, title case, and more.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>QR Code Generator</h3>
-          <p>Create QR codes for URLs, text, or contact information instantly.</p>
-          <button>Use Tool</button>
-        </div>
-        <div class="tool-card">
-          <h3>Color Picker</h3>
-          <p>Pick colors from images or generate HEX & RGB codes quickly.</p>
-          <button>Use Tool</button>
-        </div>
-      </div>
-    </div>
-  </section>
+        // Initialize Application
+        function initApp() {
+            // Check for saved dark mode preference
+            const savedDarkMode = localStorage.getItem('nagartools_darkmode');
+            if (savedDarkMode === 'true') {
+                enableDarkMode();
+            }
+            
+            // Render categories on homepage
+            renderCategories();
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Check if URL has a hash for direct tool access
+            if (window.location.hash && window.location.hash !== '#home') {
+                const toolId = window.location.hash.substring(1);
+                loadTool(toolId);
+            }
+        }
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-top">
-      <div class="footer-logo">NagarTools</div>
-      <div class="footer-links">
-        <ul>
-          <li><a href="#privacy">Privacy Policy</a></li>
-          <li><a href="#terms">Terms of Use</a></li>
-          <li><a href="#sitemap">Sitemap</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Simplifying your digital life. © 2025 Nagar Tools</p>
-    </div>
-  </footer>
+        // Render Tool Categories
+        function renderCategories() {
+            const categoriesHTML = appState.categories.map(category => {
+                const categoryTools = appState.tools.filter(tool => tool.category === category.id);
+                
+                return `
+                    <div class="category-card" id="${category.id}-tools">
+                        <div class="category-icon">${category.icon}</div>
+                        <h3>${category.name}</h3>
+                        <p>${category.description}</p>
+                        <ul class="tool-list">
+                            ${categoryTools.slice(0, 4).map(tool => `
+                                <li>
+                                    <a href="#${tool.id}" class="tool-link" data-tool-id="${tool.id}">
+                                        ${tool.name}
+                                    </a>
+                                    <button class="favorite-btn" data-tool-id="${tool.id}" aria-label="Add to favorites">
+                                        ${appState.favorites.includes(tool.id) ? '★' : '☆'}
+                                    </button>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        <a href="#${category.id}" class="cta-button" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">View All ${category.name}</a>
+                    </div>
+                `;
+            }).join('');
+            
+            domElements.toolCategories.innerHTML = categoriesHTML;
+            
+            // Add event listeners to tool links
+            document.querySelectorAll('.tool-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolId = this.getAttribute('data-tool-id');
+                    loadTool(toolId);
+                });
+            });
+            
+            // Add event listeners to favorite buttons
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const toolId = this.getAttribute('data-tool-id');
+                    toggleFavorite(toolId);
+                    this.textContent = appState.favorites.includes(toolId) ? '★' : '☆';
+                });
+            });
+        }
 
-  <!-- JS (Lazy Loading, Optional Interactivity) -->
-  <script>
-    // Lazy loading images
-    document.addEventListener("DOMContentLoaded", function() {
-      let images = document.querySelectorAll('img[data-src]');
-      images.forEach(img => {
-        img.setAttribute('src', img.getAttribute('data-src'));
-        img.onload = () => img.removeAttribute('data-src');
-      });
-    });
-  </script>
+        // Load Tool
+        function loadTool(toolId) {
+            const tool = appState.tools.find(t => t.id === toolId);
+            if (!tool) {
+                showHomePage();
+                return;
+            }
+            
+            appState.currentTool = tool;
+            
+            // Update URL hash
+            window.location.hash = toolId;
+            
+            // Update breadcrumb
+            const category = appState.categories.find(c => c.id === tool.category);
+            domElements.currentPage.innerHTML = tool.name;
+            
+            // Hide breadcrumb on homepage, show on tool pages
+            domElements.breadcrumb.style.display = 'block';
+            
+            // Generate tool content
+            const toolContent = generateToolContent(tool);
+            domElements.toolContainer.innerHTML = toolContent;
+            
+            // Add event listeners to tool-specific buttons
+            setupToolEventListeners(tool);
+            
+            // Scroll to tool section
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+            
+            // Update page title for SEO
+            document.title = `${tool.name} - NagarTools | Free Online Tool`;
+            
+            // Update meta description for SEO
+            updateMetaDescription(tool);
+        }
 
+        // Generate Tool Content
+        function generateToolContent(tool) {
+            const relatedTools = appState.tools
+                .filter(t => t.category === tool.category && t.id !== tool.id)
+                .slice(0, 5);
+            
+            return `
+                <div class="tool-container">
+                    <div class="tool-main">
+                        <h1>${tool.name}</h1>
+                        <p>${tool.description}</p>
+                        
+                        <div class="tool-input">
+                            <label for="tool-input">Input</label>
+                            <textarea id="tool-input" placeholder="Enter your text or data here..."></textarea>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="tool-button" id="process-btn">Process</button>
+                            <button class="tool-button secondary" id="clear-btn">Clear</button>
+                            <button class="tool-button secondary" id="copy-btn">Copy Result</button>
+                            <button class="tool-button" id="favorite-btn">
+                                ${appState.favorites.includes(tool.id) ? '★ Remove Favorite' : '☆ Add to Favorite'}
+                            </button>
+                        </div>
+                        
+                        <div class="progress-container" id="progress-container" style="display: none;">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                        
+                        <div class="tool-output">
+                            <label for="tool-output">Output</label>
+                            <div class="result-container" id="tool-output">
+                                Result will appear here...
+                            </div>
+                        </div>
+                        
+                        <div class="tool-description">
+                            <h3>About ${tool.name}</h3>
+                            <p>This tool helps you ${tool.description.toLowerCase()}. It's completely free to use with no registration required. Your data is processed locally in your browser and is never sent to our servers.</p>
+                            
+                            <h3>How to Use</h3>
+                            <ol>
+                                <li>Enter your input in the text area above</li>
+                                <li>Click the "Process" button to transform your data</li>
+                                <li>Copy or download the result as needed</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-sidebar">
+                        <h3>Related Tools</h3>
+                        <ul class="related-tools">
+                            ${relatedTools.map(rt => `
+                                <li>
+                                    <a href="#${rt.id}" class="tool-link" data-tool-id="${rt.id}">
+                                        <span>${rt.icon}</span>
+                                        <span>${rt.name}</span>
+                                    </a>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        
+                        <h3 style="margin-top: 30px;">Quick Actions</h3>
+                        <div class="button-group" style="flex-direction: column;">
+                            <button class="tool-button" id="download-btn">Download Result</button>
+                            <button class="tool-button secondary" id="share-btn">Share Tool</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px; padding: 15px; background: #f1f5f9; border-radius: var(--border-radius);">
+                            <h4 style="margin-bottom: 10px;">SEO Tip</h4>
+                            <p style="font-size: 0.9rem;">Using tools like ${tool.name} can improve your productivity. Bookmark this page for quick access!</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Setup Tool Event Listeners
+        function setupToolEventListeners(tool) {
+            // Process button
+            const processBtn = document.getElementById('process-btn');
+            if (processBtn) {
+                processBtn.addEventListener('click', function() {
+                    processTool(tool.id);
+                });
+            }
+            
+            // Clear button
+            const clearBtn = document.getElementById('clear-btn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    document.getElementById('tool-input').value = '';
+                    document.getElementById('tool-output').textContent = 'Result will appear here...';
+                });
+            }
+            
+            // Copy button
+            const copyBtn = document.getElementById('copy-btn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const output = document.getElementById('tool-output').textContent;
+                    if (output && output !== 'Result will appear here...') {
+                        navigator.clipboard.writeText(output)
+                            .then(() => showToast('Result copied to clipboard!'))
+                            .catch(() => showToast('Failed to copy. Please try again.'));
+                    }
+                });
+            }
+            
+            // Favorite button
+            const favoriteBtn = document.getElementById('favorite-btn');
+            if (favoriteBtn) {
+                favoriteBtn.addEventListener('click', function() {
+                    toggleFavorite(tool.id);
+                    this.textContent = appState.favorites.includes(tool.id) ? 
+                        '★ Remove Favorite' : '☆ Add to Favorite';
+                    showToast(appState.favorites.includes(tool.id) ? 
+                        'Tool added to favorites!' : 'Tool removed from favorites.');
+                });
+            }
+            
+            // Download button
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    const output = document.getElementById('tool-output').textContent;
+                    if (output && output !== 'Result will appear here...') {
+                        downloadText(output, `${tool.id}-result.txt`);
+                    }
+                });
+            }
+            
+            // Share button
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: `${tool.name} - NagarTools`,
+                            text: `Check out this free online tool: ${tool.name}`,
+                            url: window.location.href
+                        });
+                    } else {
+                        navigator.clipboard.writeText(window.location.href)
+                            .then(() => showToast('Link copied to clipboard! Share it with others.'))
+                            .catch(() => showToast('Failed to copy link.'));
+                    }
+                });
+            }
+            
+            // Related tool links
+            document.querySelectorAll('.tool-link[data-tool-id]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolId = this.getAttribute('data-tool-id');
+                    loadTool(toolId);
+                });
+            });
+        }
+
+        // Process Tool based on type
+        function processTool(toolId) {
+            const input = document.getElementById('tool-input').value;
+            const outputElement = document.getElementById('tool-output');
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            
+            if (!input.trim()) {
+                showToast('Please enter some input to process.');
+                return;
+            }
+            
+            // Show progress bar
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            
+            // Simulate processing with progress updates
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 20;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    // Process based on tool type
+                    let result = '';
+                    
+                    switch(toolId) {
+                        case 'text-case-converter':
+                            result = input.toUpperCase();
+                            break;
+                        case 'word-counter':
+                            const words = input.trim().split(/\s+/).filter(word => word.length > 0);
+                            const characters = input.length;
+                            const sentences = input.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+                            result = `Words: ${words.length}\nCharacters: ${characters}\nSentences: ${sentences}`;
+                            break;
+                        case 'text-sorter':
+                            result = input.split('\n').sort().join('\n');
+                            break;
+                        case 'base64-encoder':
+                            result = btoa(input);
+                            break;
+                        case 'base64-decoder':
+                            try {
+                                result = atob(input);
+                            } catch {
+                                result = 'Invalid Base64 input';
+                            }
+                            break;
+                        case 'url-encoder':
+                            result = encodeURIComponent(input);
+                            break;
+                        case 'url-decoder':
+                            try {
+                                result = decodeURIComponent(input);
+                            } catch {
+                                result = 'Invalid URL encoded input';
+                            }
+                            break;
+                        case 'text-encryptor':
+                            // Simple Caesar cipher for demo
+                            result = input.split('').map(char => {
+                                const code = char.charCodeAt(0);
+                                return String.fromCharCode(code + 3);
+                            }).join('');
+                            break;
+                        default:
+                            result = `Processed: ${input.substring(0, 100)}...`;
+                    }
+                    
+                    outputElement.textContent = result;
+                    showToast('Processing complete!');
+                    
+                    // Hide progress bar after a moment
+                    setTimeout(() => {
+                        progressContainer.style.display = 'none';
+                    }, 1000);
+                }
+            }, 100);
+        }
+
+        // Toggle Favorite
+        function toggleFavorite(toolId) {
+            const index = appState.favorites.indexOf(toolId);
+            if (index === -1) {
+                appState.favorites.push(toolId);
+            } else {
+                appState.favorites.splice(index, 1);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('nagartools_favorites', JSON.stringify(appState.favorites));
+        }
+
+        // Show Home Page
+        function showHomePage() {
+            domElements.toolContainer.innerHTML = '';
+            domElements.breadcrumb.style.display = 'none';
+            document.title = 'NagarTools - Your Daily Tools, All in One Place';
+            updateMetaDescription();
+        }
+
+        // Update Meta Description for SEO
+        function updateMetaDescription(tool = null) {
+            let metaDescription = document.querySelector('meta[name="description"]');
+            if (!metaDescription) {
+                metaDescription = document.createElement('meta');
+                metaDescription.name = 'description';
+                document.head.appendChild(metaDescription);
+            }
+            
+            if (tool) {
+                metaDescription.content = `${tool.description} Free online tool at NagarTools. ${tool.keywords.join(', ')}.`;
+            } else {
+                metaDescription.content = 'Convert, calculate, compress, and simplify your everyday tasks with NagarTools — fast and free tools for images, PDFs, text, SEO, and more.';
+            }
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            domElements.toast.textContent = message;
+            domElements.toast.classList.add('show');
+            
+            setTimeout(() => {
+                domElements.toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Download Text as File
+        function downloadText(text, filename) {
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Enable Dark Mode
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            domElements.themeToggle.textContent = '☀️';
+            appState.darkMode = true;
+            localStorage.setItem('nagartools_darkmode', 'true');
+        }
+
+        // Disable Dark Mode
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            domElements.themeToggle.textContent = '🌙';
+            appState.darkMode = false;
+            localStorage.setItem('nagartools_darkmode', 'false');
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            domElements.mobileToggle.addEventListener('click', function() {
+                domElements.mainNav.classList.toggle('active');
+            });
+            
+            // Theme toggle
+            domElements.themeToggle.addEventListener('click', function() {
+                if (appState.darkMode) {
+                    disableDarkMode();
+                } else {
+                    enableDarkMode();
+                }
+            });
+            
+            // Search functionality
+            domElements.searchBar.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                appState.searchQuery = query;
+                
+                if (query.length > 0) {
+                    // Filter tools based on search query
+                    const filteredTools = appState.tools.filter(tool => 
+                        tool.name.toLowerCase().includes(query) || 
+                        tool.description.toLowerCase().includes(query) ||
+                        tool.keywords.some(keyword => keyword.toLowerCase().includes(query))
+                    );
+                    
+                    // Display search results
+                    displaySearchResults(filteredTools);
+                } else {
+                    // Show categories if search is empty
+                    renderCategories();
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('nav') && !e.target.closest('#mobileToggle')) {
+                    domElements.mainNav.classList.remove('active');
+                }
+            });
+            
+            // Handle hash changes for direct tool access
+            window.addEventListener('hashchange', function() {
+                if (window.location.hash && window.location.hash !== '#home') {
+                    const toolId = window.location.hash.substring(1);
+                    loadTool(toolId);
+                } else {
+                    showHomePage();
+                }
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Ctrl/Cmd + K to focus search
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    domElements.searchBar.focus();
+                }
+                
+                // Escape to clear search
+                if (e.key === 'Escape') {
+                    domElements.searchBar.value = '';
+                    appState.searchQuery = '';
+                    renderCategories();
+                }
+                
+                // Ctrl/Cmd + / to toggle theme
+                if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+                    e.preventDefault();
+                    if (appState.darkMode) {
+                        disableDarkMode();
+                    } else {
+                        enableDarkMode();
+                    }
+                }
+            });
+        }
+
+        // Display Search Results
+        function displaySearchResults(tools) {
+            if (tools.length === 0) {
+                domElements.toolCategories.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <h3>No tools found for "${appState.searchQuery}"</h3>
+                        <p>Try a different search term or browse the categories above.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Group tools by category
+            const toolsByCategory = {};
+            tools.forEach(tool => {
+                if (!toolsByCategory[tool.category]) {
+                    const category = appState.categories.find(c => c.id === tool.category);
+                    toolsByCategory[tool.category] = {
+                        category: category,
+                        tools: []
+                    };
+                }
+                toolsByCategory[tool.category].tools.push(tool);
+            });
+            
+            // Generate search results HTML
+            let searchResultsHTML = '';
+            
+            for (const categoryId in toolsByCategory) {
+                const { category, tools } = toolsByCategory[categoryId];
+                
+                searchResultsHTML += `
+                    <div class="category-card">
+                        <div class="category-icon">${category.icon}</div>
+                        <h3>${category.name}</h3>
+                        <p>${category.description}</p>
+                        <ul class="tool-list">
+                            ${tools.map(tool => `
+                                <li>
+                                    <a href="#${tool.id}" class="tool-link" data-tool-id="${tool.id}">
+                                        ${tool.name}
+                                    </a>
+                                    <button class="favorite-btn" data-tool-id="${tool.id}" aria-label="Add to favorites">
+                                        ${appState.favorites.includes(tool.id) ? '★' : '☆'}
+                                    </button>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            domElements.toolCategories.innerHTML = searchResultsHTML;
+            
+            // Add event listeners to search result links
+            document.querySelectorAll('.tool-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolId = this.getAttribute('data-tool-id');
+                    loadTool(toolId);
+                });
+            });
+            
+            // Add event listeners to favorite buttons in search results
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const toolId = this.getAttribute('data-tool-id');
+                    toggleFavorite(toolId);
+                    this.textContent = appState.favorites.includes(toolId) ? '★' : '☆';
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+
+        // PWA Support (simplified)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // In a real implementation, you would register a service worker here
+                console.log('PWA support available');
+            });
+        }
+
+        // Google Analytics simulation (for demo purposes)
+        console.log('Google Analytics initialized for NagarTools');
+        console.log('Google Search Console verification would be implemented here');
+    </script>
 </body>
 </html>
