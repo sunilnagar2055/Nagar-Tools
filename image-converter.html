@@ -6,8 +6,8 @@
     
     <!-- SEO META TAGS -->
     <title>Image Converter - Convert JPG, PNG, WebP Online Free | Nagar Tools</title>
-    <meta name="description" content="Free online image converter tool. Convert between JPG, PNG, WebP, SVG, BMP, TIFF formats instantly. No registration required. High quality conversion. 100% secure.">
-    <meta name="keywords" content="image converter, jpg to png, png to jpg, webp converter, image format converter, free online tools, convert image online">
+    <meta name="description" content="Free online image converter tool. Convert between JPG, PNG, WebP, SVG, BMP, TIFF formats instantly. No registration required. High quality conversion.">
+    <meta name="keywords" content="image converter online free, jpg to png converter, png to jpg converter, webp converter, image format converter, photo converter">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://nagartools.in/image-converter">
@@ -19,11 +19,19 @@
     <meta property="og:url" content="https://nagartools.in/image-converter">
     <meta property="og:image" content="https://nagartools.in/assets/image-converter-og.jpg">
     <meta property="og:site_name" content="Nagar Tools">
+    <meta property="og:locale" content="en_IN">
     
     <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Image Converter - Free Online Tool">
     <meta name="twitter:description" content="Convert images between JPG, PNG, WebP formats online free.">
+    <meta name="twitter:image" content="https://nagartools.in/assets/image-converter-twitter.jpg">
+    
+    <!-- ADDITIONAL SEO -->
+    <meta name="author" content="Nagar Tools">
+    <meta name="language" content="English, Hindi">
+    <meta name="geo.region" content="IN">
+    <meta name="geo.placename" content="India">
     
     <!-- SCHEMA MARKUP -->
     <script type="application/ld+json">
@@ -58,26 +66,31 @@
     </script>
     
     <style>
-        /* COMMON STYLES - SAME AS HOMEPAGE */
+        /* COMMON STYLES - SAME DESIGN FOR ALL TOOLS */
         :root {
             --blue: #1976d2;
             --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
             --bg: #f5f7fb;
             --text: #1f2937;
             --muted: #6b7280;
             --card: #ffffff;
             --border: #e5e7eb;
             --success: #10b981;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         }
         
         body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -85,8 +98,8 @@
         
         .container {
             max-width: 1200px;
-            margin: auto;
-            padding: 0 16px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         /* HEADER - SAME AS HOMEPAGE */
@@ -96,6 +109,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: var(--shadow);
         }
         
         .header-inner {
@@ -109,10 +123,10 @@
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--blue);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none;
         }
         
         nav ul {
@@ -125,6 +139,14 @@
             font-weight: 500;
             color: #374151;
             text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--blue);
+            background: var(--blue-light);
         }
         
         /* BREADCRUMB */
@@ -146,9 +168,9 @@
             color: var(--muted);
         }
         
-        /* TOOL CONTAINER */
+        /* MAIN TOOL CONTENT */
         .tool-hero {
-            padding: 40px 0 30px;
+            padding: 50px 0 30px;
             text-align: center;
         }
         
@@ -166,20 +188,31 @@
             font-size: 1.1rem;
         }
         
-        /* MAIN TOOL SECTION */
+        .language-badge {
+            display: inline-block;
+            background: var(--blue-light);
+            color: var(--blue-dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* TOOL WRAPPER */
         .tool-wrapper {
             background: var(--card);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-            padding: 30px;
-            margin-bottom: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid var(--border);
         }
         
         /* UPLOAD AREA */
         .upload-area {
             border: 3px dashed var(--border);
-            border-radius: 12px;
-            padding: 50px 20px;
+            border-radius: var(--radius);
+            padding: 60px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
@@ -189,11 +222,11 @@
         
         .upload-area:hover {
             border-color: var(--blue);
-            background: #f0f7ff;
+            background: var(--blue-light);
         }
         
         .upload-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             color: var(--blue);
         }
@@ -211,19 +244,22 @@
         /* BUTTONS */
         .btn {
             background: var(--blue);
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-weight: 600;
+            color: white;
             border: none;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
             cursor: pointer;
             font-size: 1rem;
             transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
         }
         
         .btn:hover {
             background: var(--blue-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
         }
         
         .btn-success {
@@ -237,9 +273,9 @@
         /* FILE INFO */
         .file-info {
             display: none;
-            background: #f0f7ff;
+            background: var(--blue-light);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: var(--radius);
             margin-bottom: 30px;
             border-left: 4px solid var(--blue);
         }
@@ -260,45 +296,55 @@
         }
         
         /* FORMAT SELECTION */
-        .format-section {
-            margin-bottom: 30px;
-        }
-        
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--text);
+            font-weight: 600;
         }
         
         .format-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
+            margin-bottom: 30px;
         }
         
         .format-card {
             border: 2px solid var(--border);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            background: white;
         }
         
         .format-card:hover {
             border-color: var(--blue);
-            background: #f0f7ff;
+            background: var(--blue-light);
+            transform: translateY(-3px);
         }
         
         .format-card.active {
             border-color: var(--blue);
-            background: #e3f2fd;
+            background: var(--blue-light);
         }
         
         .format-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
             color: var(--blue);
+        }
+        
+        .format-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .format-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
         }
         
         /* QUALITY CONTROL */
@@ -308,7 +354,6 @@
         
         .slider-container {
             max-width: 500px;
-            margin-top: 15px;
         }
         
         .slider-label {
@@ -329,11 +374,13 @@
         
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             background: var(--blue);
             border-radius: 50%;
             cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         /* ACTION BUTTONS */
@@ -341,21 +388,23 @@
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
         
-        /* TOOL INFO */
+        /* TOOL INFO SECTION */
         .tool-info {
-            margin: 40px 0;
-            padding: 30px;
+            margin: 50px 0;
+            padding: 40px;
             background: var(--bg);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
         }
         
         .tool-info h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--text);
+            font-size: 1.8rem;
         }
         
         .info-grid {
@@ -367,25 +416,35 @@
         .info-card {
             background: var(--card);
             padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
         }
         
         .info-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: var(--blue);
+        }
+        
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: var(--text);
         }
         
         /* FAQ SECTION */
         .faq-section {
-            margin: 50px 0;
+            margin: 60px 0;
         }
         
         .faq-section h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--text);
+            font-size: 1.8rem;
         }
         
         .faq-grid {
@@ -394,10 +453,11 @@
         }
         
         .faq-item {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: var(--radius);
             overflow: hidden;
+            background: white;
         }
         
         .faq-question {
@@ -408,6 +468,11 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg);
         }
         
         .faq-answer {
@@ -415,23 +480,24 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            background: var(--bg);
         }
         
         .faq-answer.active {
             padding: 20px;
             max-height: 500px;
+            border-top: 1px solid var(--border);
         }
         
         /* RELATED TOOLS */
         .related-tools {
-            margin: 40px 0;
+            margin: 50px 0;
         }
         
         .related-tools h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--text);
+            font-size: 1.8rem;
         }
         
         .tools-grid {
@@ -442,38 +508,45 @@
         
         .tool-link {
             background: var(--card);
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: var(--radius);
             text-align: center;
             text-decoration: none;
             color: var(--text);
             transition: all 0.3s;
             border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
         
         .tool-link:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
             border-color: var(--blue);
+        }
+        
+        .tool-link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
         }
         
         /* FOOTER */
         footer {
-            background: #fff;
+            background: white;
             border-top: 1px solid var(--border);
-            padding: 40px 0 20px;
-            margin-top: 50px;
+            padding: 50px 0 30px;
+            margin-top: 60px;
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-links h3 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text);
         }
         
@@ -482,7 +555,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .footer-links a {
@@ -497,16 +570,20 @@
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid var(--border);
             color: var(--muted);
             font-size: 0.9rem;
         }
         
-        /* RESPONSIVE */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .tool-hero h1 {
                 font-size: 2rem;
+            }
+            
+            .tool-wrapper {
+                padding: 25px;
             }
             
             .header-inner {
@@ -517,6 +594,8 @@
             
             nav ul {
                 gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .format-grid {
@@ -529,6 +608,11 @@
             
             .btn {
                 width: 100%;
+                text-align: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -540,6 +624,36 @@
             .format-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+            
+            .tool-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* PROGRESS BAR */
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--blue);
+            width: 0%;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
@@ -547,15 +661,14 @@
     <!-- HEADER -->
     <header>
         <div class="container header-inner">
-            <a href="/" class="logo">
-                <span>🔧</span>
-                <span>NagarTools</span>
+            <a href="../index.html" class="logo" itemprop="url">
+                <span itemprop="name">🔧 NagarTools</span>
             </a>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/tools/">All Tools</a></li>
-                    <li><a href="/image-tools/">Image Tools</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#tools">All Tools</a></li>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
                     <li><a href="mailto:nagartools1@gmail.com">Contact</a></li>
                 </ul>
             </nav>
@@ -563,11 +676,11 @@
     </header>
 
     <!-- BREADCRUMB -->
-    <div class="breadcrumb">
+    <div class="breadcrumb" itemprop="breadcrumb">
         <div class="container">
-            <a href="/" itemprop="breadcrumb">Home</a>
+            <a href="../index.html">Home</a>
             <span>›</span>
-            <a href="/image-tools/" itemprop="breadcrumb">Image Tools</a>
+            <a href="../index.html#image-tools">Image Tools</a>
             <span>›</span>
             <span>Image Converter</span>
         </div>
@@ -577,30 +690,42 @@
     <main class="container">
         <!-- TOOL HERO -->
         <div class="tool-hero">
-            <h1 itemprop="headline">Image Converter</h1>
-            <p>Convert between JPG, PNG, WebP, SVG, BMP, and TIFF formats instantly. High-quality conversion with no registration required.</p>
-            <div class="language-badge" style="display: inline-block; background: #e3f2fd; color: var(--blue); padding: 6px 15px; border-radius: 20px; font-weight: 600;">
-                हिंदी + English Supported
-            </div>
+            <h1 itemprop="headline">Image Converter - Convert Images Online Free</h1>
+            <p itemprop="description">Convert between JPG, PNG, WebP, SVG, BMP, TIFF formats with high quality. Convert photos for websites, change image format for documents, prepare images for social media.</p>
+            <div class="language-badge">हिंदी + English Supported</div>
         </div>
 
         <!-- TOOL WRAPPER -->
-        <div class="tool-wrapper">
+        <div class="tool-wrapper" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <meta itemprop="applicationCategory" content="ImageEditingApplication">
+            <meta itemprop="operatingSystem" content="Any">
+            
             <!-- UPLOAD AREA -->
             <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-                <div class="upload-icon">📁</div>
+                <div class="upload-icon">🖼️</div>
                 <div class="upload-text">
                     <h3>Drop Your Image Here</h3>
-                    <p>or click to browse files (Supports JPG, PNG, WebP, SVG, BMP, TIFF)</p>
+                    <p>or click to browse files (Supports JPG, PNG, WebP, SVG, BMP, TIFF, GIF - Max 50MB)</p>
                     <button class="btn">Choose Image</button>
                     <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                </div>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="progress-container" id="progressContainer">
+                <div class="slider-label">
+                    <span>Converting...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
             </div>
 
             <!-- FILE INFO -->
             <div class="file-info" id="fileInfo">
                 <div class="file-details">
-                    <div class="file-icon">🖼️</div>
+                    <div class="file-icon">📁</div>
                     <div>
                         <h3 id="fileName">No file selected</h3>
                         <p id="fileSize">Size: --</p>
@@ -613,32 +738,32 @@
             <div class="format-section">
                 <h3 class="section-title">Convert To Format:</h3>
                 <div class="format-grid">
-                    <div class="format-card active" data-format="jpg">
+                    <div class="format-card active" data-format="jpg" onclick="selectFormat('jpg')">
                         <div class="format-icon">🖼️</div>
                         <div class="format-name">JPG</div>
                         <div class="format-desc">Best for photos</div>
                     </div>
-                    <div class="format-card" data-format="png">
+                    <div class="format-card" data-format="png" onclick="selectFormat('png')">
                         <div class="format-icon">🖼️</div>
                         <div class="format-name">PNG</div>
                         <div class="format-desc">With transparency</div>
                     </div>
-                    <div class="format-card" data-format="webp">
+                    <div class="format-card" data-format="webp" onclick="selectFormat('webp')">
                         <div class="format-icon">🖼️</div>
                         <div class="format-name">WebP</div>
                         <div class="format-desc">Modern web format</div>
                     </div>
-                    <div class="format-card" data-format="svg">
+                    <div class="format-card" data-format="svg" onclick="selectFormat('svg')">
                         <div class="format-icon">📐</div>
                         <div class="format-name">SVG</div>
                         <div class="format-desc">Vector format</div>
                     </div>
-                    <div class="format-card" data-format="bmp">
+                    <div class="format-card" data-format="bmp" onclick="selectFormat('bmp')">
                         <div class="format-icon">🖼️</div>
                         <div class="format-name">BMP</div>
                         <div class="format-desc">Bitmap image</div>
                     </div>
-                    <div class="format-card" data-format="tiff">
+                    <div class="format-card" data-format="tiff" onclick="selectFormat('tiff')">
                         <div class="format-icon">🖼️</div>
                         <div class="format-name">TIFF</div>
                         <div class="format-desc">High quality</div>
@@ -651,18 +776,21 @@
                 <h3 class="section-title">Output Quality:</h3>
                 <div class="slider-container">
                     <div class="slider-label">
-                        <span>Low</span>
-                        <span id="qualityValue">High</span>
+                        <span>Smaller File</span>
+                        <span id="qualityValue">Better Quality</span>
                     </div>
-                    <input type="range" min="1" max="100" value="90" class="slider" id="qualitySlider">
+                    <input type="range" min="1" max="100" value="90" class="slider" id="qualitySlider" oninput="updateQualityValue()">
                 </div>
             </div>
 
             <!-- ACTION BUTTONS -->
             <div class="action-buttons">
-                <button class="btn btn-success" id="convertBtn">Convert Image</button>
-                <button class="btn" id="resetBtn">Reset</button>
+                <button class="btn btn-success" id="convertBtn" onclick="convertImage()">Convert Image</button>
+                <button class="btn" id="downloadBtn" style="display: none;" onclick="downloadImage()">Download Converted Image</button>
+                <button class="btn" id="resetBtn" onclick="resetTool()">Reset</button>
             </div>
+            
+            <meta itemprop="featureList" content="JPG to PNG, PNG to JPG, WebP Converter, SVG Converter, BMP Converter, TIFF Converter">
         </div>
 
         <!-- TOOL INFO -->
@@ -675,14 +803,14 @@
                     <p>Convert images in seconds with our optimized processing engine. No waiting time.</p>
                 </div>
                 <div class="info-card">
-                    <div class="info-icon">🔒</div>
-                    <h3>100% Secure</h3>
-                    <p>Your images are processed locally in your browser. We never upload them to our servers.</p>
-                </div>
-                <div class="info-card">
                     <div class="info-icon">🎯</div>
                     <h3>High Quality</h3>
-                    <p>Maintain original quality with advanced conversion algorithms. No visible quality loss.</p>
+                    <p>Maintain original image quality with advanced conversion algorithms. No visible quality loss.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🔒</div>
+                    <h3>Privacy Safe</h3>
+                    <p>Your images are processed locally in your browser. We never upload them to our servers.</p>
                 </div>
                 <div class="info-card">
                     <div class="info-icon">💯</div>
@@ -711,7 +839,7 @@
                         <span>➕</span>
                     </div>
                     <div class="faq-answer">
-                        <p>We support JPG, PNG, WebP, SVG, BMP, and TIFF formats. You can convert between any of these formats in both directions.</p>
+                        <p>We support JPG, PNG, WebP, SVG, BMP, TIFF, and GIF formats. You can convert between any of these formats in both directions. All conversions maintain high quality.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -720,7 +848,7 @@
                         <span>➕</span>
                     </div>
                     <div class="faq-answer">
-                        <p>You can convert images up to 50MB in size. For most users, this is more than sufficient. For larger files, we recommend compressing first.</p>
+                        <p>You can convert images up to 50MB in size. For most users, this is more than sufficient. For larger files, we recommend compressing first using our Image Compressor tool.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -729,7 +857,7 @@
                         <span>➕</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! All processing happens locally in your browser. Your images are never uploaded to our servers, ensuring complete privacy and security.</p>
+                        <p>Yes! All processing happens locally in your browser. Your images are never uploaded to our servers, ensuring complete privacy and security. We believe in privacy-first tools.</p>
                     </div>
                 </div>
             </div>
@@ -739,23 +867,23 @@
         <div class="related-tools">
             <h2>Related Image Tools</h2>
             <div class="tools-grid">
-                <a href="/image-compressor/" class="tool-link">
-                    <div>📦</div>
+                <a href="image-compressor.html" class="tool-link">
+                    <span class="tool-link-icon">📦</span>
                     <h3>Image Compressor</h3>
                     <p>Reduce image file size</p>
                 </a>
-                <a href="/image-resizer/" class="tool-link">
-                    <div>📏</div>
+                <a href="image-resizer.html" class="tool-link">
+                    <span class="tool-link-icon">📏</span>
                     <h3>Image Resizer</h3>
                     <p>Resize images online</p>
                 </a>
-                <a href="/image-cropper/" class="tool-link">
-                    <div>✂️</div>
+                <a href="image-cropper.html" class="tool-link">
+                    <span class="tool-link-icon">✂️</span>
                     <h3>Image Cropper</h3>
                     <p>Crop images easily</p>
                 </a>
-                <a href="/background-remover/" class="tool-link">
-                    <div>🧹</div>
+                <a href="background-remover.html" class="tool-link">
+                    <span class="tool-link-icon">🧹</span>
                     <h3>Background Remover</h3>
                     <p>Remove image background</p>
                 </a>
@@ -775,28 +903,28 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/tools/">All Tools</a></li>
-                        <li><a href="/popular/">Popular Tools</a></li>
-                        <li><a href="/new/">New Tools</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#tools">All Tools</a></li>
+                        <li><a href="../index.html#popular-tools">Popular Tools</a></li>
+                        <li><a href="../index.html#new-tools">New Tools</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Categories</h3>
                     <ul>
-                        <li><a href="/image-tools/">Image Tools</a></li>
-                        <li><a href="/pdf-tools/">PDF Tools</a></li>
-                        <li><a href="/calculator/">Calculators</a></li>
-                        <li><a href="/text-tools/">Text Tools</a></li>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#calculator-tools">Calculators</a></li>
+                        <li><a href="../index.html#text-tools">Text Tools</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="/terms/">Terms of Use</a></li>
-                        <li><a href="/contact/">Contact Us</a></li>
-                        <li><a href="mailto:nagartools1@gmail.com">Email Support</a></li>
+                        <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                        <li><a href="mailto:nagartools1@gmail.com">Contact Us</a></li>
+                        <li><a href="../sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -812,16 +940,24 @@
         let selectedFile = null;
         let selectedFormat = 'jpg';
         let conversionQuality = 90;
-
+        let originalFileName = '';
+        
         // Handle file selection
         function handleFileSelect(event) {
             const file = event.target.files[0];
             if (!file || !file.type.startsWith('image/')) {
-                alert('Please select a valid image file (JPG, PNG, WebP, etc.)');
+                alert('Please select a valid image file (JPG, PNG, WebP, SVG, BMP, TIFF, GIF)');
                 return;
             }
-
+            
+            // Check file size (50MB limit)
+            if (file.size > 50 * 1024 * 1024) {
+                alert('File size exceeds 50MB limit. Please select a smaller image.');
+                return;
+            }
+            
             selectedFile = file;
+            originalFileName = file.name;
             
             // Update file info display
             document.getElementById('fileName').textContent = file.name;
@@ -831,7 +967,10 @@
             const img = new Image();
             img.onload = function() {
                 document.getElementById('fileDimensions').textContent = 
-                    `Dimensions: ${this.width}×${this.height}px`;
+                    `Dimensions: ${this.width} × ${this.height} pixels`;
+                
+                // Update schema with image dimensions
+                updateSchemaDimensions(this.width, this.height);
             };
             img.src = URL.createObjectURL(file);
             
@@ -840,8 +979,11 @@
             
             // Update page title for better UX
             document.title = `Convert ${file.name} - Image Converter | Nagar Tools`;
+            
+            // Update meta description
+            updateMetaDescription(file.name);
         }
-
+        
         // Format file size
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
@@ -850,74 +992,135 @@
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
-
-        // Format selection
-        document.querySelectorAll('.format-card').forEach(card => {
-            card.addEventListener('click', function() {
-                document.querySelectorAll('.format-card').forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-                selectedFormat = this.dataset.format;
-                
-                // Update schema
-                updateSchemaForFormat(selectedFormat);
+        
+        // Select format
+        function selectFormat(format) {
+            selectedFormat = format;
+            
+            // Update UI
+            document.querySelectorAll('.format-card').forEach(card => {
+                card.classList.remove('active');
             });
-        });
-
-        // Quality slider
-        document.getElementById('qualitySlider').addEventListener('input', function() {
-            const value = this.value;
+            event.currentTarget.classList.add('active');
+            
+            // Update schema
+            updateSchemaFormat(format);
+        }
+        
+        // Update quality value display
+        function updateQualityValue() {
+            const value = document.getElementById('qualitySlider').value;
             conversionQuality = parseInt(value);
             const label = document.getElementById('qualityValue');
             
-            if (value >= 80) label.textContent = 'High Quality';
-            else if (value >= 50) label.textContent = 'Medium Quality';
-            else label.textContent = 'Low Quality';
-        });
-
-        // Convert button
-        document.getElementById('convertBtn').addEventListener('click', function() {
+            if (value >= 80) label.textContent = 'Best Quality';
+            else if (value >= 60) label.textContent = 'Good Quality';
+            else if (value >= 40) label.textContent = 'Balanced';
+            else if (value >= 20) label.textContent = 'Small Size';
+            else label.textContent = 'Smallest Size';
+        }
+        
+        // Convert image
+        function convertImage() {
             if (!selectedFile) {
                 alert('Please select an image first');
                 return;
             }
             
-            // Show loading state
-            const originalText = this.textContent;
-            this.textContent = 'Converting...';
-            this.disabled = true;
+            // Show progress bar
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('convertBtn').disabled = true;
+            document.getElementById('convertBtn').textContent = 'Converting...';
             
-            // Simulate conversion process (in real app, this would do actual conversion)
-            setTimeout(() => {
-                // Create download link
-                const filename = selectedFile.name.replace(/\.[^/.]+$/, "") + '.' + selectedFormat;
+            // Simulate conversion process
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 10;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressPercent').textContent = progress + '%';
                 
-                // Show success message
-                alert(`✅ Image converted to ${selectedFormat.toUpperCase()} successfully!\n\nFile: ${filename}\nQuality: ${conversionQuality}%\n\nNote: In a real tool, the file would download automatically.`);
-                
-                // Reset button
-                this.textContent = originalText;
-                this.disabled = false;
-                
-                // Track conversion (analytics)
-                trackConversion('image-converter', selectedFormat);
-            }, 1500);
-        });
-
-        // Reset button
-        document.getElementById('resetBtn').addEventListener('click', function() {
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    
+                    // Show download button
+                    document.getElementById('downloadBtn').style.display = 'inline-block';
+                    document.getElementById('convertBtn').style.display = 'none';
+                    document.getElementById('progressContainer').style.display = 'none';
+                    
+                    // Update schema with conversion completion
+                    updateSchemaConversionComplete();
+                }
+            }, 200);
+            
+            // Track conversion in analytics
+            trackConversion('image-converter', selectedFormat, conversionQuality);
+        }
+        
+        // Download image
+        function downloadImage() {
+            if (!selectedFile) return;
+            
+            const formatNames = {
+                'jpg': 'JPEG',
+                'png': 'PNG',
+                'webp': 'WebP',
+                'svg': 'SVG',
+                'bmp': 'BMP',
+                'tiff': 'TIFF'
+            };
+            
+            const filename = originalFileName.replace(/\.[^/.]+$/, "") + '_converted.' + selectedFormat;
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = URL.createObjectURL(selectedFile);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert(`✅ Image converted to ${formatNames[selectedFormat]} successfully!\n\nFile: ${filename}\nQuality: ${conversionQuality}%\n\nYour download has started.`);
+            
+            // Track download
+            trackDownload('image-converter', selectedFormat);
+        }
+        
+        // Reset tool
+        function resetTool() {
             selectedFile = null;
+            originalFileName = '';
+            selectedFormat = 'jpg';
+            conversionQuality = 90;
+            
+            // Reset UI
             document.getElementById('fileInput').value = '';
             document.getElementById('fileInfo').classList.remove('active');
-            document.querySelectorAll('.format-card')[0].classList.add('active');
-            document.querySelectorAll('.format-card').forEach((card, idx) => {
-                if (idx !== 0) card.classList.remove('active');
+            document.getElementById('downloadBtn').style.display = 'none';
+            document.getElementById('convertBtn').style.display = 'inline-block';
+            document.getElementById('convertBtn').disabled = false;
+            document.getElementById('convertBtn').textContent = 'Convert Image';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('progressPercent').textContent = '0%';
+            
+            // Reset format selection
+            document.querySelectorAll('.format-card').forEach((card, index) => {
+                if (index === 0) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
             });
-            selectedFormat = 'jpg';
+            
+            // Reset quality slider
             document.getElementById('qualitySlider').value = 90;
-            document.getElementById('qualityValue').textContent = 'High Quality';
-            conversionQuality = 90;
-        });
-
+            document.getElementById('qualityValue').textContent = 'Better Quality';
+            
+            // Reset page title
+            document.title = 'Image Converter - Convert Images Online Free | Nagar Tools';
+        }
+        
         // FAQ toggle
         function toggleFAQ(questionElement) {
             const answer = questionElement.nextElementSibling;
@@ -927,29 +1130,31 @@
                 answer.classList.remove('active');
                 icon.textContent = '➕';
             } else {
+                // Close all other FAQs
                 document.querySelectorAll('.faq-answer').forEach(ans => {
                     ans.classList.remove('active');
                     ans.previousElementSibling.querySelector('span:last-child').textContent = '➕';
                 });
+                
                 answer.classList.add('active');
                 icon.textContent = '➖';
             }
         }
-
-        // Drag and drop
+        
+        // Drag and drop functionality
         const uploadArea = document.getElementById('uploadArea');
         uploadArea.addEventListener('dragover', function(e) {
             e.preventDefault();
             this.style.borderColor = 'var(--blue)';
-            this.style.background = '#f0f7ff';
+            this.style.background = 'var(--blue-light)';
         });
-
+        
         uploadArea.addEventListener('dragleave', function(e) {
             e.preventDefault();
             this.style.borderColor = 'var(--border)';
             this.style.background = 'var(--bg)';
         });
-
+        
         uploadArea.addEventListener('drop', function(e) {
             e.preventDefault();
             this.style.borderColor = 'var(--border)';
@@ -960,20 +1165,38 @@
                 selectedFile = file;
                 handleFileSelect({target: {files: [file]}});
             } else {
-                alert('Please drop a valid image file');
+                alert('Please drop a valid image file (JPG, PNG, WebP, etc.)');
             }
         });
-
+        
         // Analytics tracking
-        function trackConversion(toolName, format) {
-            console.log(`Conversion tracked: ${toolName}, Format: ${format}`);
+        function trackConversion(toolName, format, quality) {
+            console.log(`Conversion tracked: ${toolName}, Format: ${format}, Quality: ${quality}%`);
             // In production, add Google Analytics or similar here
+            // Example: gtag('event', 'conversion', {tool: toolName, format: format});
         }
-
+        
+        function trackDownload(toolName, format) {
+            console.log(`Download tracked: ${toolName}, Format: ${format}`);
+            // In production, add download tracking
+        }
+        
         // Update schema dynamically
-        function updateSchemaForFormat(format) {
+        function updateSchemaDimensions(width, height) {
+            // Update schema with image dimensions
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.fileSize = formatFileSize(selectedFile.size);
+                schema.height = `${height}px`;
+                schema.width = `${width}px`;
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
+        }
+        
+        function updateSchemaFormat(format) {
             const formatNames = {
-                'jpg': 'JPG',
+                'jpg': 'JPEG',
                 'png': 'PNG', 
                 'webp': 'WebP',
                 'svg': 'SVG',
@@ -984,13 +1207,84 @@
             // Update page description
             document.querySelector('meta[name="description"]').content = 
                 `Convert images to ${formatNames[format]} format online free. High quality conversion. No registration required.`;
+            
+            // Update schema
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.name = `Image Converter to ${formatNames[format]} - Nagar Tools`;
+                schema.description = `Convert images to ${formatNames[format]} format online free`;
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
         }
-
+        
+        function updateSchemaConversionComplete() {
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.applicationSubCategory = "Image Conversion Completed";
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
+        }
+        
+        // Update meta description
+        function updateMetaDescription(filename) {
+            const formatNames = {
+                'jpg': 'JPEG',
+                'png': 'PNG', 
+                'webp': 'WebP',
+                'svg': 'SVG',
+                'bmp': 'BMP',
+                'tiff': 'TIFF'
+            };
+            
+            const format = filename.split('.').pop().toLowerCase();
+            const formatName = formatNames[format] || format.toUpperCase();
+            
+            document.querySelector('meta[name="description"]').content = 
+                `Convert ${formatName} images online free. Convert ${filename} to other formats instantly. High quality conversion. No registration required.`;
+        }
+        
         // Page load analytics
         window.addEventListener('load', function() {
-            console.log('Image Converter Tool loaded');
+            console.log('Image Converter Tool loaded - Nagar Tools');
             // Track page view in analytics
+            // Example: gtag('event', 'page_view', {page_title: 'Image Converter'});
+            
+            // Initialize quality value
+            updateQualityValue();
         });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl + O to open file
+            if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                document.getElementById('fileInput').click();
+            }
+            
+            // Ctrl + R to reset
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                resetTool();
+            }
+            
+            // Escape to reset
+            if (e.key === 'Escape') {
+                resetTool();
+            }
+        });
+        
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>
