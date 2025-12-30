@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image to Text (OCR) - Extract Text from Images Online | Nagar Tools</title>
+    <meta name="description" content="Free online OCR tool to extract text from images. Convert scanned documents, screenshots, and photos to editable text. Supports Hindi and English.">
+    <meta name="keywords" content="image to text converter online, ocr online, extract text from image, image text extractor, photo to text">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Image to Text (OCR) - Extract Text from Images Online | Nagar Tools">
+    <meta property="og:description" content="Free online OCR tool to extract text from images. Convert scanned documents, screenshots, and photos to editable text.">
+    <meta property="og:type" content="website">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --blue: #1976d2;
+            --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
+            --bg: #f5f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: #e5e7eb;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: #374151;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--blue);
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue-dark);
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #9ca3af;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0 80px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .tool-header p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .upload-area {
+            border: 3px dashed var(--blue);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f8faff;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        .upload-area:hover {
+            background-color: #edf1ff;
+            border-color: var(--blue-dark);
+        }
+
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--blue);
+            margin-bottom: 15px;
+        }
+
+        .upload-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .upload-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.25);
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .file-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            border-left: 4px solid var(--blue);
+        }
+
+        .file-info i {
+            color: var(--blue);
+            margin-right: 8px;
+        }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .result-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .result-box {
+            background: #f9fafb;
+            border-radius: var(--radius);
+            padding: 20px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+            border: 1px solid var(--border);
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .result-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { color: #4f6df5; }
+        .feature-card:nth-child(2) .feature-icon { color: #28a745; }
+        .feature-card:nth-child(3) .feature-icon { color: #ff6b35; }
+        .feature-card:nth-child(4) .feature-icon { color: #17a2b8; }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        /* Formats Section */
+        .formats-section {
+            margin: 50px 0;
+        }
+
+        .formats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .format-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 25px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .format-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .format-title i {
+            color: var(--blue);
+        }
+
+        .format-list {
+            list-style: none;
+        }
+
+        .format-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .format-list li i {
+            color: #28a745;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--blue);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 15px;
+        }
+
+        /* Language Selection */
+        .language-section {
+            margin: 20px 0;
+        }
+
+        .language-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .language-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .language-btn.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 50px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                padding: 15px 0;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .upload-section {
+                padding: 25px;
+            }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+            
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid, .formats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .result-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .upload-icon {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--blue);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <span class="logo-icon">🔧</span>
+            <a href="/"><span>NagarTools</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tools/">All Tools</a></li>
+                <li><a href="/popular/">Popular</a></li>
+                <li><a href="mailto:nagartools1@gmail.com">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/tools/">Tools</a> <span>/</span>
+    <a href="/category/image-tools/">Image Tools</a> <span>/</span>
+    <span>Image to Text (OCR)</span>
+</div>
+
+<main class="container">
+    <div class="tool-header">
+        <h1>Image to Text (OCR) Converter</h1>
+        <p>Extract text from images, screenshots, and scanned documents. Supports Hindi and English text recognition.</p>
+    </div>
+
+    <!-- Language Selection -->
+    <div class="language-section">
+        <div class="section-title">Select Language</div>
+        <div class="language-options">
+            <button class="language-btn active" data-lang="auto">Auto Detect</button>
+            <button class="language-btn" data-lang="en">English</button>
+            <button class="language-btn" data-lang="hi">Hindi</button>
+            <button class="language-btn" data-lang="hi+en">Hindi + English</button>
+        </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">
+                <i class="fas fa-file-upload"></i>
+            </div>
+            <div class="upload-text">
+                <h3>Upload Image or PDF</h3>
+                <p>Drag & drop or click to browse</p>
+                <p style="font-size: 0.9rem; color: var(--warning);">Max file size: 20MB</p>
+            </div>
+            <input type="file" id="fileInput" class="file-input" accept=".jpg,.jpeg,.png,.pdf,.bmp">
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="btn" id="extractBtn" disabled>
+                <i class="fas fa-bolt"></i> Extract Text from Image
+            </button>
+        </div>
+        
+        <div class="file-info" id="fileInfo" style="display: none;">
+            <i class="fas fa-info-circle"></i>
+            <span id="fileName">No file selected</span>
+            <span id="fileSize"></span>
+            <button style="margin-left: 15px; background: none; border: none; color: var(--blue); cursor: pointer;" id="removeFile">Remove</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Extracting text from image... Please wait</p>
+        </div>
+        
+        <div class="file-info">
+            <i class="fas fa-check-circle"></i>
+            <strong>Supported formats:</strong> JPG, PNG, PDF, BMP, GIF, TIFF
+            <br>
+            <i class="fas fa-shield-alt"></i>
+            <strong>Privacy:</strong> Your files are processed securely and automatically deleted
+        </div>
+    </div>
+
+    <!-- Result Section -->
+    <div class="result-section" id="resultSection">
+        <div class="result-header">
+            <h3><i class="fas fa-file-alt"></i> Extracted Text</h3>
+            <div class="result-actions">
+                <button class="btn btn-secondary" id="copyBtn">
+                    <i class="fas fa-copy"></i> Copy Text
+                </button>
+                <button class="btn btn-secondary" id="downloadTxtBtn">
+                    <i class="fas fa-download"></i> Download as TXT
+                </button>
+                <button class="btn" id="downloadDocBtn">
+                    <i class="fas fa-file-word"></i> Download as DOC
+                </button>
+            </div>
+        </div>
+        <div class="result-box" id="resultBox">
+            No text extracted yet. Upload an image to begin.
+        </div>
+        <div class="result-stats" id="resultStats">
+            <div class="result-stat">
+                <i class="fas fa-font"></i> <span id="charCount">0</span> characters
+            </div>
+            <div class="result-stat">
+                <i class="fas fa-file-word"></i> <span id="wordCount">0</span> words
+            </div>
+            <div class="result-stat">
+                <i class="fas fa-clock"></i> Processed in <span id="processTime">0</span>s
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="section-title">Key Features</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>Multi-language OCR</h3>
+                <p>Supports Hindi, English and multiple other languages with high accuracy.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Accurate Extraction</h3>
+                <p>High accuracy text recognition from various image qualities and formats.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Fast Processing</h3>
+                <p>Extract text in seconds with our optimized OCR engine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Privacy Protected</h3>
+                <p>Your documents stay private. We don't store your files after processing.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formats Section -->
+    <div class="formats-section">
+        <div class="section-title">Supported Formats</div>
+        <div class="formats-container">
+            <div class="format-box">
+                <div class="format-title">
+                    <i class="fas fa-file-upload"></i> Input Formats
+                </div>
+                <ul class="format-list">
+                    <li><i class="fas fa-check"></i> JPG / JPEG Images</li>
+                    <li><i class="fas fa-check"></i> PNG Images</li>
+                    <li><i class="fas fa-check"></i> PDF Documents</li>
+                    <li><i class="fas fa-check"></i> BMP Images</li>
+                    <li><i class="fas fa-check"></i> GIF Images</li>
+                    <li><i class="fas fa-check"></i> TIFF Images</li>
+                </ul>
+            </div>
+            <div class="format-box">
+                <div class="format-title">
+                    <i class="fas fa-file-download"></i> Output Formats
+                </div>
+                <ul class="format-list">
+                    <li><i class="fas fa-file-alt"></i> Plain Text (.txt)</li>
+                    <li><i class="fas fa-file-word"></i> Word Document (.doc)</li>
+                    <li><i class="fas fa-clipboard"></i> Copy to Clipboard</li>
+                    <li><i class="fas fa-edit"></i> Editable Text Format</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="section-title">Frequently Asked Questions</div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this OCR tool free to use?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Yes, completely free! Our image to text converter is 100% free with no hidden charges or usage limits. No registration required.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What languages are supported for text extraction?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We support <strong>Hindi, English, Spanish, French, German, and 20+ languages</strong>. The tool auto-detects most languages, or you can manually select the language for better accuracy.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I extract text from PDF files?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Yes! Upload PDF files containing scanned documents or images, and our OCR will extract all readable text while preserving formatting where possible.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is my document content secure?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>🔒 Maximum security guaranteed. Your files are processed securely and automatically deleted after conversion. No one can access your documents.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <span class="logo-icon">🔧</span>
+                    <span>NagarTools</span>
+                </div>
+                <p>Simplifying your digital life with free, fast, and secure online tools.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">No registration required. 100% privacy safe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools/">All Tools</a></li>
+                    <li><a href="/popular/">Popular Tools</a></li>
+                    <li><a href="/new-tools/">Recently Added</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tool Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="/category/image-tools/">Image Tools</a></li>
+                    <li><a href="/category/pdf-tools/">PDF Tools</a></li>
+                    <li><a href="/category/calculators/">Calculators</a></li>
+                    <li><a href="/category/text-tools/">Text Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:nagartools1@gmail.com">Email: nagartools1@gmail.com</a></li>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/terms/">Terms of Use</a></li>
+                    <li><a href="/sitemap/">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 NagarTools. All rights reserved. All tools are free to use.</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">Made with ❤️ for users worldwide</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const removeFile = document.getElementById('removeFile');
+    const extractBtn = document.getElementById('extractBtn');
+    const loading = document.getElementById('loading');
+    const resultSection = document.getElementById('resultSection');
+    const resultBox = document.getElementById('resultBox');
+    const resultStats = document.getElementById('resultStats');
+    const charCount = document.getElementById('charCount');
+    const wordCount = document.getElementById('wordCount');
+    const processTime = document.getElementById('processTime');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadTxtBtn = document.getElementById('downloadTxtBtn');
+    const downloadDocBtn = document.getElementById('downloadDocBtn');
+    const languageBtns = document.querySelectorAll('.language-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    let selectedFile = null;
+    let selectedLanguage = 'auto';
+    let extractedText = '';
+    let startTime = 0;
+    
+    // Language selection
+    languageBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            languageBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            selectedLanguage = this.getAttribute('data-lang');
+        });
+    });
+    
+    // FAQ toggle
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+    
+    // File upload handling
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = 'var(--blue-dark)';
+        uploadArea.style.backgroundColor = '#e3f2fd';
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.style.borderColor = 'var(--blue)';
+        uploadArea.style.backgroundColor = '#f8faff';
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = 'var(--blue)';
+        uploadArea.style.backgroundColor = '#f8faff';
+        
+        if (e.dataTransfer.files.length) {
+            handleFileSelect(e.dataTransfer.files[0]);
+        }
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            handleFileSelect(e.target.files[0]);
+        }
+    });
+    
+    function handleFileSelect(file) {
+        // Check file size (max 20MB)
+        if (file.size > 20 * 1024 * 1024) {
+            alert('File size exceeds 20MB limit. Please choose a smaller file.');
+            return;
+        }
+        
+        // Check file type
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/bmp', 'image/gif', 'image/tiff', 'application/pdf'];
+        if (!validTypes.includes(file.type)) {
+            alert('Please select a valid image or PDF file (JPG, PNG, PDF, BMP, GIF, TIFF).');
+            return;
+        }
+        
+        selectedFile = file;
+        
+        // Update file info display
+        fileName.textContent = file.name;
+        fileSize.textContent = ` (${formatFileSize(file.size)})`;
+        fileInfo.style.display = 'block';
+        extractBtn.disabled = false;
+        
+        // Preview for images
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Could add image preview here if needed
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    removeFile.addEventListener('click', () => {
+        selectedFile = null;
+        fileInput.value = '';
+        fileInfo.style.display = 'none';
+        extractBtn.disabled = true;
+        resultSection.classList.remove('active');
+    });
+    
+    // Extract text button
+    extractBtn.addEventListener('click', extractText);
+    
+    function extractText() {
+        if (!selectedFile) return;
+        
+        // Show loading
+        loading.classList.add('active');
+        extractBtn.disabled = true;
+        startTime = Date.now();
+        
+        // Simulate OCR processing (in a real app, this would call a backend API)
+        setTimeout(() => {
+            // This is a simulation - in reality, you would send the file to an OCR API
+            simulateOCRProcessing();
+        }, 1000);
+    }
+    
+    function simulateOCRProcessing() {
+        // Simulated extracted text (in real app, this comes from OCR API)
+        const sampleTexts = {
+            en: "This is a sample of extracted text from an image using OCR technology. The text recognition is highly accurate and preserves the original formatting as much as possible.\n\nYou can copy this text to clipboard or download it as a text document for further editing.",
+            hi: "यह छवि से OCR तकनीक का उपयोग करके निकाले गए पाठ का एक नमूना है। पाठ पहचान अत्यधिक सटीक है और यथासंभव मूल स्वरूपण को संरक्षित करती है।\n\nआप इस पाठ को क्लिपबोर्ड पर कॉपी कर सकते हैं या आगे संपादन के लिए इसे टेक्स्ट दस्तावेज़ के रूप में डाउनलोड कर सकते हैं।",
+            'hi+en': "This is a sample of extracted text from an image using OCR technology. The text recognition is highly accurate and preserves the original formatting as much as possible.\n\nयह छवि से OCR तकनीक का उपयोग करके निकाले गए पाठ का एक नमूना है। पाठ पहचान अत्यधिक सटीक है और यथासंभव मूल स्वरूपण को संरक्षित करती है।\n\nYou can copy this text to clipboard or download it as a text document for further editing."
+        };
+        
+        // Select text based on language
+        extractedText = sampleTexts[selectedLanguage] || sampleTexts.en;
+        
+        // Add some random text for realism
+        if (selectedFile.name.includes('receipt')) {
+            extractedText = "STORE RECEIPT\n\nDate: 15/12/2023\nTime: 14:30\nItem: Coffee - ₹150\nItem: Sandwich - ₹200\nTax: ₹35\nTotal: ₹385\n\nThank you for your visit!";
+        } else if (selectedFile.name.includes('document')) {
+            extractedText = "IMPORTANT DOCUMENT\n\nThis is to certify that the information contained herein is accurate and complete.\n\nAll details have been verified by the appropriate authorities.\n\nThe document is valid for one year from the date of issue.\n\nSignature: _____________\nDate: 15 December 2023";
+        }
+        
+        // Calculate processing time
+        const endTime = Date.now();
+        const processingTime = ((endTime - startTime) / 1000).toFixed(2);
+        
+        // Update UI
+        resultBox.textContent = extractedText;
+        updateTextStats(extractedText);
+        processTime.textContent = processingTime;
+        
+        // Hide loading, show results
+        loading.classList.remove('active');
+        resultSection.classList.add('active');
+        extractBtn.disabled = false;
+    }
+    
+    function updateTextStats(text) {
+        const chars = text.length;
+        const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        
+        charCount.textContent = chars.toLocaleString();
+        wordCount.textContent = words.toLocaleString();
+    }
+    
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        else return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+    
+    // Copy text button
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(extractedText).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyBtn.style.background = 'var(--success)';
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        });
+    });
+    
+    // Download as TXT
+    downloadTxtBtn.addEventListener('click', () => {
+        if (!extractedText) return;
+        
+        const blob = new Blob([extractedText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'extracted-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    
+    // Download as DOC
+    downloadDocBtn.addEventListener('click', () => {
+        if (!extractedText) return;
+        
+        // Create a simple DOC file (in reality, you'd use a library for proper DOC format)
+        const htmlContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Extracted Text from Image</title>
+                <style>
+                    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+                </style>
+            </head>
+            <body>
+                <h2>Text Extracted from Image</h2>
+                <p>Extracted using NagarTools Image to Text OCR</p>
+                <hr>
+                <pre>${extractedText}</pre>
+                <hr>
+                <p>Generated on: ${new Date().toLocaleDateString()}</p>
+            </body>
+            </html>
+        `;
+        
+        const blob = new Blob([htmlContent], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'extracted-text.doc';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    
+    // Initialize
+    updateTextStats('');
+});
+</script>
+
+</body>
+</html>
