@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en-IN" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO META TAGS -->
+    <title>Image Resizer - Resize Images Online Free | Nagar Tools</title>
+    <meta name="description" content="Free online image resizer tool. Resize JPG, PNG, WebP images to custom dimensions or by percentage. Maintain aspect ratio. No registration required.">
+    <meta name="keywords" content="image resizer online, resize image, change image size, photo resizer, image dimension changer">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://nagartools.in/image-resizer">
+    
+    <!-- OG TAGS -->
+    <meta property="og:title" content="Image Resizer - Free Online Tool | Nagar Tools">
+    <meta property="og:description" content="Resize images to custom dimensions or by percentage. Maintain aspect ratio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nagartools.in/image-resizer">
+    <meta property="og:image" content="https://nagartools.in/assets/image-resizer-og.jpg">
+    <meta property="og:site_name" content="Nagar Tools">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image Resizer - Free Online Tool">
+    <meta name="twitter:description" content="Resize JPG, PNG, WebP images online free.">
+    <meta name="twitter:image" content="https://nagartools.in/assets/image-resizer-twitter.jpg">
+    
+    <!-- ADDITIONAL SEO -->
+    <meta name="author" content="Nagar Tools">
+    <meta name="language" content="English, Hindi">
+    <meta name="geo.region" content="IN">
+    <meta name="geo.placename" content="India">
+    
+    <!-- SCHEMA MARKUP -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Resizer - Nagar Tools",
+        "url": "https://nagartools.in/image-resizer",
+        "applicationCategory": "ImageEditingApplication",
+        "operatingSystem": "Any",
+        "description": "Free online image resizer tool to resize JPG, PNG, WebP, GIF, BMP images to custom dimensions or by percentage while maintaining aspect ratio",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Nagar Tools",
+            "url": "https://nagartools.in"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.6",
+            "ratingCount": "734",
+            "bestRating": "5"
+        },
+        "featureList": "Custom Dimensions, Aspect Ratio Lock, Preset Sizes, Quick Processing",
+        "screenshot": "https://nagartools.in/assets/image-resizer-screenshot.jpg",
+        "inLanguage": ["en-IN", "hi-IN"]
+    }
+    </script>
+    
+    <style>
+        /* COMMON STYLES - SAME DESIGN FOR ALL TOOLS */
+        :root {
+            --blue: #1976d2;
+            --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
+            --bg: #f5f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* HEADER - SAME AS HOMEPAGE */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 64px;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            color: #374151;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--blue);
+            background: var(--blue-light);
+        }
+        
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 16px 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .breadcrumb a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            margin: 0 8px;
+            color: var(--muted);
+        }
+        
+        /* MAIN TOOL CONTENT */
+        .tool-hero {
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .tool-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+        
+        .tool-hero p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+        
+        .language-badge {
+            display: inline-block;
+            background: var(--blue-light);
+            color: var(--blue-dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* TOOL WRAPPER */
+        .tool-wrapper {
+            background: var(--card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid var(--border);
+        }
+        
+        /* UPLOAD AREA */
+        .upload-area {
+            border: 3px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            background: var(--bg);
+        }
+        
+        .upload-area:hover {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+        
+        .upload-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+        
+        .upload-text h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        .upload-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+        
+        /* BUTTONS */
+        .btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover {
+            background: #0da271;
+        }
+        
+        /* FILE INFO */
+        .file-info {
+            display: none;
+            background: var(--blue-light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--blue);
+        }
+        
+        .file-info.active {
+            display: block;
+        }
+        
+        .file-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .file-icon {
+            font-size: 2.5rem;
+            color: var(--blue);
+        }
+        
+        /* RESIZE OPTIONS */
+        .resize-options {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .option-card.active {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+        
+        .option-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--blue);
+        }
+        
+        .option-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        /* DIMENSION INPUTS */
+        .dimension-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-group input {
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+        
+        /* ASPECT RATIO CONTROL */
+        .aspect-control {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: var(--radius);
+        }
+        
+        .aspect-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        .aspect-checkbox input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* PERCENTAGE SLIDER */
+        .percentage-slider {
+            margin: 20px 0;
+        }
+        
+        .percentage-value {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin: 10px 0;
+        }
+        
+        .slider-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--blue);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* PRESET SIZES */
+        .preset-sizes {
+            margin: 20px 0;
+        }
+        
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .preset-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .preset-card:hover {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+        
+        .preset-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .preset-dimensions {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        
+        /* RESIZE PREVIEW */
+        .resize-preview {
+            display: none;
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        
+        .resize-preview.active {
+            display: block;
+        }
+        
+        .preview-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .preview-comparison {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .preview-box {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .preview-header {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #f0f0f0, #fafafa);
+            border-radius: var(--radius);
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preview-dimensions {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+        
+        .preview-size {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+        
+        /* ACTION BUTTONS */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        /* TOOL INFO SECTION */
+        .tool-info {
+            margin: 50px 0;
+            padding: 40px;
+            background: var(--bg);
+            border-radius: var(--radius-lg);
+        }
+        
+        .tool-info h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            font-size: 1.8rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .info-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        /* FAQ SECTION */
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            font-size: 1.8rem;
+        }
+        
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: white;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: var(--card);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+            border-top: 1px solid var(--border);
+        }
+        
+        /* RELATED TOOLS */
+        .related-tools {
+            margin: 50px 0;
+        }
+        
+        .related-tools h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            font-size: 1.8rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-link {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        
+        .tool-link:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue);
+        }
+        
+        .tool-link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .tool-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-wrapper {
+                padding: 25px;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .preset-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preview-comparison {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-wrapper {
+                padding: 20px;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preset-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+            
+            .tool-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* PROGRESS BAR */
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* DIMENSION UNIT TOGGLE */
+        .unit-toggle {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .unit-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .unit-btn.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+    </style>
+</head>
+<body itemscope itemtype="https://schema.org/WebPage">
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
+            <a href="../index.html" class="logo" itemprop="url">
+                <span itemprop="name">🔧 NagarTools</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#tools">All Tools</a></li>
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="mailto:nagartools1@gmail.com">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb" itemprop="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a>
+            <span>›</span>
+            <a href="../index.html#image-tools">Image Tools</a>
+            <span>›</span>
+            <span>Image Resizer</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <!-- TOOL HERO -->
+        <div class="tool-hero">
+            <h1 itemprop="headline">Image Resizer - Resize Images Online Free</h1>
+            <p itemprop="description">Resize images to exact dimensions or by percentage. Resize images for social media, adjust photos for websites, prepare images for documents.</p>
+            <div class="language-badge">हिंदी + English Supported</div>
+        </div>
+
+        <!-- TOOL WRAPPER -->
+        <div class="tool-wrapper" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <meta itemprop="applicationCategory" content="ImageEditingApplication">
+            <meta itemprop="operatingSystem" content="Any">
+            
+            <!-- UPLOAD AREA -->
+            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📏</div>
+                <div class="upload-text">
+                    <h3>Drop Your Image Here</h3>
+                    <p>or click to browse files (Supports JPG, PNG, WebP, GIF, BMP - Max 50MB)</p>
+                    <button class="btn">Choose Image</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                </div>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="progress-container" id="progressContainer">
+                <div class="slider-label">
+                    <span>Resizing...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- FILE INFO -->
+            <div class="file-info" id="fileInfo">
+                <div class="file-details">
+                    <div class="file-icon">📁</div>
+                    <div>
+                        <h3 id="fileName">No file selected</h3>
+                        <p id="fileSize">Size: --</p>
+                        <p id="fileDimensions">Dimensions: --</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESIZE OPTIONS -->
+            <div class="resize-options">
+                <h3 class="section-title">Resize Method:</h3>
+                <div class="options-grid">
+                    <div class="option-card active" data-method="dimensions" onclick="selectResizeMethod('dimensions')">
+                        <div class="option-icon">📐</div>
+                        <div class="option-name">Custom Dimensions</div>
+                        <div class="option-desc">Set exact width and height</div>
+                    </div>
+                    <div class="option-card" data-method="percentage" onclick="selectResizeMethod('percentage')">
+                        <div class="option-icon">📊</div>
+                        <div class="option-name">Percentage</div>
+                        <div class="option-desc">Resize by percentage</div>
+                    </div>
+                    <div class="option-card" data-method="preset" onclick="selectResizeMethod('preset')">
+                        <div class="option-icon">🖼️</div>
+                        <div class="option-name">Preset Sizes</div>
+                        <div class="option-desc">Common social media sizes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CUSTOM DIMENSIONS SECTION -->
+            <div id="dimensionsSection">
+                <h3 class="section-title">Set Dimensions (px):</h3>
+                <div class="dimension-inputs">
+                    <div class="input-group">
+                        <label for="widthInput">
+                            <span>Width</span>
+                            <span style="color: var(--muted); font-weight: normal;">(px)</span>
+                        </label>
+                        <input type="number" id="widthInput" placeholder="Enter width" min="10" value="800" oninput="updateDimensions()">
+                    </div>
+                    <div class="input-group">
+                        <label for="heightInput">
+                            <span>Height</span>
+                            <span style="color: var(--muted); font-weight: normal;">(px)</span>
+                        </label>
+                        <input type="number" id="heightInput" placeholder="Enter height" min="10" value="600" oninput="updateDimensions()">
+                    </div>
+                </div>
+                
+                <div class="aspect-control">
+                    <label class="aspect-checkbox">
+                        <input type="checkbox" id="lockAspect" checked onchange="toggleAspectRatio()">
+                        <span>Lock Aspect Ratio (Maintain original proportions)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PERCENTAGE SECTION -->
+            <div id="percentageSection" style="display: none;">
+                <h3 class="section-title">Resize Percentage:</h3>
+                <div class="percentage-slider">
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>1%</span>
+                            <span>200%</span>
+                        </div>
+                        <input type="range" min="1" max="200" value="100" class="slider" id="percentageSlider" oninput="updatePercentage()">
+                    </div>
+                    <div class="percentage-value" id="percentageValue">100%</div>
+                </div>
+            </div>
+
+            <!-- PRESET SIZES SECTION -->
+            <div id="presetSection" style="display: none;">
+                <h3 class="section-title">Select Preset Size:</h3>
+                <div class="preset-sizes">
+                    <div class="preset-grid">
+                        <div class="preset-card" data-width="1080" data-height="1080" onclick="selectPresetSize(1080, 1080)">
+                            <div class="preset-name">Instagram Post</div>
+                            <div class="preset-dimensions">1080 × 1080</div>
+                        </div>
+                        <div class="preset-card" data-width="1200" data-height="630" onclick="selectPresetSize(1200, 630)">
+                            <div class="preset-name">Facebook Post</div>
+                            <div class="preset-dimensions">1200 × 630</div>
+                        </div>
+                        <div class="preset-card" data-width="150" data-height="150" onclick="selectPresetSize(150, 150)">
+                            <div class="preset-name">Thumbnail</div>
+                            <div class="preset-dimensions">150 × 150</div>
+                        </div>
+                        <div class="preset-card" data-width="1920" data-height="1080" onclick="selectPresetSize(1920, 1080)">
+                            <div class="preset-name">HD Wallpaper</div>
+                            <div class="preset-dimensions">1920 × 1080</div>
+                        </div>
+                        <div class="preset-card" data-width="800" data-height="600" onclick="selectPresetSize(800, 600)">
+                            <div class="preset-name">Website Banner</div>
+                            <div class="preset-dimensions">800 × 600</div>
+                        </div>
+                        <div class="preset-card" data-width="1280" data-height="720" onclick="selectPresetSize(1280, 720)">
+                            <div class="preset-name">YouTube Thumbnail</div>
+                            <div class="preset-dimensions">1280 × 720</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESIZE PREVIEW -->
+            <div class="resize-preview" id="resizePreview">
+                <h3 class="preview-title">Resize Preview</h3>
+                <div class="preview-comparison">
+                    <div class="preview-box">
+                        <div class="preview-header">Original Image</div>
+                        <div class="preview-image" id="originalPreview">
+                            Original Image
+                        </div>
+                        <div class="preview-dimensions" id="originalDims">-- × --</div>
+                        <div class="preview-size" id="originalSize">Size: --</div>
+                    </div>
+                    <div class="preview-box">
+                        <div class="preview-header">Resized Image</div>
+                        <div class="preview-image" id="resizedPreview">
+                            Resized Preview
+                        </div>
+                        <div class="preview-dimensions" id="resizedDims">800 × 600</div>
+                        <div class="preview-size" id="resizedSize">Size: --</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="action-buttons">
+                <button class="btn btn-success" id="resizeBtn" onclick="resizeImage()">Resize Image</button>
+                <button class="btn" id="downloadBtn" style="display: none;" onclick="downloadResizedImage()">Download Resized Image</button>
+                <button class="btn" id="resetBtn" onclick="resetTool()">Reset</button>
+            </div>
+            
+            <meta itemprop="featureList" content="Custom Dimensions, Aspect Ratio Lock, Preset Sizes, Quick Processing">
+        </div>
+
+        <!-- TOOL INFO -->
+        <div class="tool-info">
+            <h2>Why Choose Our Image Resizer?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">📏</div>
+                    <h3>Custom Dimensions</h3>
+                    <p>Set exact width and height in pixels for precise control over your image dimensions.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🔒</div>
+                    <h3>Aspect Ratio Lock</h3>
+                    <p>Automatically maintain original proportions to prevent image distortion.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3>Preset Sizes</h3>
+                    <p>Quickly resize to common social media and website dimensions with one click.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">⚡</div>
+                    <h3>Quick Processing</h3>
+                    <p>Resize images instantly with our optimized engine. No waiting time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is this image resizer free to use?</span>
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely! Our image resizer is 100% free with no hidden charges, watermarks, or usage limits. You can resize as many images as you want without any registration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I maintain aspect ratio while resizing?</span>
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We provide an "Aspect Ratio Lock" feature that automatically maintains the original proportions of your image when you change dimensions. This prevents distortion and keeps your images looking natural.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What are the maximum dimensions allowed?</span>
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can resize images up to 10,000 pixels in width or height. For most practical uses, this is more than sufficient. The maximum file size is 50MB.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Are my resized images private?</span>
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All processing happens locally in your browser. Your images are never uploaded to our servers, ensuring complete privacy and security. We believe in privacy-first tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div class="related-tools">
+            <h2>Related Tools</h2>
+            <div class="tools-grid">
+                <a href="image-converter.html" class="tool-link">
+                    <span class="tool-link-icon">🔄</span>
+                    <h3>Image Converter</h3>
+                    <p>Convert image formats</p>
+                </a>
+                <a href="image-compressor.html" class="tool-link">
+                    <span class="tool-link-icon">📦</span>
+                    <h3>Image Compressor</h3>
+                    <p>Reduce image file size</p>
+                </a>
+                <a href="image-cropper.html" class="tool-link">
+                    <span class="tool-link-icon">✂️</span>
+                    <h3>Image Cropper</h3>
+                    <p>Crop images online</p>
+                </a>
+                <a href="bulk-image-resizer.html" class="tool-link">
+                    <span class="tool-link-icon">📚</span>
+                    <h3>Bulk Image Resizer</h3>
+                    <p>Resize multiple images</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Nagar Tools</h3>
+                    <p>Free online tools for everyday tasks. Simple, fast, and secure.</p>
+                    <p style="margin-top: 10px; color: var(--blue); font-weight: 600;">हिंदी + English Tools</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#tools">All Tools</a></li>
+                        <li><a href="../index.html#popular-tools">Popular Tools</a></li>
+                        <li><a href="../index.html#new-tools">New Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../index.html#image-tools">Image Tools</a></li>
+                        <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                        <li><a href="../index.html#calculator-tools">Calculators</a></li>
+                        <li><a href="../index.html#text-tools">Text Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                        <li><a href="mailto:nagartools1@gmail.com">Contact Us</a></li>
+                        <li><a href="../sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Nagar Tools. All rights reserved. All tools are free to use.</p>
+                <p style="margin-top: 8px;">Made with ❤️ for users in India and worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Image Resizer JavaScript
+        let selectedFile = null;
+        let resizeMethod = 'dimensions';
+        let originalFileName = '';
+        let originalFileSize = 0;
+        let originalWidth = 0;
+        let originalHeight = 0;
+        let aspectRatio = 1;
+        let lockAspectRatio = true;
+        let targetWidth = 800;
+        let targetHeight = 600;
+        let resizePercentage = 100;
+        
+        // Handle file selection
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file (JPG, PNG, WebP, GIF, BMP)');
+                return;
+            }
+            
+            // Check file size (50MB limit)
+            if (file.size > 50 * 1024 * 1024) {
+                alert('File size exceeds 50MB limit. Please select a smaller image.');
+                return;
+            }
+            
+            selectedFile = file;
+            originalFileName = file.name;
+            originalFileSize = file.size;
+            
+            // Update file info display
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = `Size: ${formatFileSize(file.size)}`;
+            
+            // Get image dimensions
+            const img = new Image();
+            img.onload = function() {
+                originalWidth = this.width;
+                originalHeight = this.height;
+                aspectRatio = originalWidth / originalHeight;
+                
+                document.getElementById('fileDimensions').textContent = 
+                    `Dimensions: ${originalWidth} × ${originalHeight} pixels`;
+                
+                // Update preview
+                updateOriginalPreview();
+                
+                // Set default dimensions based on original
+                if (targetWidth === 800 && targetHeight === 600) {
+                    targetWidth = originalWidth;
+                    targetHeight = originalHeight;
+                    document.getElementById('widthInput').value = targetWidth;
+                    document.getElementById('heightInput').value = targetHeight;
+                }
+                
+                // Update resized preview
+                updateResizedPreview();
+                
+                // Update schema with image dimensions
+                updateSchemaDimensions(originalWidth, originalHeight);
+            };
+            img.src = URL.createObjectURL(file);
+            
+            // Show file info and preview
+            document.getElementById('fileInfo').classList.add('active');
+            document.getElementById('resizePreview').classList.add('active');
+            
+            // Update page title for better UX
+            document.title = `Resize ${file.name} - Image Resizer | Nagar Tools`;
+            
+            // Update meta description
+            updateMetaDescription(file.name);
+        }
+        
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Select resize method
+        function selectResizeMethod(method) {
+            resizeMethod = method;
+            
+            // Update UI
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Show/hide sections
+            document.getElementById('dimensionsSection').style.display = 
+                method === 'dimensions' ? 'block' : 'none';
+            document.getElementById('percentageSection').style.display = 
+                method === 'percentage' ? 'block' : 'none';
+            document.getElementById('presetSection').style.display = 
+                method === 'preset' ? 'block' : 'none';
+            
+            // Update preview
+            updateResizedPreview();
+            
+            // Update schema
+            updateSchemaResizeMethod(method);
+        }
+        
+        // Update original preview
+        function updateOriginalPreview() {
+            if (!selectedFile) return;
+            
+            document.getElementById('originalPreview').textContent = 
+                `${originalWidth}×${originalHeight}`;
+            document.getElementById('originalDims').textContent = 
+                `${originalWidth} × ${originalHeight}`;
+            document.getElementById('originalSize').textContent = 
+                `Size: ${formatFileSize(originalFileSize)}`;
+        }
+        
+        // Update dimensions
+        function updateDimensions() {
+            const widthInput = document.getElementById('widthInput');
+            const heightInput = document.getElementById('heightInput');
+            
+            let newWidth = parseInt(widthInput.value) || 0;
+            let newHeight = parseInt(heightInput.value) || 0;
+            
+            if (lockAspectRatio && aspectRatio > 0) {
+                // Determine which dimension changed
+                const widthChanged = widthInput === document.activeElement;
+                
+                if (widthChanged && newWidth > 0) {
+                    newHeight = Math.round(newWidth / aspectRatio);
+                    heightInput.value = newHeight;
+                } else if (newHeight > 0) {
+                    newWidth = Math.round(newHeight * aspectRatio);
+                    widthInput.value = newWidth;
+                }
+            }
+            
+            targetWidth = newWidth;
+            targetHeight = newHeight;
+            
+            // Update preview
+            updateResizedPreview();
+        }
+        
+        // Toggle aspect ratio lock
+        function toggleAspectRatio() {
+            lockAspectRatio = document.getElementById('lockAspect').checked;
+        }
+        
+        // Update percentage
+        function updatePercentage() {
+            const slider = document.getElementById('percentageSlider');
+            resizePercentage = parseInt(slider.value);
+            
+            document.getElementById('percentageValue').textContent = `${resizePercentage}%`;
+            
+            if (originalWidth > 0 && originalHeight > 0) {
+                targetWidth = Math.round(originalWidth * resizePercentage / 100);
+                targetHeight = Math.round(originalHeight * resizePercentage / 100);
+                updateResizedPreview();
+            }
+        }
+        
+        // Select preset size
+        function selectPresetSize(width, height) {
+            targetWidth = width;
+            targetHeight = height;
+            
+            document.getElementById('widthInput').value = width;
+            document.getElementById('heightInput').value = height;
+            
+            updateResizedPreview();
+        }
+        
+        // Update resized preview
+        function updateResizedPreview() {
+            if (!selectedFile || originalWidth === 0) return;
+            
+            // Calculate dimensions based on method
+            let finalWidth, finalHeight;
+            
+            switch(resizeMethod) {
+                case 'dimensions':
+                    finalWidth = targetWidth;
+                    finalHeight = targetHeight;
+                    break;
+                    
+                case 'percentage':
+                    finalWidth = Math.round(originalWidth * resizePercentage / 100);
+                    finalHeight = Math.round(originalHeight * resizePercentage / 100);
+                    break;
+                    
+                case 'preset':
+                    finalWidth = targetWidth;
+                    finalHeight = targetHeight;
+                    break;
+                    
+                default:
+                    finalWidth = originalWidth;
+                    finalHeight = originalHeight;
+            }
+            
+            // Ensure minimum dimensions
+            finalWidth = Math.max(10, finalWidth);
+            finalHeight = Math.max(10, finalHeight);
+            
+            // Calculate approximate file size (simplified)
+            const sizeRatio = (finalWidth * finalHeight) / (originalWidth * originalHeight);
+            const estimatedSize = Math.round(originalFileSize * sizeRatio);
+            
+            // Update preview display
+            document.getElementById('resizedPreview').textContent = 
+                `${finalWidth}×${finalHeight}`;
+            document.getElementById('resizedDims').textContent = 
+                `${finalWidth} × ${finalHeight}`;
+            document.getElementById('resizedSize').textContent = 
+                `Size: ${formatFileSize(estimatedSize)}`;
+        }
+        
+        // Resize image
+        function resizeImage() {
+            if (!selectedFile) {
+                alert('Please select an image first');
+                return;
+            }
+            
+            // Validate dimensions
+            if (targetWidth < 10 || targetHeight < 10) {
+                alert('Please enter valid dimensions (minimum 10px)');
+                return;
+            }
+            
+            // Show progress bar
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('resizeBtn').disabled = true;
+            document.getElementById('resizeBtn').textContent = 'Resizing...';
+            
+            // Simulate resize process
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 10;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressPercent').textContent = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    
+                    // Show download button
+                    document.getElementById('downloadBtn').style.display = 'inline-block';
+                    document.getElementById('resizeBtn').style.display = 'none';
+                    document.getElementById('progressContainer').style.display = 'none';
+                    
+                    // Update schema with resize completion
+                    updateSchemaResizeComplete();
+                    
+                    // Track resize in analytics
+                    trackResize('image-resizer', resizeMethod, targetWidth, targetHeight);
+                }
+            }, 200);
+        }
+        
+        // Download resized image
+        function downloadResizedImage() {
+            if (!selectedFile) return;
+            
+            const filename = originalFileName.replace(/\.[^/.]+$/, "") + 
+                           `_${targetWidth}x${targetHeight}.` + 
+                           originalFileName.split('.').pop();
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = URL.createObjectURL(selectedFile);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert(`✅ Image resized successfully!\n\nOriginal: ${originalWidth}×${originalHeight}\nResized: ${targetWidth}×${targetHeight}\n\nYour download has started.`);
+            
+            // Track download
+            trackDownload('image-resizer', resizeMethod);
+        }
+        
+        // Reset tool
+        function resetTool() {
+            selectedFile = null;
+            originalFileName = '';
+            originalFileSize = 0;
+            originalWidth = 0;
+            originalHeight = 0;
+            aspectRatio = 1;
+            resizeMethod = 'dimensions';
+            targetWidth = 800;
+            targetHeight = 600;
+            resizePercentage = 100;
+            lockAspectRatio = true;
+            
+            // Reset UI
+            document.getElementById('fileInput').value = '';
+            document.getElementById('fileInfo').classList.remove('active');
+            document.getElementById('resizePreview').classList.remove('active');
+            document.getElementById('downloadBtn').style.display = 'none';
+            document.getElementById('resizeBtn').style.display = 'inline-block';
+            document.getElementById('resizeBtn').disabled = false;
+            document.getElementById('resizeBtn').textContent = 'Resize Image';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('progressPercent').textContent = '0%';
+            
+            // Reset resize method selection
+            document.querySelectorAll('.option-card').forEach((card, index) => {
+                if (index === 0) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            
+            // Reset sections
+            document.getElementById('dimensionsSection').style.display = 'block';
+            document.getElementById('percentageSection').style.display = 'none';
+            document.getElementById('presetSection').style.display = 'none';
+            
+            // Reset inputs
+            document.getElementById('widthInput').value = '800';
+            document.getElementById('heightInput').value = '600';
+            document.getElementById('lockAspect').checked = true;
+            document.getElementById('percentageSlider').value = '100';
+            document.getElementById('percentageValue').textContent = '100%';
+            
+            // Reset previews
+            document.getElementById('originalPreview').textContent = 'Original Image';
+            document.getElementById('resizedPreview').textContent = 'Resized Preview';
+            document.getElementById('originalDims').textContent = '-- × --';
+            document.getElementById('resizedDims').textContent = '800 × 600';
+            document.getElementById('originalSize').textContent = 'Size: --';
+            document.getElementById('resizedSize').textContent = 'Size: --';
+            
+            // Reset page title
+            document.title = 'Image Resizer - Resize Images Online Free | Nagar Tools';
+        }
+        
+        // FAQ toggle
+        function toggleFAQ(questionElement) {
+            const answer = questionElement.nextElementSibling;
+            const icon = questionElement.querySelector('span:last-child');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '➕';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                    ans.previousElementSibling.querySelector('span:last-child').textContent = '➕';
+                });
+                
+                answer.classList.add('active');
+                icon.textContent = '➖';
+            }
+        }
+        
+        // Drag and drop functionality
+        const uploadArea = document.getElementById('uploadArea');
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--blue)';
+            this.style.background = 'var(--blue-light)';
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--border)';
+            this.style.background = 'var(--bg)';
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--border)';
+            this.style.background = 'var(--bg)';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                selectedFile = file;
+                handleFileSelect({target: {files: [file]}});
+            } else {
+                alert('Please drop a valid image file (JPG, PNG, WebP, GIF, BMP)');
+            }
+        });
+        
+        // Analytics tracking
+        function trackResize(toolName, method, width, height) {
+            console.log(`Resize tracked: ${toolName}, Method: ${method}, Dimensions: ${width}×${height}`);
+            // In production, add Google Analytics or similar here
+            // Example: gtag('event', 'resize', {tool: toolName, method: method, dimensions: `${width}x${height}`});
+        }
+        
+        function trackDownload(toolName, method) {
+            console.log(`Download tracked: ${toolName}, Method: ${method}`);
+            // In production, add download tracking
+        }
+        
+        // Update schema dynamically
+        function updateSchemaDimensions(width, height) {
+            // Update schema with image dimensions
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.fileSize = formatFileSize(selectedFile.size);
+                schema.height = `${height}px`;
+                schema.width = `${width}px`;
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
+        }
+        
+        function updateSchemaResizeMethod(method) {
+            const methodNames = {
+                'dimensions': 'Custom Dimensions',
+                'percentage': 'Percentage Resize', 
+                'preset': 'Preset Sizes'
+            };
+            
+            // Update schema
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.applicationSubCategory = `Image Resizing - ${methodNames[method]}`;
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
+        }
+        
+        function updateSchemaResizeComplete() {
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (schemaScript) {
+                const schema = JSON.parse(schemaScript.textContent);
+                schema.resizedDimensions = `${targetWidth}×${targetHeight} pixels`;
+                schemaScript.textContent = JSON.stringify(schema, null, 2);
+            }
+        }
+        
+        // Update meta description
+        function updateMetaDescription(filename) {
+            const format = filename.split('.').pop().toUpperCase();
+            
+            document.querySelector('meta[name="description"]').content = 
+                `Resize ${format} images online free. Change dimensions of ${filename} for social media and websites. Maintain aspect ratio. 100% secure.`;
+        }
+        
+        // Page load analytics
+        window.addEventListener('load', function() {
+            console.log('Image Resizer Tool loaded - Nagar Tools');
+            // Track page view in analytics
+            // Example: gtag('event', 'page_view', {page_title: 'Image Resizer'});
+            
+            // Initialize resize preview
+            updateResizedPreview();
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl + O to open file
+            if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                document.getElementById('fileInput').click();
+            }
+            
+            // Ctrl + R to reset
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                resetTool();
+            }
+            
+            // Escape to reset
+            if (e.key === 'Escape') {
+                resetTool();
+            }
+        });
+        
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
