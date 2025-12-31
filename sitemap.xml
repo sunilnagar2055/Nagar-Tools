@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <!-- ========== मुख्य पेज ========== -->
     <url>
         <loc>https://www.nagartools.in/</loc>
@@ -8,64 +9,59 @@
         <priority>1.0</priority>
     </url>
 
-    <!-- ========== 🖼 Image Tools ========== -->
-    <url><loc>https://www.nagartools.in/image-converter</loc></url>
-    <url><loc>https://www.nagartools.in/image-compressor</loc></url>
-    <url><loc>https://www.nagartools.in/image-resizer</loc></url>
-    <url><loc>https://www.nagartools.in/image-cropper</loc></url>
-    <url><loc>https://www.nagartools.in/image-to-text-ocr</loc></url>
-    <url><loc>https://www.nagartools.in/image-rotator-flipper</loc></url>
+    <url>
+        <loc>https://www.nagartools.in/tools/</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
 
-    <!-- ========== 📄 Document Tools ========== -->
-    <url><loc>https://www.nagartools.in/pdf-to-word</loc></url>
-    <url><loc>https://www.nagartools.in/pdf-compressor</loc></url>
-    <url><loc>https://www.nagartools.in/pdf-merger-splitter</loc></url>
-    <url><loc>https://www.nagartools.in/document-converter</loc></url>
-    <url><loc>https://www.nagartools.in/pdf-lock-unlock</loc></url>
-    <url><loc>https://www.nagartools.in/esign-pdf</loc></url>
+    <url>
+        <loc>https://www.nagartools.in/popular/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========== 🖼 Image Tools ========== -->
+    <url><loc>https://www.nagartools.in/image-converter.html</loc></url>
+    <url><loc>https://www.nagartools.in/image-compressor.html</loc></url>
+    <url><loc>https://www.nagartools.in/image-resizer.html</loc></url>
+    <url><loc>https://www.nagartools.in/image-cropper.html</loc></url>
+    <url><loc>https://www.nagartools.in/image-to-text.html</loc></url>
+    <url><loc>https://www.nagartools.in/background-remover.html</loc></url>
+
+    <!-- ========== 📄 PDF & Document Tools ========== -->
+    <url><loc>https://www.nagartools.in/tools/pdf-to-word/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/pdf-compressor/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/pdf-merger/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/pdf-splitter/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/pdf-password/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/esign-pdf/</loc></url>
 
     <!-- ========== 🧮 Calculator Tools ========== -->
-    <url><loc>https://www.nagartools.in/scientific-calculator</loc></url>
-    <url><loc>https://www.nagartools.in/age-calculator</loc></url>
-    <url><loc>https://www.nagartools.in/bmi-calculator</loc></url>
-    <url><loc>https://www.nagartools.in/loan-emi-calculator</loc></url>
-    <url><loc>https://www.nagartools.in/gst-calculator</loc></url>
-    <url><loc>https://www.nagartools.in/currency-converter</loc></url>
+    <url><loc>https://www.nagartools.in/tools/emi-calculator/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/gst-calculator/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/bmi-calculator/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/age-calculator/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/currency-converter/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/scientific-calculator/</loc></url>
 
-    <!-- ========== 🔤 Text Tools ========== -->
-    <url><loc>https://www.nagartools.in/text-case-converter</loc></url>
-    <url><loc>https://www.nagartools.in/word-character-counter</loc></url>
-    <url><loc>https://www.nagartools.in/remove-duplicate-lines</loc></url>
-    <url><loc>https://www.nagartools.in/text-sorter</loc></url>
-    <url><loc>https://www.nagartools.in/text-reverser</loc></url>
-    <url><loc>https://www.nagartools.in/text-encryptor-decryptor</loc></url>
+    <!-- ========== ✍️ Text Tools ========== -->
+    <url><loc>https://www.nagartools.in/tools/text-case-converter/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/word-counter/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/remove-duplicates/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/text-sorter/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/text-encryptor/</loc></url>
+    <url><loc>https://www.nagartools.in/tools/lorem-ipsum/</loc></url>
 
-    <!-- ========== 🌐 Web/Developer Tools ========== -->
-    <url><loc>https://www.nagartools.in/html-css-js-minifier</loc></url>
-    <url><loc>https://www.nagartools.in/json-formatter-validator</loc></url>
-    <url><loc>https://www.nagartools.in/base64-encoder-decoder</loc></url>
-    <url><loc>https://www.nagartools.in/url-encoder-decoder</loc></url>
-    <url><loc>https://www.nagartools.in/color-picker-converter</loc></url>
-    <url><loc>https://www.nagartools.in/regex-tester</loc></url>
+    <!-- ========== 📂 Categories ========== -->
+    <url><loc>https://www.nagartools.in/category/image-tools/</loc></url>
+    <url><loc>https://www.nagartools.in/category/pdf-tools/</loc></url>
+    <url><loc>https://www.nagartools.in/category/calculators/</loc></url>
+    <url><loc>https://www.nagartools.in/category/text-tools/</loc></url>
 
-    <!-- ========== 🎨 Color Tools ========== -->
-    <url><loc>https://www.nagartools.in/color-picker-from-image</loc></url>
-    <url><loc>https://www.nagartools.in/hex-to-rgb-converter</loc></url>
-    <url><loc>https://www.nagartools.in/gradient-generator</loc></url>
-    <url><loc>https://www.nagartools.in/contrast-checker</loc></url>
-    <url><loc>https://www.nagartools.in/palette-generator</loc></url>
-    <url><loc>https://www.nagartools.in/color-blindness-simulator</loc></url>
+    <!-- ========== ⚖️ Legal Pages ========== -->
+    <url><loc>https://www.nagartools.in/privacy-policy/</loc></url>
+    <url><loc>https://www.nagartools.in/terms/</loc></url>
+    <url><loc>https://www.nagartools.in/sitemap/</loc></url>
 
-    <!-- ========== 🌍 SEO & Marketing Tools ========== -->
-    <url><loc>https://www.nagartools.in/keyword-density-checker</loc></url>
-    <url><loc>https://www.nagartools.in/meta-tag-analyzer</loc></url>
-    <url><loc>https://www.nagartools.in/word-counter</loc></url>
-
-    <!-- ========== 🛠️ Utility Tools ========== -->
-    <url><loc>https://www.nagartools.in/qr-code-generator-scanner</loc></url>
-    <url><loc>https://www.nagartools.in/barcode-generator</loc></url>
-    <url><loc>https://www.nagartools.in/uuid-generator</loc></url>
-    <url><loc>https://www.nagartools.in/unit-converter</loc></url>
-    <url><loc>https://www.nagartools.in/time-zone-converter</loc></url>
-    <url><loc>https://www.nagartools.in/random-number-password-generator</loc></url>
 </urlset>
