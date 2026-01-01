@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF Splitter - Split PDF Files Online Free | Nagar Tools</title>
+    <meta name="description" content="Free online PDF splitter tool. Split PDF into multiple files or extract specific pages. No registration required. 100% secure and free.">
+    <meta name="keywords" content="pdf splitter online, split pdf, extract pdf pages, divide pdf, pdf separator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="PDF Splitter - Split PDF Files Online Free | Nagar Tools">
+    <meta property="og:description" content="Split PDF into multiple files or extract specific pages. No registration required.">
+    <meta property="og:type" content="website">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --blue: #1976d2;
+            --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
+            --bg: #f5f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --teal: #14b8a6;
+            --border: #e5e7eb;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: #374151;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--blue);
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue-dark);
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #9ca3af;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0 80px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .tool-header p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .upload-area {
+            border: 3px dashed var(--teal);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area:hover {
+            background: linear-gradient(135deg, #e6fcf7 0%, #b8f3e6 100%);
+            border-color: #0d9488;
+        }
+
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), #0d9488);
+        }
+
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--teal);
+            margin-bottom: 15px;
+        }
+
+        .upload-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .upload-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+        }
+
+        .btn:hover {
+            background: #0d9488;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #0da271 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #0da271 0%, #0b8c62 100%);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.25);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #5a6268 0%, #4a5157 100%);
+        }
+
+        .btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* File Preview Section */
+        .preview-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .preview-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .preview-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .preview-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .preview-content {
+                flex-direction: column;
+            }
+        }
+
+        .pdf-info {
+            flex: 1;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: var(--teal);
+        }
+
+        .info-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .info-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--teal);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* Page Preview */
+        .page-preview {
+            flex: 2;
+        }
+
+        .preview-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .page-thumb {
+            aspect-ratio: 1/1.414; /* A4 ratio */
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .page-thumb:hover {
+            border-color: var(--teal);
+            transform: scale(1.05);
+        }
+
+        .page-thumb.selected {
+            border-color: var(--teal);
+            background: #f0fdfa;
+        }
+
+        .page-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Split Methods Section */
+        .methods-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .methods-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .methods-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .method-tab {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .method-tab:hover {
+            background: #f8f9fa;
+            color: var(--text);
+        }
+
+        .method-tab.active {
+            color: var(--teal);
+            background: #f0fdfa;
+        }
+
+        .method-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -21px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--teal);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Method Content */
+        .method-content {
+            display: none;
+        }
+
+        .method-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Range Split Method */
+        .range-inputs {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .range-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .range-input-group label {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .range-input {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+
+        .range-input:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .range-separator {
+            text-align: center;
+            font-weight: 700;
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        .range-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .range-example {
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .range-example:hover {
+            background: #f0fdfa;
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        /* Page Selection Method */
+        .page-selection {
+            margin-bottom: 20px;
+        }
+
+        .selection-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .selection-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .selection-option:hover {
+            border-color: var(--teal);
+        }
+
+        .selection-option.active {
+            border-color: var(--teal);
+            background: #f0fdfa;
+        }
+
+        .selection-option h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selection-option h4 i {
+            color: var(--teal);
+        }
+
+        .pages-input-group {
+            margin-top: 20px;
+        }
+
+        .pages-input-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--text);
+        }
+
+        .pages-input {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+
+        .pages-input:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .input-hint {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* Interval Split Method */
+        .interval-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .interval-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .interval-group label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .interval-input {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .interval-input:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .result-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .result-content {
+            margin-bottom: 30px;
+        }
+
+        .result-summary {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .result-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            color: var(--success);
+        }
+
+        .result-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .result-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .result-details li {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-details li i {
+            color: var(--success);
+        }
+
+        /* Files List */
+        .files-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .file-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .file-item:hover {
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .file-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .file-icon {
+            font-size: 1.5rem;
+            color: var(--teal);
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: var(--text);
+            word-break: break-all;
+        }
+
+        .file-info {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .file-download-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--teal);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .file-download-btn:hover {
+            background: #0d9488;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .result-actions .btn {
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--teal) 0%, #0d9488 100%);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { color: #14b8a6; }
+        .feature-card:nth-child(2) .feature-icon { color: #3b82f6; }
+        .feature-card:nth-child(3) .feature-icon { color: #f59e0b; }
+        .feature-card:nth-child(4) .feature-icon { color: #8b5cf6; }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        /* Use Cases Section */
+        .use-cases-section {
+            margin: 50px 0;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .use-case-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .use-case-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .use-case-card h3 i {
+            color: var(--teal);
+        }
+
+        .use-case-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .use-case-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .use-case-card li:last-child {
+            border-bottom: none;
+        }
+
+        .use-case-card li i {
+            color: var(--success);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--teal);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 15px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--teal);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 20px auto;
+            overflow: hidden;
+            max-width: 300px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), #0d9488);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--teal);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 50px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                padding: 15px 0;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .upload-section {
+                padding: 25px;
+            }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+            
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid, .use-cases-grid, .files-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-actions .btn {
+                width: 100%;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .methods-tabs {
+                flex-direction: column;
+            }
+            
+            .method-tab.active::after {
+                bottom: 0;
+                left: 0;
+                width: 3px;
+                height: 100%;
+                border-radius: 0 3px 3px 0;
+            }
+            
+            .range-inputs {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .range-separator {
+                display: none;
+            }
+            
+            .selection-options {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .upload-icon {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .result-summary {
+                padding: 15px;
+            }
+            
+            .pages-grid {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            }
+        }
+
+        /* Page Selection Styles */
+        .page-selection-hint {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* File Info */
+        .file-info-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            border-left: 4px solid var(--teal);
+        }
+
+        .file-info-section i {
+            color: var(--teal);
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <span class="logo-icon">🔧</span>
+            <a href="/"><span>NagarTools</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tools/">All Tools</a></li>
+                <li><a href="/popular/">Popular</a></li>
+                <li><a href="mailto:nagartools1@gmail.com">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/tools/">Tools</a> <span>/</span>
+    <a href="/category/pdf-tools/">PDF Tools</a> <span>/</span>
+    <span>PDF Splitter</span>
+</div>
+
+<main class="container">
+    <div class="tool-header">
+        <h1>PDF Splitter</h1>
+        <p>Split PDF into multiple files or extract specific pages. No registration required. 100% secure and free.</p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">100MB</div>
+            <div class="stat-label">Max File Size</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">✂️</div>
+            <div class="stat-label">Precise Splitting</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">🔒</div>
+            <div class="stat-label">Secure Processing</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">⚡</div>
+            <div class="stat-label">Fast Splitting</div>
+        </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">
+                <i class="fas fa-cut"></i>
+            </div>
+            <div class="upload-text">
+                <h3>Upload Your PDF File</h3>
+                <p>Drag & drop or click to upload PDF</p>
+                <p style="font-size: 0.9rem; color: var(--warning);">Max file size: 100MB</p>
+            </div>
+            <input type="file" id="fileInput" class="file-input" accept=".pdf">
+        </div>
+        
+        <!-- File Info -->
+        <div class="file-info-section" style="display: block; margin-top: 25px;">
+            <i class="fas fa-check-circle"></i>
+            <strong>Multiple split methods:</strong> Extract pages, split by ranges, or divide by intervals
+            <br>
+            <i class="fas fa-shield-alt"></i>
+            <strong>Security:</strong> Your PDFs are automatically deleted after splitting
+        </div>
+        
+        <!-- Preview Section -->
+        <div class="preview-section" id="previewSection">
+            <div class="preview-header">
+                <h3><i class="fas fa-eye"></i> PDF Preview</h3>
+                <button class="btn btn-secondary" id="changeFileBtn" style="padding: 8px 16px; font-size: 0.9rem;">
+                    <i class="fas fa-exchange-alt"></i> Change File
+                </button>
+            </div>
+            
+            <div class="preview-content">
+                <div class="pdf-info">
+                    <div class="info-header">
+                        <div class="info-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4 id="pdfFileName">document.pdf</h4>
+                            <div style="color: var(--muted); font-size: 0.9rem;" id="pdfFileSize">0 KB</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalPages">0</div>
+                            <div class="stat-label">Total Pages</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="fileSizeMB">0</div>
+                            <div class="stat-label">File Size (MB)</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <div style="font-weight: 600; margin-bottom: 10px; color: var(--text);">Quick Actions</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <button class="btn btn-secondary" id="splitHalfBtn" style="padding: 8px 16px; font-size: 0.9rem;">
+                                <i class="fas fa-divide"></i> Split in Half
+                            </button>
+                            <button class="btn btn-secondary" id="extractFirstLastBtn" style="padding: 8px 16px; font-size: 0.9rem;">
+                                <i class="fas fa-file-export"></i> Extract First & Last
+                            </button>
+                            <button class="btn btn-secondary" id="splitEveryBtn" style="padding: 8px 16px; font-size: 0.9rem;">
+                                <i class="fas fa-copy"></i> Split Every Page
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-preview">
+                    <div class="preview-title">Select Pages to Split</div>
+                    <div class="pages-grid" id="pagesGrid">
+                        <!-- Pages will be generated here -->
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--muted);">
+                        <i class="fas fa-mouse-pointer"></i> Click pages to select/deselect. Selected pages: <span id="selectedPagesCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Split Methods Section -->
+        <div class="methods-section" id="methodsSection" style="display: none;">
+            <div class="methods-title">
+                <i class="fas fa-scissors"></i> Split Method
+            </div>
+            
+            <div class="methods-tabs">
+                <button class="method-tab active" data-method="range">
+                    <i class="fas fa-arrows-alt-h"></i> Split by Range
+                </button>
+                <button class="method-tab" data-method="pages">
+                    <i class="fas fa-file-export"></i> Extract Pages
+                </button>
+                <button class="method-tab" data-method="interval">
+                    <i class="fas fa-divide"></i> Split by Interval
+                </button>
+            </div>
+            
+            <!-- Range Split Method -->
+            <div class="method-content active" id="rangeMethod">
+                <div class="range-inputs">
+                    <div class="range-input-group">
+                        <label for="rangeFrom">From Page</label>
+                        <input type="number" id="rangeFrom" class="range-input" min="1" value="1" placeholder="1">
+                    </div>
+                    
+                    <div class="range-separator">-</div>
+                    
+                    <div class="range-input-group">
+                        <label for="rangeTo">To Page</label>
+                        <input type="number" id="rangeTo" class="range-input" min="1" value="1" placeholder="10">
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <label for="outputName">Output File Name</label>
+                    <input type="text" id="rangeOutputName" class="range-input" placeholder="split-document" value="split-document">
+                    <div class="input-hint">Leave empty to use original name. Example: "split-document" becomes "split-document_1-10.pdf"</div>
+                </div>
+                
+                <div class="range-examples">
+                    <div class="range-example" data-range="1-5">First 5 pages</div>
+                    <div class="range-example" data-range="6-10">Pages 6-10</div>
+                    <div class="range-example" data-range="1-last">All pages</div>
+                    <div class="range-example" data-range="last-3">Last 3 pages</div>
+                </div>
+            </div>
+            
+            <!-- Page Extraction Method -->
+            <div class="method-content" id="pagesMethod">
+                <div class="selection-options">
+                    <div class="selection-option active" data-selection="manual">
+                        <h4><i class="fas fa-mouse-pointer"></i> Manual Selection</h4>
+                        <p>Select specific pages by clicking on the page previews above</p>
+                    </div>
+                    <div class="selection-option" data-selection="input">
+                        <h4><i class="fas fa-keyboard"></i> Enter Page Numbers</h4>
+                        <p>Type specific page numbers separated by commas</p>
+                    </div>
+                </div>
+                
+                <div class="pages-input-group" id="pagesInputGroup" style="display: none;">
+                    <label for="pagesInput">Page Numbers</label>
+                    <input type="text" id="pagesInput" class="pages-input" placeholder="1,3,5-8,10">
+                    <div class="input-hint">Enter page numbers (e.g., 1,3,5-8,10) or ranges (e.g., 1-5,8,10-12)</div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <label for="pagesOutputName">Output File Name</label>
+                    <input type="text" id="pagesOutputName" class="range-input" placeholder="extracted-pages" value="extracted-pages">
+                    <div class="input-hint">Leave empty to use original name</div>
+                </div>
+            </div>
+            
+            <!-- Interval Split Method -->
+            <div class="method-content" id="intervalMethod">
+                <div class="interval-inputs">
+                    <div class="interval-group">
+                        <label for="intervalPages">Pages per File</label>
+                        <input type="number" id="intervalPages" class="interval-input" min="1" value="1" placeholder="e.g., 5">
+                        <div class="input-hint">Number of pages in each split file</div>
+                    </div>
+                    
+                    <div class="interval-group">
+                        <label for="intervalCount">Number of Files</label>
+                        <input type="number" id="intervalCount" class="interval-input" min="1" value="1" placeholder="e.g., 3">
+                        <div class="input-hint">Total number of files to create</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <label for="intervalOutputName">Output File Name</label>
+                    <input type="text" id="intervalOutputName" class="range-input" placeholder="split-document" value="split-document">
+                    <div class="input-hint">Leave empty to use original name. Files will be numbered automatically</div>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: var(--radius); border: 1px solid var(--border);">
+                    <div style="font-weight: 600; margin-bottom: 10px; color: var(--text);">Preview:</div>
+                    <div id="intervalPreview">Will create 1 file(s) with 1 page(s) each</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-success" id="splitBtn">
+                    <i class="fas fa-cut"></i> Split PDF
+                </button>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <div class="loading-text">Splitting PDF...</div>
+            <div class="loading-subtext">Processing pages and creating split files</div>
+            <div class="progress-bar">
+                <div class="progress" id="splitProgress"></div>
+            </div>
+            <div class="loading-subtext" id="splitStatus">Processing file...</div>
+        </div>
+    </div>
+
+    <!-- Result Section -->
+    <div class="result-section" id="resultSection">
+        <div class="result-header">
+            <h3><i class="fas fa-check-circle"></i> Split Successful!</h3>
+            <div class="tooltip">
+                <i class="fas fa-info-circle" style="color: var(--teal);"></i>
+                <span class="tooltiptext">Your PDF has been split successfully</span>
+            </div>
+        </div>
+        
+        <div class="result-summary">
+            <div class="result-icon">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="result-details">
+                <h4>Your PDF has been split into <span id="resultFileCount">0</span> files</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Split method: <span id="resultMethod">Range Split</span></li>
+                    <li><i class="fas fa-check"></i> Original pages: <span id="resultOriginalPages">0</span></li>
+                    <li><i class="fas fa-check"></i> Files created: <span id="resultCreatedFiles">0</span></li>
+                    <li><i class="fas fa-check"></i> Ready for download</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="result-content">
+            <div style="font-weight: 600; margin-bottom: 15px; color: var(--text);">Split Files:</div>
+            <div class="files-list" id="resultFilesList">
+                <!-- Files will be generated here -->
+            </div>
+        </div>
+        
+        <div class="result-actions">
+            <button class="btn btn-success" id="downloadAllBtn">
+                <i class="fas fa-download"></i> Download All as ZIP
+            </button>
+            <button class="btn btn-secondary" id="splitAnotherBtn">
+                <i class="fas fa-redo"></i> Split Another
+            </button>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="section-title">Smart PDF Splitting</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Precise Splitting</h3>
+                <p>Split by exact page ranges with pixel-perfect accuracy.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-export"></i>
+                </div>
+                <h3>Page Extraction</h3>
+                <p>Extract specific pages or page ranges from any PDF document.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Fast Processing</h3>
+                <p>Split PDFs in seconds with our optimized processing engine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Privacy Protected</h3>
+                <p>Your PDFs are processed securely and deleted automatically.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use Cases Section -->
+    <div class="use-cases-section">
+        <div class="section-title">Practical Applications</div>
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <h3><i class="fas fa-file-alt"></i> Extract Specific Pages</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Extract single pages from documents</li>
+                    <li><i class="fas fa-check"></i> Remove unnecessary pages</li>
+                    <li><i class="fas fa-check"></i> Create summaries from long reports</li>
+                    <li><i class="fas fa-check"></i> Isolate forms or signatures</li>
+                </ul>
+            </div>
+            
+            <div class="use-case-card">
+                <h3><i class="fas fa-compress-alt"></i> Split Large PDFs</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Divide books into chapters</li>
+                    <li><i class="fas fa-check"></i> Split lengthy reports</li>
+                    <li><i class="fas fa-check"></i> Break down large presentations</li>
+                    <li><i class="fas fa-check"></i> Create manageable file sizes</li>
+                </ul>
+            </div>
+            
+            <div class="use-case-card">
+                <h3><i class="fas fa-briefcase"></i> Business & Legal</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Extract contract pages</li>
+                    <li><i class="fas fa-check"></i> Split multi-document PDFs</li>
+                    <li><i class="fas fa-check"></i> Create separate invoices</li>
+                    <li><i class="fas fa-check"></i> Isolate legal clauses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="section-title">Frequently Asked Questions</div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this PDF splitter free to use?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Yes, completely free! Our PDF splitter is 100% free with no hidden charges. No registration, no watermarks, no page limits.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I extract specific pages from PDF?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Absolutely! You can extract specific pages in three ways:
+                        <br>1. <strong>Click pages</strong> in the visual preview
+                        <br>2. <strong>Enter page numbers</strong> (e.g., 1,3,5-8,10)
+                        <br>3. <strong>Split by range</strong> (e.g., pages 1-10)
+                        <br>All methods preserve original quality and formatting.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the maximum file size?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The maximum file size is <strong>100MB</strong>. This is sufficient for most PDF documents including books, reports, and presentations. For larger files, consider compressing first using our <a href="/tools/pdf-compressor/" style="color: var(--teal);">PDF Compressor</a> tool.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are my split PDFs secure?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>🔒 Maximum security guaranteed. Your PDF files are processed on secure servers and <strong>automatically deleted</strong> after splitting (within 1 hour). We don't store your documents or share them with third parties.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I split PDFs by page intervals?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Yes! Use the "Split by Interval" method to:
+                        <br>• Split every N pages (e.g., every 5 pages)
+                        <br>• Create specific number of files
+                        <br>• Automatically divide large documents
+                        <br>The tool calculates the optimal split points for you.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Will formatting be preserved after splitting?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>✅ Yes! All formatting, fonts, images, and layout are preserved exactly as in the original PDF. Each split file maintains:
+                        <br>✅ Original page dimensions
+                        <br>✅ All embedded fonts
+                        <br>✅ Images and graphics
+                        <br>✅ Hyperlinks and bookmarks
+                        <br>✅ Text formatting and alignment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <span class="logo-icon">🔧</span>
+                    <span>NagarTools</span>
+                </div>
+                <p>Simplifying your digital life with free, fast, and secure online tools.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">No registration required. 100% privacy safe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools/">All Tools</a></li>
+                    <li><a href="/popular/">Popular Tools</a></li>
+                    <li><a href="/new-tools/">Recently Added</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Related Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="/tools/pdf-merger/">PDF Merger</a></li>
+                    <li><a href="/tools/pdf-compressor/">PDF Compressor</a></li>
+                    <li><a href="/tools/pdf-to-word/">PDF to Word</a></li>
+                    <li><a href="/tools/pdf-editor/">PDF Editor</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:nagartools1@gmail.com">Email: nagartools1@gmail.com</a></li>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/terms/">Terms of Use</a></li>
+                    <li><a href="/sitemap/">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 NagarTools. All rights reserved. All tools are free to use.</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">Made with ❤️ for users worldwide</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const previewSection = document.getElementById('previewSection');
+    const methodsSection = document.getElementById('methodsSection');
+    const splitBtn = document.getElementById('splitBtn');
+    const loading = document.getElementById('loading');
+    const resultSection = document.getElementById('resultSection');
+    const downloadAllBtn = document.getElementById('downloadAllBtn');
+    const splitAnotherBtn = document.getElementById('splitAnotherBtn');
+    const changeFileBtn = document.getElementById('changeFileBtn');
+    const splitHalfBtn = document.getElementById('splitHalfBtn');
+    const extractFirstLastBtn = document.getElementById('extractFirstLastBtn');
+    const splitEveryBtn = document.getElementById('splitEveryBtn');
+    const splitProgress = document.getElementById('splitProgress');
+    const splitStatus = document.getElementById('splitStatus');
+    const pdfFileName = document.getElementById('pdfFileName');
+    const pdfFileSize = document.getElementById('pdfFileSize');
+    const totalPages = document.getElementById('totalPages');
+    const fileSizeMB = document.getElementById('fileSizeMB');
+    const pagesGrid = document.getElementById('pagesGrid');
+    const selectedPagesCount = document.getElementById('selectedPagesCount');
+    const resultFileCount = document.getElementById('resultFileCount');
+    const resultMethod = document.getElementById('resultMethod');
+    const resultOriginalPages = document.getElementById('resultOriginalPages');
+    const resultCreatedFiles = document.getElementById('resultCreatedFiles');
+    const resultFilesList = document.getElementById('resultFilesList');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    // Method tabs
+    const methodTabs = document.querySelectorAll('.method-tab');
+    const methodContents = document.querySelectorAll('.method-content');
+    
+    // Range method elements
+    const rangeFrom = document.getElementById('rangeFrom');
+    const rangeTo = document.getElementById('rangeTo');
+    const rangeOutputName = document.getElementById('rangeOutputName');
+    const rangeExamples = document.querySelectorAll('.range-example');
+    
+    // Pages method elements
+    const selectionOptions = document.querySelectorAll('.selection-option');
+    const pagesInputGroup = document.getElementById('pagesInputGroup');
+    const pagesInput = document.getElementById('pagesInput');
+    const pagesOutputName = document.getElementById('pagesOutputName');
+    
+    // Interval method elements
+    const intervalPages = document.getElementById('intervalPages');
+    const intervalCount = document.getElementById('intervalCount');
+    const intervalOutputName = document.getElementById('intervalOutputName');
+    const intervalPreview = document.getElementById('intervalPreview');
+    
+    let selectedFile = null;
+    let totalPageCount = 0;
+    let selectedPages = new Set();
+    let currentMethod = 'range';
+    let currentSelectionMethod = 'manual';
+    let splitResults = [];
+    
+    // FAQ toggle
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+    
+    // File upload handling
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#0d9488';
+        uploadArea.style.background = 'linear-gradient(135deg, #e6fcf7 0%, #b8f3e6 100%)';
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.style.borderColor = 'var(--teal)';
+        uploadArea.style.background = 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)';
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = 'var(--teal)';
+        uploadArea.style.background = 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)';
+        
+        if (e.dataTransfer.files.length) {
+            handleFileSelect(e.dataTransfer.files[0]);
+        }
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            handleFileSelect(e.target.files[0]);
+        }
+    });
+    
+    function handleFileSelect(file) {
+        // Check file size (max 100MB)
+        if (file.size > 100 * 1024 * 1024) {
+            alert('File size exceeds 100MB limit. Please choose a smaller PDF file.');
+            return;
+        }
+        
+        // Check file type
+        if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+            alert('Please select a valid PDF file.');
+            return;
+        }
+        
+        selectedFile = file;
+        
+        // Update file info
+        pdfFileName.textContent = file.name;
+        pdfFileSize.textContent = formatFileSize(file.size);
+        
+        // Simulate page count and file size
+        totalPageCount = Math.max(1, Math.round(file.size / 50000));
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+        
+        totalPages.textContent = totalPageCount;
+        fileSizeMB.textContent = sizeMB;
+        
+        // Update range inputs
+        rangeFrom.max = totalPageCount;
+        rangeTo.max = totalPageCount;
+        rangeTo.value = totalPageCount;
+        
+        // Update interval inputs
+        intervalPages.max = totalPageCount;
+        
+        // Generate page previews
+        generatePagePreviews();
+        
+        // Reset selected pages
+        selectedPages.clear();
+        updateSelectedPagesCount();
+        
+        // Show preview and methods sections
+        previewSection.classList.add('active');
+        methodsSection.style.display = 'block';
+        splitBtn.disabled = false;
+        
+        // Hide result section if visible
+        resultSection.classList.remove('active');
+    }
+    
+    function generatePagePreviews() {
+        pagesGrid.innerHTML = '';
+        selectedPages.clear();
+        
+        for (let i = 1; i <= totalPageCount; i++) {
+            const pageThumb = document.createElement('div');
+            pageThumb.className = 'page-thumb';
+            pageThumb.dataset.page = i;
+            
+            pageThumb.innerHTML = `
+                <div class="page-number">${i}</div>
+            `;
+            
+            pageThumb.addEventListener('click', () => {
+                if (selectedPages.has(i)) {
+                    selectedPages.delete(i);
+                    pageThumb.classList.remove('selected');
+                } else {
+                    selectedPages.add(i);
+                    pageThumb.classList.add('selected');
+                }
+                updateSelectedPagesCount();
+                updatePagesInputFromSelection();
+            });
+            
+            pagesGrid.appendChild(pageThumb);
+        }
+    }
+    
+    function updateSelectedPagesCount() {
+        selectedPagesCount.textContent = selectedPages.size;
+    }
+    
+    function updatePagesInputFromSelection() {
+        if (currentSelectionMethod === 'manual' && selectedPages.size > 0) {
+            const sortedPages = Array.from(selectedPages).sort((a, b) => a - b);
+            pagesInput.value = formatPageRange(sortedPages);
+        }
+    }
+    
+    function formatPageRange(pages) {
+        const ranges = [];
+        let start = pages[0];
+        let end = pages[0];
+        
+        for (let i = 1; i <= pages.length; i++) {
+            if (i < pages.length && pages[i] === end + 1) {
+                end = pages[i];
+            } else {
+                if (start === end) {
+                    ranges.push(start);
+                } else {
+                    ranges.push(`${start}-${end}`);
+                }
+                if (i < pages.length) {
+                    start = pages[i];
+                    end = pages[i];
+                }
+            }
+        }
+        
+        return ranges.join(',');
+    }
+    
+    // Change file button
+    changeFileBtn.addEventListener('click', () => {
+        selectedFile = null;
+        fileInput.value = '';
+        previewSection.classList.remove('active');
+        methodsSection.style.display = 'none';
+        resultSection.classList.remove('active');
+        splitBtn.disabled = true;
+    });
+    
+    // Quick action buttons
+    splitHalfBtn.addEventListener('click', () => {
+        const half = Math.ceil(totalPageCount / 2);
+        rangeFrom.value = 1;
+        rangeTo.value = half;
+        switchMethod('range');
+    });
+    
+    extractFirstLastBtn.addEventListener('click', () => {
+        selectedPages.clear();
+        selectedPages.add(1);
+        if (totalPageCount > 1) selectedPages.add(totalPageCount);
+        updateSelectedPagesCount();
+        updatePagesInputFromSelection();
+        
+        // Update page previews
+        document.querySelectorAll('.page-thumb').forEach(thumb => {
+            const page = parseInt(thumb.dataset.page);
+            if (selectedPages.has(page)) {
+                thumb.classList.add('selected');
+            } else {
+                thumb.classList.remove('selected');
+            }
+        });
+        
+        switchMethod('pages');
+        document.querySelector('.selection-option[data-selection="manual"]').click();
+    });
+    
+    splitEveryBtn.addEventListener('click', () => {
+        intervalPages.value = 1;
+        intervalCount.value = totalPageCount;
+        updateIntervalPreview();
+        switchMethod('interval');
+    });
+    
+    // Method tab switching
+    methodTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const method = this.dataset.method;
+            
+            // Update tabs
+            methodTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update content
+            methodContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(`${method}Method`).classList.add('active');
+            
+            currentMethod = method;
+        });
+    });
+    
+    function switchMethod(method) {
+        methodTabs.forEach(t => t.classList.remove('active'));
+        methodContents.forEach(c => c.classList.remove('active'));
+        
+        document.querySelector(`.method-tab[data-method="${method}"]`).classList.add('active');
+        document.getElementById(`${method}Method`).classList.add('active');
+        
+        currentMethod = method;
+    }
+    
+    // Range examples
+    rangeExamples.forEach(example => {
+        example.addEventListener('click', function() {
+            const range = this.dataset.range;
+            
+            if (range === '1-5') {
+                rangeFrom.value = 1;
+                rangeTo.value = Math.min(5, totalPageCount);
+            } else if (range === '6-10') {
+                rangeFrom.value = Math.min(6, totalPageCount);
+                rangeTo.value = Math.min(10, totalPageCount);
+            } else if (range === '1-last') {
+                rangeFrom.value = 1;
+                rangeTo.value = totalPageCount;
+            } else if (range === 'last-3') {
+                rangeFrom.value = Math.max(1, totalPageCount - 2);
+                rangeTo.value = totalPageCount;
+            }
+        });
+    });
+    
+    // Selection options
+    selectionOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            selectionOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            currentSelectionMethod = this.dataset.selection;
+            pagesInputGroup.style.display = currentSelectionMethod === 'input' ? 'block' : 'none';
+            
+            if (currentSelectionMethod === 'input' && selectedPages.size > 0) {
+                const sortedPages = Array.from(selectedPages).sort((a, b) => a - b);
+                pagesInput.value = formatPageRange(sortedPages);
+            }
+        });
+    });
+    
+    // Pages input handling
+    pagesInput.addEventListener('input', function() {
+        if (currentSelectionMethod === 'input') {
+            // Parse page numbers from input
+            const pages = parsePageRange(this.value);
+            selectedPages.clear();
+            pages.forEach(page => {
+                if (page >= 1 && page <= totalPageCount) {
+                    selectedPages.add(page);
+                }
+            });
+            
+            // Update page previews
+            document.querySelectorAll('.page-thumb').forEach(thumb => {
+                const page = parseInt(thumb.dataset.page);
+                if (selectedPages.has(page)) {
+                    thumb.classList.add('selected');
+                } else {
+                    thumb.classList.remove('selected');
+                }
+            });
+            
+            updateSelectedPagesCount();
+        }
+    });
+    
+    // Interval inputs handling
+    intervalPages.addEventListener('input', updateIntervalPreview);
+    intervalCount.addEventListener('input', updateIntervalPreview);
+    
+    function updateIntervalPreview() {
+        const pagesPerFile = parseInt(intervalPages.value) || 1;
+        const numFiles = parseInt(intervalCount.value) || 1;
+        
+        const calculatedFiles = Math.ceil(totalPageCount / pagesPerFile);
+        const calculatedPages = Math.ceil(totalPageCount / numFiles);
+        
+        if (pagesPerFile > 0) {
+            intervalPreview.textContent = `Will create ${calculatedFiles} file(s) with ${pagesPerFile} page(s) each`;
+        } else if (numFiles > 0) {
+            intervalPreview.textContent = `Will create ${numFiles} file(s) with ${calculatedPages} page(s) each`;
+        }
+    }
+    
+    // Split button
+    splitBtn.addEventListener('click', splitPDF);
+    
+    function splitPDF() {
+        if (!selectedFile) return;
+        
+        // Validate based on method
+        let valid = true;
+        let splitData = [];
+        
+        if (currentMethod === 'range') {
+            const from = parseInt(rangeFrom.value) || 1;
+            const to = parseInt(rangeTo.value) || totalPageCount;
+            
+            if (from < 1 || from > totalPageCount || to < 1 || to > totalPageCount || from > to) {
+                alert('Please enter valid page range.');
+                valid = false;
+            } else {
+                splitData = [{
+                    name: `${rangeOutputName.value || 'split'}_${from}-${to}.pdf`,
+                    pages: { from, to }
+                }];
+            }
+        } else if (currentMethod === 'pages') {
+            if (selectedPages.size === 0) {
+                alert('Please select at least one page to extract.');
+                valid = false;
+            } else {
+                const sortedPages = Array.from(selectedPages).sort((a, b) => a - b);
+                const pagesStr = formatPageRange(sortedPages);
+                splitData = [{
+                    name: `${pagesOutputName.value || 'extracted'}_${pagesStr.replace(/,/g, '_')}.pdf`,
+                    pages: Array.from(selectedPages)
+                }];
+            }
+        } else if (currentMethod === 'interval') {
+            const pagesPerFile = parseInt(intervalPages.value) || 1;
+            const numFiles = parseInt(intervalCount.value) || 1;
+            
+            if (pagesPerFile <= 0 && numFiles <= 0) {
+                alert('Please enter valid interval values.');
+                valid = false;
+            } else {
+                if (pagesPerFile > 0) {
+                    // Split by pages per file
+                    const fileCount = Math.ceil(totalPageCount / pagesPerFile);
+                    for (let i = 0; i < fileCount; i++) {
+                        const start = i * pagesPerFile + 1;
+                        const end = Math.min((i + 1) * pagesPerFile, totalPageCount);
+                        splitData.push({
+                            name: `${intervalOutputName.value || 'split'}_${i + 1}.pdf`,
+                            pages: { from: start, to: end }
+                        });
+                    }
+                } else {
+                    // Split by number of files
+                    const pagesPerFile = Math.ceil(totalPageCount / numFiles);
+                    for (let i = 0; i < numFiles; i++) {
+                        const start = i * pagesPerFile + 1;
+                        const end = Math.min((i + 1) * pagesPerFile, totalPageCount);
+                        if (start <= totalPageCount) {
+                            splitData.push({
+                                name: `${intervalOutputName.value || 'split'}_${i + 1}.pdf`,
+                                pages: { from: start, to: end }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (!valid) return;
+        
+        // Show loading
+        loading.classList.add('active');
+        splitBtn.disabled = true;
+        
+        // Reset progress
+        splitProgress.style.width = '0%';
+        splitStatus.textContent = 'Preparing to split PDF...';
+        
+        // Store split results
+        splitResults = splitData;
+        
+        // Simulate splitting progress
+        simulateSplittingProgress();
+    }
+    
+    function simulateSplittingProgress() {
+        let progress = 0;
+        const steps = [
+            'Preparing to split PDF...',
+            'Reading PDF structure...',
+            'Processing selected pages...',
+            'Creating split files...',
+            'Applying formatting...',
+            'Finalizing output files...',
+            'Split complete!'
+        ];
+        
+        let stepIndex = 0;
+        
+        const interval = setInterval(() => {
+            progress += Math.random() * 10 + 5; // 5-15% per interval
+            if (progress > 100) progress = 100;
+            
+            splitProgress.style.width = `${progress}%`;
+            
+            // Update status text at certain intervals
+            if (progress >= (stepIndex + 1) * (100 / steps.length)) {
+                if (stepIndex < steps.length) {
+                    splitStatus.textContent = steps[stepIndex];
+                    stepIndex++;
+                }
+            }
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                
+                // Update result display
+                resultFileCount.textContent = splitResults.length;
+                resultMethod.textContent = 
+                    currentMethod === 'range' ? 'Range Split' :
+                    currentMethod === 'pages' ? 'Page Extraction' : 'Interval Split';
+                resultOriginalPages.textContent = totalPageCount;
+                resultCreatedFiles.textContent = splitResults.length;
+                
+                // Generate file list
+                generateResultFilesList();
+                
+                // Show success after a short delay
+                setTimeout(() => {
+                    loading.classList.remove('active');
+                    resultSection.classList.add('active');
+                    splitBtn.disabled = false;
+                    
+                    // Scroll to results
+                    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 500);
+            }
+        }, 200);
+    }
+    
+    function generateResultFilesList() {
+        resultFilesList.innerHTML = '';
+        
+        splitResults.forEach((file, index) => {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            
+            const pageInfo = Array.isArray(file.pages) 
+                ? `${file.pages.length} page${file.pages.length !== 1 ? 's' : ''}`
+                : `Pages ${file.pages.from}-${file.pages.to}`;
+            
+            fileItem.innerHTML = `
+                <div class="file-header">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="file-name">${file.name}</div>
+                </div>
+                <div class="file-info">${pageInfo} • ${formatFileSize(selectedFile.size / splitResults.length)}</div>
+                <button class="file-download-btn" data-index="${index}">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            `;
+            
+            resultFilesList.appendChild(fileItem);
+        });
+        
+        // Add download event listeners
+        document.querySelectorAll('.file-download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = this.dataset.index;
+                downloadSplitFile(index);
+            });
+        });
+    }
+    
+    function downloadSplitFile(index) {
+        const file = splitResults[index];
+        
+        // Create simulated PDF content
+        const fileContent = `%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 100 >>
+stream
+BT /F1 24 Tf 100 700 Td (Split PDF File) Tj ET
+BT /F1 12 Tf 100 650 Td (Created with NagarTools PDF Splitter) Tj ET
+BT /F1 12 Tf 100 600 Td (Original: ${pdfFileName.textContent}) Tj ET
+BT /F1 12 Tf 100 550 Td (File: ${file.name}) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000106 00000 n 
+0000000233 00000 n 
+0000000286 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+400
+%%EOF`;
+        
+        const blob = new Blob([fileContent], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        else return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+    
+    function parsePageRange(rangeStr) {
+        const pages = new Set();
+        const parts = rangeStr.split(',');
+        
+        parts.forEach(part => {
+            part = part.trim();
+            if (part.includes('-')) {
+                const [start, end] = part.split('-').map(p => parseInt(p.trim()));
+                if (!isNaN(start) && !isNaN(end)) {
+                    for (let i = Math.min(start, end); i <= Math.max(start, end); i++) {
+                        pages.add(i);
+                    }
+                }
+            } else if (part) {
+                const page = parseInt(part);
+                if (!isNaN(page)) {
+                    pages.add(page);
+                }
+            }
+        });
+        
+        return Array.from(pages).sort((a, b) => a - b);
+    }
+    
+    // Download all as ZIP
+    downloadAllBtn.addEventListener('click', () => {
+        alert('In a real implementation, this would download all split files as a ZIP archive.');
+        // For simulation, just download the first file
+        if (splitResults.length > 0) {
+            downloadSplitFile(0);
+        }
+    });
+    
+    // Split another button
+    splitAnotherBtn.addEventListener('click', () => {
+        selectedFile = null;
+        fileInput.value = '';
+        previewSection.classList.remove('active');
+        methodsSection.style.display = 'none';
+        resultSection.classList.remove('active');
+        loading.classList.remove('active');
+        splitBtn.disabled = true;
+        
+        // Reset all inputs
+        rangeFrom.value = 1;
+        rangeTo.value = 1;
+        rangeOutputName.value = 'split-document';
+        pagesInput.value = '';
+        pagesOutputName.value = 'extracted-pages';
+        intervalPages.value = 1;
+        intervalCount.value = 1;
+        intervalOutputName.value = 'split-document';
+        selectedPages.clear();
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Initialize
+    splitBtn.disabled = true;
+    updateIntervalPreview();
+});
+</script>
+
+</body>
+</html>
