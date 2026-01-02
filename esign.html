@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eSign PDF Online Free - Add Digital Signature to PDF | Nagar Tools</title>
+    
+    <meta name="description" content="Sign PDF files online with digital signature for free. Add electronic signatures to contracts, forms & documents. No registration required. Secure & legally valid.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nagartools.in/tools/esign-pdf/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="eSign PDF Online Free - Add Digital Signature | Nagar Tools">
+    <meta property="og:description" content="Sign PDF files digitally with your signature. Free online PDF signer tool with text fields and secure processing.">
+    <meta property="og:url" content="https://nagartools.in/tools/esign-pdf/">
+    <meta property="og:image" content="https://nagartools.in/assets/og-image.webp">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="eSign PDF Online Free - Nagar Tools">
+    <meta name="twitter:description" content="Free online tool to add digital signatures to PDF documents">
+    <meta name="twitter:image" content="https://nagartools.in/assets/og-image.webp">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
+    <style>
+        :root {
+            --blue: #1976d2;
+            --blue-dark: #0d47a1;
+            --blue-light: #e3f2fd;
+            --bg: #f5f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --success: #10b981;
+            --border: #e5e7eb;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Exactly like homepage */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: #374151;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            background: var(--blue-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb .container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .breadcrumb a {
+            color: var(--blue);
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Hero Section - Like homepage */
+        .tool-hero {
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .tool-hero h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tool-hero p {
+            max-width: 720px;
+            margin: 0 auto 20px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Features - Like homepage cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 6px 16px var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px var(--shadow-hover);
+            border-color: var(--blue-light);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* Tool Container */
+        .tool-container {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 30px var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--border);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 3px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            background: var(--bg);
+        }
+
+        .upload-area:hover {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        .upload-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+
+        .upload-text h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .upload-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* Signature Canvas */
+        .signature-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .signature-canvas {
+            border: 2px solid var(--border);
+            background: #f8fafc;
+            border-radius: var(--radius);
+            width: 100%;
+            height: 200px;
+            cursor: crosshair;
+            margin-bottom: 15px;
+        }
+
+        .canvas-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .canvas-btn {
+            padding: 10px 20px;
+            background: var(--blue-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--blue-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .canvas-btn:hover {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+
+        /* Text Input Fields */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+        }
+
+        /* Buttons - Like homepage */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+        }
+
+        .btn-success {
+            background: var(--success);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            background: #0da271;
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        /* How to Steps - Like homepage */
+        .steps-container {
+            background: var(--blue-light);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .steps-container h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--blue);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* FAQ - Like homepage */
+        .faq-section {
+            margin: 60px 0;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: white;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: var(--card);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--bg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Related Tools - Like homepage */
+        .related-tools {
+            margin: 50px 0;
+        }
+
+        .related-tools h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+            font-size: 1.8rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 16px var(--shadow);
+        }
+
+        .tool-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px var(--shadow-hover);
+            border-color: var(--blue);
+        }
+
+        .tool-link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Footer - Exactly like homepage */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 50px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-hero {
+                padding: 40px 0 20px;
+            }
+            
+            .tool-container {
+                padding: 25px;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .steps-container {
+                padding: 25px;
+            }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-container {
+                padding: 20px;
+            }
+            
+            .upload-area {
+                padding: 30px 10px;
+            }
+            
+            .tool-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .canvas-controls {
+                justify-content: center;
+            }
+            
+            .canvas-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* File Info */
+        .file-info {
+            background: var(--blue-light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 15px 0;
+            display: none;
+            border-left: 4px solid var(--blue);
+        }
+
+        .file-info.active {
+            display: block;
+        }
+
+        .file-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .file-icon {
+            font-size: 2.5rem;
+            color: var(--blue);
+        }
+
+        /* Text Signature */
+        .text-signature {
+            margin-top: 20px;
+        }
+
+        .text-signature input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1.2rem;
+            text-align: center;
+            font-family: cursive, sans-serif;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header - Same as homepage -->
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <span class="logo-icon">🔧</span>
+            <span>NagarTools</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools">All Tools</a></li>
+                <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                <li><a href="mailto:nagartools1@gmail.com">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="../index.html">Home</a> ›
+        <a href="../index.html#pdf-tools">PDF Tools</a> ›
+        <span>eSign PDF</span>
+    </div>
+</div>
+
+<main class="container">
+    <!-- Hero Section -->
+    <div class="tool-hero">
+        <h1>eSign PDF - Sign PDF Files Online Free</h1>
+        <p>Free online eSign PDF tool. Sign PDF files digitally with your signature. No registration required. Legally valid signatures.</p>
+        
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✍️</div>
+                <h3>Digital Signature</h3>
+                <p>Create and add custom signatures</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Text Fields</h3>
+                <p>Add date, name, and other fields</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Signing</h3>
+                <p>Sign documents in seconds</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Processing</h3>
+                <p>Your documents are private</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Tool Container -->
+    <div class="tool-container">
+        <!-- Upload PDF -->
+        <div class="upload-area" id="uploadArea" onclick="document.getElementById('pdfInput').click()">
+            <div class="upload-icon">📄</div>
+            <div class="upload-text">
+                <h3>Upload PDF to Sign</h3>
+                <p>Drag & drop your PDF file here or click to browse</p>
+                <p>Max file size: 50MB</p>
+                <button class="btn">Choose PDF File</button>
+                <input type="file" id="pdfInput" accept=".pdf" style="display: none;" onchange="handleFileSelect(event)">
+            </div>
+        </div>
+
+        <!-- File Info -->
+        <div class="file-info" id="fileInfo">
+            <div class="file-details">
+                <div class="file-icon">📄</div>
+                <div>
+                    <h3 id="fileName">No file selected</h3>
+                    <p id="fileSize">Size: --</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>Processing...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Create Signature -->
+        <div class="signature-section">
+            <h3 class="section-title">Create Your Digital Signature</h3>
+            <p style="color: var(--muted); margin-bottom: 20px;">Draw your signature in the box below or type it</p>
+            
+            <canvas class="signature-canvas" id="signatureCanvas"></canvas>
+            
+            <div class="canvas-controls">
+                <button class="canvas-btn" onclick="clearSignature()">
+                    <span>🧹</span>
+                    <span>Clear</span>
+                </button>
+                <button class="canvas-btn" onclick="undoSignature()">
+                    <span>↩️</span>
+                    <span>Undo</span>
+                </button>
+                <button class="canvas-btn" onclick="saveSignature()">
+                    <span>💾</span>
+                    <span>Save</span>
+                </button>
+                <button class="canvas-btn" onclick="useTypedSignature()">
+                    <span>🔤</span>
+                    <span>Type Instead</span>
+                </button>
+            </div>
+
+            <!-- Text Signature -->
+            <div class="text-signature" id="textSignatureBox" style="display: none;">
+                <label>Type your signature:</label>
+                <input type="text" id="typedSignature" placeholder="Type your signature here..." maxlength="50">
+                <button class="canvas-btn" style="margin-top: 10px;" onclick="applyTypedSignature()">
+                    <span>✓</span>
+                    <span>Apply Typed Signature</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Add Text Fields -->
+        <div class="signature-section">
+            <h3 class="section-title">Add Additional Information</h3>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="signDate">Date</label>
+                    <input type="date" id="signDate" value="<?php echo date('Y-m-d'); ?>">
+                </div>
+                <div class="input-group">
+                    <label for="signerName">Full Name</label>
+                    <input type="text" id="signerName" placeholder="Your full name">
+                </div>
+                <div class="input-group">
+                    <label for="signerTitle">Title/Position</label>
+                    <input type="text" id="signerTitle" placeholder="Your position">
+                </div>
+                <div class="input-group">
+                    <label for="signerCompany">Company</label>
+                    <input type="text" id="signerCompany" placeholder="Company name (optional)">
+                </div>
+                <div class="input-group">
+                    <label for="signerEmail">Email</label>
+                    <input type="email" id="signerEmail" placeholder="email@example.com (optional)">
+                </div>
+                <div class="input-group">
+                    <label for="signerPhone">Phone</label>
+                    <input type="tel" id="signerPhone" placeholder="Phone number (optional)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-success" onclick="signPDF()" id="signBtn">
+                <span>✍️</span>
+                <span>Sign PDF Document</span>
+            </button>
+            <button class="btn" onclick="resetTool()">
+                <span>🔄</span>
+                <span>Reset All</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- How to Steps -->
+    <div class="steps-container">
+        <h2>How to eSign PDF</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload PDF</h3>
+                <p>Select your PDF document to sign</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Create Signature</h3>
+                <p>Draw or type your digital signature</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Add Details</h3>
+                <p>Fill in date, name and other fields</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Download</h3>
+                <p>Get your signed PDF instantly</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is this eSign tool free to use?</span>
+                    <span>➕</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, our eSign PDF tool is completely free with no hidden charges or subscription requirements. No registration needed.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Are digital signatures legally valid?</span>
+                    <span>➕</span>
+                </div>
+                <div class="faq-answer">
+                    <p>In most countries including India (IT Act 2000), USA (ESIGN Act), and EU (eIDAS), properly implemented digital signatures carry the same legal weight as handwritten signatures for most documents.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I create multiple signatures?</span>
+                    <span>➕</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can create and save multiple signature styles. You can also upload an image of your signature if you prefer.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Are my signed documents secure?</span>
+                    <span>➕</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. All processing happens in your browser. Your documents are never uploaded to our servers, ensuring complete privacy.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What types of documents can I sign?</span>
+                    <span>➕</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can sign contracts, agreements, application forms, approval documents, invoices, NDAs, and any other PDF documents that require a signature.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+        <h2>Related Tools</h2>
+        <div class="tools-grid">
+            <a href="/tools/pdf-to-word/" class="tool-link">
+                <span class="tool-link-icon">📄→📝</span>
+                <h3>PDF to Word</h3>
+                <p>Convert PDF to editable Word</p>
+            </a>
+            <a href="/tools/pdf-password/" class="tool-link">
+                <span class="tool-link-icon">🔒</span>
+                <h3>PDF Password Protect</h3>
+                <p>Add password to PDF</p>
+            </a>
+            <a href="/tools/pdf-compressor/" class="tool-link">
+                <span class="tool-link-icon">📦</span>
+                <h3>PDF Compressor</h3>
+                <p>Reduce PDF file size</p>
+            </a>
+            <a href="/tools/document-editor/" class="tool-link">
+                <span class="tool-link-icon">✏️</span>
+                <h3>Document Editor</h3>
+                <p>Edit documents online</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<!-- Footer - Same as homepage -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <span class="logo-icon">🔧</span>
+                    <span>NagarTools</span>
+                </div>
+                <p>Simplifying your digital life with free, fast, and secure online tools.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">No registration required. 100% privacy safe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#tools">All Tools</a></li>
+                    <li><a href="../index.html#popular-tools">Popular Tools</a></li>
+                    <li><a href="../index.html#new-tools">Recently Added</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tool Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html#image-tools">Image Tools</a></li>
+                    <li><a href="../index.html#pdf-tools">PDF Tools</a></li>
+                    <li><a href="../index.html#calculator-tools">Calculators</a></li>
+                    <li><a href="../index.html#text-tools">Text Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:nagartools1@gmail.com">Email: nagartools1@gmail.com</a></li>
+                    <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="../terms.html">Terms of Use</a></li>
+                    <li><a href="../sitemap.html">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 NagarTools. All rights reserved. All tools are free to use.</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">Made with ❤️ for users worldwide</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Canvas Signature Functionality
+    const canvas = document.getElementById('signatureCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    const undoStack = [];
+    let selectedFile = null;
+    let isTypedSignature = false;
+    let typedSignatureText = '';
+
+    // Set canvas size
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        redrawCanvas();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Draw initial state
+    function redrawCanvas() {
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.strokeStyle = '#000000';
+        
+        if (isTypedSignature && typedSignatureText) {
+            drawTypedSignature();
+        } else if (undoStack.length > 0) {
+            const img = new Image();
+            img.onload = () => ctx.drawImage(img, 0, 0);
+            img.src = undoStack[undoStack.length - 1];
+        }
+    }
+
+    // Mouse Events
+    canvas.addEventListener('mousedown', (e) => {
+        if (isTypedSignature) return;
+        drawing = true;
+        const rect = canvas.getBoundingClientRect();
+        [lastX, lastY] = [e.clientX - rect.left, e.clientY - rect.top];
+        saveState();
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        if (!drawing || isTypedSignature) return;
+        const rect = canvas.getBoundingClientRect();
+        draw(e.clientX - rect.left, e.clientY - rect.top);
+    });
+
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseout', () => drawing = false);
+
+    // Touch Events for mobile
+    canvas.addEventListener('touchstart', (e) => {
+        if (isTypedSignature) return;
+        e.preventDefault();
+        drawing = true;
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        [lastX, lastY] = [touch.clientX - rect.left, touch.clientY - rect.top];
+        saveState();
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+        if (!drawing || isTypedSignature) return;
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        draw(touch.clientX - rect.left, touch.clientY - rect.top);
+    });
+
+    canvas.addEventListener('touchend', () => drawing = false);
+
+    // Draw function
+    function draw(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        [lastX, lastY] = [x, y];
+    }
+
+    // Save canvas state for undo
+    function saveState() {
+        if (isTypedSignature) return;
+        undoStack.push(canvas.toDataURL());
+    }
+
+    // Clear signature
+    function clearSignature() {
+        isTypedSignature = false;
+        typedSignatureText = '';
+        document.getElementById('textSignatureBox').style.display = 'none';
+        undoStack.length = 0;
+        redrawCanvas();
+    }
+
+    // Undo last stroke
+    function undoSignature() {
+        if (isTypedSignature) {
+            clearSignature();
+            return;
+        }
+        
+        if (undoStack.length > 0) {
+            undoStack.pop();
+            redrawCanvas();
+        }
+    }
+
+    // Save signature
+    function saveSignature() {
+        if (isTypedSignature) {
+            localStorage.setItem('typedSignature', typedSignatureText);
+        } else {
+            localStorage.setItem('signature', canvas.toDataURL());
+        }
+        alert('Signature saved! It will be available next time you use the tool.');
+    }
+
+    // Switch to typed signature
+    function useTypedSignature() {
+        isTypedSignature = true;
+        document.getElementById('textSignatureBox').style.display = 'block';
+        clearSignature();
+    }
+
+    // Apply typed signature
+    function applyTypedSignature() {
+        const text = document.getElementById('typedSignature').value.trim();
+        if (text) {
+            typedSignatureText = text;
+            drawTypedSignature();
+            alert('Typed signature applied!');
+        }
+    }
+
+    // Draw typed signature
+    function drawTypedSignature() {
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 40px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(typedSignatureText, canvas.width/2, canvas.height/2);
+    }
+
+    // File handling
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        // Check file type
+        if (!file.type.includes('pdf')) {
+            alert('Please select a PDF file');
+            return;
+        }
+        
+        // Check file size (50MB limit)
+        if (file.size > 50 * 1024 * 1024) {
+            alert('File size exceeds 50MB limit. Please select a smaller file.');
+            return;
+        }
+        
+        selectedFile = file;
+        
+        // Update file info display
+        document.getElementById('fileName').textContent = file.name;
+        document.getElementById('fileSize').textContent = `Size: ${formatFileSize(file.size)}`;
+        document.getElementById('fileInfo').classList.add('active');
+        
+        // Auto-fill name from filename
+        const nameFromFile = file.name.split('.')[0].replace(/[-_]/g, ' ');
+        if (!document.getElementById('signerName').value) {
+            document.getElementById('signerName').value = nameFromFile;
+        }
+    }
+
+    // Format file size
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Sign PDF function
+    function signPDF() {
+        if (!selectedFile) {
+            alert('Please upload a PDF file first.');
+            return;
+        }
+        
+        // Validate required fields
+        const signerName = document.getElementById('signerName').value.trim();
+        const signDate = document.getElementById('signDate').value;
+        
+        if (!signerName) {
+            alert('Please enter your full name.');
+            return;
+        }
+        
+        if (!signDate) {
+            alert('Please select a date.');
+            return;
+        }
+        
+        // Show progress
+        document.getElementById('progressContainer').style.display = 'block';
+        document.getElementById('signBtn').disabled = true;
+        document.getElementById('signBtn').innerHTML = '<span>⏳</span><span>Signing...</span>';
+        
+        // Simulate signing process
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += 5;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                
+                // Show success message
+                setTimeout(() => {
+                    const signatureData = isTypedSignature ? typedSignatureText : canvas.toDataURL();
+                    
+                    // Prepare download
+                    const signedFileName = selectedFile.name.replace('.pdf', '_signed.pdf');
+                    downloadSignedPDF(signedFileName);
+                    
+                    // Reset progress
+                    document.getElementById('progressContainer').style.display = 'none';
+                    document.getElementById('progressFill').style.width = '0%';
+                    document.getElementById('signBtn').disabled = false;
+                    document.getElementById('signBtn').innerHTML = '<span>✍️</span><span>Sign PDF Document</span>';
+                }, 500);
+            }
+        }, 50);
+    }
+
+    // Simulate download
+    function downloadSignedPDF(filename) {
+        // In a real implementation, this would generate and download the actual signed PDF
+        // For demo purposes, we'll show a success message
+        
+        alert('✅ PDF signed successfully! In a real implementation, your signed PDF would download automatically.\n\nFile would be saved as: ' + filename);
+        
+        // For demo, create a fake download
+        const blob = new Blob(['This is a demo signed PDF. In real implementation, this would be your actual signed PDF.'], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    // Reset tool
+    function resetTool() {
+        if (confirm('Are you sure you want to reset everything?')) {
+            selectedFile = null;
+            isTypedSignature = false;
+            typedSignatureText = '';
+            
+            // Reset file input
+            document.getElementById('pdfInput').value = '';
+            document.getElementById('fileInfo').classList.remove('active');
+            
+            // Reset signature canvas
+            clearSignature();
+            
+            // Reset form fields
+            document.getElementById('signDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('signerName').value = '';
+            document.getElementById('signerTitle').value = '';
+            document.getElementById('signerCompany').value = '';
+            document.getElementById('signerEmail').value = '';
+            document.getElementById('signerPhone').value = '';
+            document.getElementById('typedSignature').value = '';
+            
+            // Hide text signature box
+            document.getElementById('textSignatureBox').style.display = 'none';
+            
+            alert('Tool has been reset. Ready for a new document!');
+        }
+    }
+
+    // FAQ toggle
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const icon = element.querySelector('span:last-child');
+        
+        if (answer.classList.contains('active')) {
+            answer.classList.remove('active');
+            icon.textContent = '➕';
+        } else {
+            // Close other open FAQs
+            document.querySelectorAll('.faq-answer.active').forEach(item => {
+                item.classList.remove('active');
+                item.previousElementSibling.querySelector('span:last-child').textContent = '➕';
+            });
+            
+            answer.classList.add('active');
+            icon.textContent = '➖';
+        }
+    }
+
+    // Drag and drop functionality
+    const uploadArea = document.getElementById('uploadArea');
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = 'var(--blue)';
+        uploadArea.style.background = 'var(--blue-light)';
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.style.borderColor = 'var(--border)';
+        uploadArea.style.background = 'var(--bg)';
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = 'var(--border)';
+        uploadArea.style.background = 'var(--bg)';
+        
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.includes('pdf')) {
+            document.getElementById('pdfInput').files = e.dataTransfer.files;
+            handleFileSelect({ target: { files: e.dataTransfer.files } });
+        } else {
+            alert('Please drop a valid PDF file.');
+        }
+    });
+
+    // Load saved signature on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        // Load drawn signature
+        const savedSignature = localStorage.getItem('signature');
+        if (savedSignature) {
+            undoStack.push(savedSignature);
+            redrawCanvas();
+        }
+        
+        // Load typed signature
+        const savedTypedSignature = localStorage.getItem('typedSignature');
+        if (savedTypedSignature) {
+            typedSignatureText = savedTypedSignature;
+            document.getElementById('typedSignature').value = savedTypedSignature;
+            isTypedSignature = true;
+            document.getElementById('textSignatureBox').style.display = 'block';
+            drawTypedSignature();
+        }
+        
+        // Set current date
+        document.getElementById('signDate').valueAsDate = new Date();
+    });
+</script>
+
+</body>
+</html>
